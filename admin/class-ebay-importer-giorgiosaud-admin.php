@@ -100,17 +100,30 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 	}
 	public function ebay_importer_menu(){
-			add_menu_page('Ebay Importer', 'Ebay Importer', 'edit_others_posts', 'ebay-importer-giorgiosaud', array($this,'ebay_importer_page_view'),'dashicons-migrate',null);
-				
+		add_menu_page('Ebay Importer', 'Ebay Importer', 'edit_others_posts', 'ebay-importer-giorgiosaud', array($this,'ebay_importer_page_view'),'dashicons-migrate',null);
+
 
 
 	}
 	public function register_ebay_importer_group() {
 	//register our settings
-	register_setting( 'ebay_importer_group', 'ebay_api_name' );
-	register_setting( 'ebay_importer_group', 'ebay_api_key' );
-	register_setting( 'ebay_importer_group', 'ebay_api_key_secret' );
-}
+		register_setting( 'ebay-importer-giorgiosaud', 'ebay_api_name' );
+		register_setting( 'ebay-importer-giorgiosaud', 'ebay_api_key' );
+		register_setting( 'ebay-importer-giorgiosaud', 'ebay_api_key_secret' );
+		add_settings_section(
+			'ebay_importer_giorgiosaud_settings',
+			__( 'Settings for the Ebay Importer.', 'ebay-importer-giorgiosaud' ),
+			array($this,'ebay_importer_giorgiosaud_settings_cb')
+			'ebay-importer-giorgiosaud'
+			);
+		add_settings_field(
+        'ebay_api_name',
+        __('Ebay APP ID (Client ID)','ebay-importer-giorgiosaud' ),
+        array($this,'ebay_api_name_cb'),
+        'ebay-importer-giorgiosaud',
+        'ebay_importer_giorgiosaud_settings'
+    );
+	}
 
 	public function ebay_importer_page_view(){
 		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-display.php');
