@@ -199,7 +199,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			add_settings_error( 'ebay_importer_giorgiosaud_messages', 'ebay_importer_giorgiosaud_message', __( 'Settings Saved', 'ebay-importer-giorgiosaud' ), 'updated' );
 		}
 		// show error/update messages
-		settings_errors( 'wporg_messages' );
+		settings_errors( 'ebay_importer_giorgiosaud_messages' );
 		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-display.php');
 	}
 
