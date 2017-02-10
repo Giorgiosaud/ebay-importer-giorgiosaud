@@ -21,18 +21,18 @@
 		do_settings_sections( 'ebay-importer-group' );?>
 		<table class="form-table">
 			<tr valign="top">
-				<th scope="row">New Option Name</th>
-				<td><input type="text" name="new_option_name" value="<?php echo esc_attr( get_option('ebay-api-key') ); ?>" /></td>
+				<th scope="row"><?php _e('Ebay API Name') ?></th>
+				<td><input type="text" name="new_option_name" value="<?php echo esc_attr( get_option('ebay_api_name') ); ?>" /></td>
 			</tr>
 
 			<tr valign="top">
-				<th scope="row">Some Other Option</th>
-				<td><input type="text" name="some_other_option" value="<?php echo esc_attr( get_option('some_other_option') ); ?>" /></td>
+				<th scope="row"><?php _e('Ebay API Key') ?></th>
+				<td><input type="text" name="some_other_option" value="<?php echo esc_attr( get_option('ebay_api_key') ); ?>" /></td>
 			</tr>
 
 			<tr valign="top">
-				<th scope="row">Options, Etc.</th>
-				<td><input type="text" name="option_etc" value="<?php echo esc_attr( get_option('option_etc') ); ?>" /></td>
+				<th scope="row"><?php _e('Ebay API Secret') ?></th>
+				<td><input type="text" name="option_etc" value="<?php echo esc_attr( get_option('ebay_api_key_secret') ); ?>" /></td>
 			</tr>
 		</table>
 		<?php
