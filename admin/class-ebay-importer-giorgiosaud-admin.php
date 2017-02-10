@@ -281,7 +281,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$query = 'expomiamiautoparts';                  
 		$resp = simplexml_load_string($this->constructPostCallAndGetResponse($endpoint, $query));
 		// Check to see if the call was successful, else print an error
-		var_dump($resp->ack == "Success");
+		// var_dump($resp->ack == "Success");
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
 			$results = '';  
@@ -303,7 +303,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		}
 
 		// cargar la plantilla que muestra los datos y la edicion de los mismos
-		// load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-test.php');
+		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-test.php');
 	}
 
 }

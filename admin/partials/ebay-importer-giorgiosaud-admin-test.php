@@ -15,6 +15,6 @@
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 <div class="wrap">
-	<?php var_dump($result);?>
+	<?php var_dump($results);?>
 </div>
 
