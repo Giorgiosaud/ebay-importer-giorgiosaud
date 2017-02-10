@@ -151,6 +151,7 @@ class Ebay_Importer_Giorgiosaud {
 
 		$plugin_admin = new Ebay_Importer_Giorgiosaud_Admin( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action('admin_menu',$plugin_admin,'ebay_importer_menu');
+		$this->loader->add_action( 'admin_init', $plugin_admin,'register_ebay_importer_group' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
