@@ -16,8 +16,10 @@
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 <div class="wrap">
 	<h1>Ebay Importer Setup</h1>
-	<form method="post"> 
-		<?php settings_fields( 'ebay_importer_group' );
+	<form method="post" action="options.php"> 
+		<?php 
+		wp_nonce_field('update-options');	
+		settings_fields( 'ebay_importer_group' );
 		do_settings_sections( 'ebay_importer_group' );?>
 		<table class="form-table">
 			<tr valign="top">
@@ -37,6 +39,8 @@
 		</table>
 		<?php
 		submit_button(); ?>
+		<input type="hidden" name="action" value="update" />
+        <input type="hidden" name="page_options" value="ebay_api_name,ebay_api_key,ebay_api_key_secret" />
 	</form>
 </div>
 
