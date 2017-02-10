@@ -244,10 +244,11 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$xmlrequest .=$query;
 		$xmlrequest .="</value>";
 		$xmlrequest .="</itemFilter>";
-		// $xmlrequest .="<paginationInput>";
-		// $xmlrequest .="<entriesPerPage>3</entriesPerPage>";
-		// $xmlrequest .="</paginationInput>";
+		$xmlrequest .="<paginationInput>";
+		$xmlrequest .="<entriesPerPage>3</entriesPerPage>";
+		$xmlrequest .="</paginationInput>";
 		$xmlrequest .="<outputSelector>SellerInfo</outputSelector>";
+		$xmlrequest .="<outputSelector>GalleryInfo</outputSelector>";
 		$xmlrequest .="</findItemsAdvancedRequest>";
 		$api_name= get_option('ebay_api_name');
 		$headers=array(
@@ -284,6 +285,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// var_dump($resp->ack == "Success");
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
+  			var_dump($resp);
 			$results = '';  
 
   // Parse the desired information from the response
