@@ -15,12 +15,13 @@
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 <div class="wrap">
+	<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 	<h1>Ebay Importer Setup</h1>
 	<form method="post" action="options.php"> 
 		<?php 
 		wp_nonce_field('update-options');	
-		settings_fields( 'ebay_importer_group' );
-		do_settings_sections( 'ebay_importer_group' );?>
+		settings_fields( 'ebay-importer-giorgiosaud' );
+		do_settings_sections( 'ebay-importer-giorgiosaud' );?>
 		<table class="form-table">
 			<tr valign="top">
 				<th scope="row"><?php _e('Ebay APP ID (Client ID)') ?></th>

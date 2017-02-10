@@ -140,6 +140,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 
 	public function ebay_importer_page_view(){
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
 		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-display.php');
 	}
 
