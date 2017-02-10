@@ -110,11 +110,11 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		//el septimo es la posicion es un entero que define el orden a mostrar
 		add_menu_page('Ebay Importer', 'Ebay Importer', 'edit_others_posts', 'ebay-importer-giorgiosaud', array($this,'ebay_importer_page_view'),'dashicons-migrate',null);
 		add_submenu_page(
-			string 'ebay-importer-giorgiosaud',
-			string 'Test',
-			string 'Prueba de Funccionamiento',
-			string 'edit_others_posts',
-			string 'ebay-importer-giorgiosaud-test',
+			'ebay-importer-giorgiosaud',
+			'Test',
+			'Prueba de Funccionamiento',
+			'edit_others_posts',
+			'ebay-importer-giorgiosaud-test',
 			array($this,'ebay_importer_page_test_view')
 			);
 
@@ -223,10 +223,6 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		if(!$this->secure_plugin_pages()){
 			return;
 		};
-		// Revisa si el usuario cumple con las condiciones sino no muestra la apgina
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
-		}
 		// Añade un mensaje de error o actualizacion
 		// Revisa si el usuario mando datos de configuracion
 		// si es asi wordpress añadira un parametro $_GET llamado  "settings-updated" a la url
