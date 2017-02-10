@@ -108,7 +108,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		//el quinto es la funccion a llamar cuando se haga click o lo que va a mostrar la pagina del lado de la configuracion
 		//el sexto es el icono que puede ser el url al SVG del icono , el nombre del dashicon o pasar none para colocar div.wp-menu-image y asi añadir un icono via css
 		//el septimo es la posicion es un entero que define el orden a mostrar
-		add_menu_page('Ebay Importer', 'Ebay Importer', 'edit_others_posts', 'ebay-importer-giorgiosaud', array($this,'ebay_importer_page_view'),'none',null);
+		add_menu_page('Ebay Importer', 'Ebay Importer', 'edit_others_posts', 'ebay-importer-giorgiosaud', array($this,'ebay_importer_page_view'),'dashicons-migrate',null);
 
 	}
 	public function register_ebay_importer_group() {
