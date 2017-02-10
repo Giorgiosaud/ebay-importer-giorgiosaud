@@ -100,16 +100,26 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 	}
 	public function ebay_importer_menu(){
-		add_menu_page('Ebay Importer', 'Ebay Importer', 'edit_others_posts', 'ebay-importer-giorgiosaud', array($this,'ebay_importer_page_view'),'dashicons-migrate',null);
-
-
+		//Se añade una pagina para poder configurar el sistema
+		//el Primer argumento es el titulo de la pagina (lo que se ve en la pestaña)
+		//el Primer argumento es el nombre de el menu en el lateral izquierdo
+		//el tercer atributo es el nivel de permisos que debe tener el usuario para ver este menu
+		//el cuarto es el slug que debe ser en minuscula sin espacio y ser unico
+		//el quinto es la funccion a llamar cuando se haga click o lo que va a mostrar la pagina del lado de la configuracion
+		//el sexto es el icono que puede ser el url al SVG del icono , el nombre del dashicon o pasar none para colocar div.wp-menu-image y asi añadir un icono via css
+		//el septimo es la posicion es un entero que define el orden a mostrar
+		add_menu_page('Ebay Importer', 'Ebay Importer', 'edit_others_posts', 'ebay-importer-giorgiosaud', array($this,'ebay_importer_page_view'),'none',null);
 
 	}
 	public function register_ebay_importer_group() {
-	//register our settings
+		//Registrando las configuaciones individualmente
 		register_setting( 'ebay-importer-giorgiosaud', 'ebay_api_name' );
 		register_setting( 'ebay-importer-giorgiosaud', 'ebay_api_key' );
 		register_setting( 'ebay-importer-giorgiosaud', 'ebay_api_key_secret' );
+		// Se Registra una seccion para dentro de ella llamar a los campos a configurar
+		// el primer argumento es el id de la seccion
+		// el segundo un titulo de la seccion que en nuestro caso es traducible con el languages/ebay-importer-giorgiosaud.pot file
+		// el tercer argumento es el callback o la funccion a llamar cuando se ejecute esta seccion el el area de la pagina definida anteriormente
 		add_settings_section(
 			'ebay_importer_giorgiosaud_settings',
 			__( 'Settings for the Ebay Importer.', 'ebay-importer-giorgiosaud' ),
