@@ -18,8 +18,11 @@
 	<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 	<form method="post" action="options.php"> 
 		<?php 
+		// Muestra los campos de configuracion
 		settings_fields( 'ebay-importer-giorgiosaud' );
+		// ejecuta las configuraciones de las secciones
 		do_settings_sections( 'ebay-importer-giorgiosaud' );
+		// Muestra Boton Enviar
 		submit_button(); ?>
 	</form>
 </div>

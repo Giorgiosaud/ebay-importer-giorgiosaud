@@ -126,6 +126,13 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			array($this,'ebay_importer_giorgiosaud_settings_cb'),
 			'ebay-importer-giorgiosaud'
 			);
+		// Se Registran los campos que almacenaran la informacion
+		// Primer Argumento el nombre que es el que registramos
+		// Segundo argumento la etiqueta de el campo o el nombre representativo o Titulo
+		// Tercer Argumento funccion a llamar cuando se llama el input en el formulario
+		// Cuarto Argumento el slug de la pagina donde se va a mostrar
+		// Quinto Argumento la seccion donde se va a ver este campo que es la anterior en este caso
+		// Sexto es un array con el nombre de la etiqueta a mostrat y una clase aplicada a la fila donde se ve este campo <tr class="$class"><label for="$label_for">Title</label>.
 		add_settings_field(
 			'ebay_api_name',
 			__('Ebay APP ID (Client ID)','ebay-importer-giorgiosaud' ),
@@ -161,11 +168,12 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			);
 
 	}
+	// funccion que uestra el titulo de la secion
 	public function ebay_importer_giorgiosaud_settings_cb(){
 		echo '<p>Settings for setup ebay dev settings.</p>';
 	}
-	// field content cb
 	
+	// funccion que muestra como se ve el input y se obtiene los datos de la base de datos si existen
 	public function ebay_api_name_cb()
 	{
     // get the value of the setting we've registered with register_setting()
@@ -175,7 +183,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		<input class="regular-text" type="text" name="ebay_api_name" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
 		<?php
 	}
-
+	// funccion que muestra como se ve el input y se obtiene los datos de la base de datos si existen
 	public function ebay_api_key_cb()
 	{
     // get the value of the setting we've registered with register_setting()
@@ -185,6 +193,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		<input class="regular-text" type="text" name="ebay_api_key" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
 		<?php
 	}
+	// funccion que muestra como se ve el input y se obtiene los datos de la base de datos si existen
 	public function ebay_api_key_secret_cb()
 	{
     // get the value of the setting we've registered with register_setting()
@@ -194,22 +203,22 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		<input class="regular-text" type="text" name="ebay_api_key_secret" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
 		<?php
 	}
-
+	// Funccion que muestra la pagina
 	public function ebay_importer_page_view(){
-		// check user capabilities
+		// Revisa si el usuario cumple con las condiciones sino no muestra la apgina
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
-		// add error/update messages
-
- // check if the user have submitted the settings
- // wordpress will add the "settings-updated" $_GET parameter to the url
+		// Añade un mensaje de error o actualizacion
+		// Revisa si el usuario mando datos de configuracion
+		// si es asi wordpress añadira un parametro $_GET llamado  "settings-updated" a la url
 		if ( isset( $_GET['settings-updated'] ) ) {
- // add settings saved message with the class of "updated"
+			 // añadir un mensaje que diga que fueron guardados los datos con la clase "updated"
 			add_settings_error( 'ebay_importer_giorgiosaud_messages', 'ebay_importer_giorgiosaud_message', __( 'Settings Saved', 'ebay-importer-giorgiosaud' ), 'updated' );
 		}
-		// show error/update messages
+		// mostrar los mensajes de error/update
 		settings_errors( 'ebay_importer_giorgiosaud_messages' );
+		// cargar la plantilla que muestra los datos y la edicion de los mismos
 		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-display.php');
 	}
 
