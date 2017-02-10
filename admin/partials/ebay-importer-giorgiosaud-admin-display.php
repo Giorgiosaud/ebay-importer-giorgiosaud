@@ -14,4 +14,12 @@
 ?>
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
-<h1>test</h1>
+<div class="wrap">
+<h1>Ebay Importer Setup</h1>
+<form method="post" action="options.php"> 
+<?php settings_fields( 'ebay-api' );
+do_settings_sections( 'ebay-api' );
+submit_button(); ?>
+</form>
+</div>
+
