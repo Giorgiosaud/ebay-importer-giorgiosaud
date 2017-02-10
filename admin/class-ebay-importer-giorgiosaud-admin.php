@@ -127,11 +127,35 @@ class Ebay_Importer_Giorgiosaud_Admin {
 				'class'=>'ebay_api_name'
 				)
 			);
+		add_settings_field(
+			'ebay_api_key',
+			__('Ebay APP ID (Client ID)','ebay-importer-giorgiosaud' ),
+			array($this,'ebay_api_key_cb'),
+			'ebay-importer-giorgiosaud',
+			'ebay_importer_giorgiosaud_settings',
+			array(
+				'label_for'=>'ebay_api_key',
+				'class'=>'ebay_api_key'
+				)
+			);
+		add_settings_field(
+			'ebay_api_key_secret',
+			__('Ebay APP ID (Client ID)','ebay-importer-giorgiosaud' ),
+			array($this,'ebay_api_key_secret_cb'),
+			'ebay-importer-giorgiosaud',
+			'ebay_importer_giorgiosaud_settings',
+			array(
+				'label_for'=>'ebay_api_key_secret',
+				'class'=>'ebay_api_key_secret'
+				)
+			);
+
 	}
 	public function ebay_importer_giorgiosaud_settings_cb(){
 		echo '<p>Settings for setup ebay dev settings.</p>';
 	}
 	// field content cb
+	
 	public function ebay_api_name_cb()
 	{
     // get the value of the setting we've registered with register_setting()
@@ -142,6 +166,24 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		<?php
 	}
 
+	public function ebay_api_key_cb()
+	{
+    // get the value of the setting we've registered with register_setting()
+		$setting = get_option('ebay_api_key');
+    // output the field
+		?>
+		<input type="text" name="ebay_api_key" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
+		<?php
+	}
+	public function ebay_api_key_secret_cb()
+	{
+    // get the value of the setting we've registered with register_setting()
+		$setting = get_option('ebay_api_key_secret');
+    // output the field
+		?>
+		<input type="text" name="ebay_api_key_secret" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
+		<?php
+	}
 
 	public function ebay_importer_page_view(){
 		// check user capabilities
