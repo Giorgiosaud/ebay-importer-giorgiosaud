@@ -124,7 +124,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			'ebay_importer_giorgiosaud_settings',
 			array(
 				'label_for'=>'ebay_api_name',
-				'class'=>'ebay_api_name'
+				'class'=>'regular-text ebay_api_name'
 				)
 			);
 		add_settings_field(
@@ -135,7 +135,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			'ebay_importer_giorgiosaud_settings',
 			array(
 				'label_for'=>'ebay_api_key',
-				'class'=>'ebay_api_key'
+				'class'=>'regular-text ebay_api_key'
 				)
 			);
 		add_settings_field(
@@ -146,7 +146,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			'ebay_importer_giorgiosaud_settings',
 			array(
 				'label_for'=>'ebay_api_key_secret',
-				'class'=>'ebay_api_key_secret'
+				'class'=>'regular-text ebay_api_key_secret'
 				)
 			);
 
