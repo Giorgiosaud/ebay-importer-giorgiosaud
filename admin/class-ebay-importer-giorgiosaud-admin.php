@@ -216,6 +216,10 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return false;
 		}
+		if ( isset( $_GET['settings-updated'] ) ) {
+			 // añadir un mensaje que diga que fueron guardados los datos con la clase "updated"
+			add_settings_error( 'ebay_importer_giorgiosaud_messages', 'ebay_importer_giorgiosaud_message', __( 'Settings Saved', 'ebay-importer-giorgiosaud' ), 'updated' );
+		}
 		return true;
 	}
 	// Funccion que muestra la pagina
@@ -223,13 +227,16 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		if(!$this->secure_plugin_pages()){
 			return;
 		};
-		// Añade un mensaje de error o actualizacion
-		// Revisa si el usuario mando datos de configuracion
-		// si es asi wordpress añadira un parametro $_GET llamado  "settings-updated" a la url
-		if ( isset( $_GET['settings-updated'] ) ) {
-			 // añadir un mensaje que diga que fueron guardados los datos con la clase "updated"
-			add_settings_error( 'ebay_importer_giorgiosaud_messages', 'ebay_importer_giorgiosaud_message', __( 'Settings Saved', 'ebay-importer-giorgiosaud' ), 'updated' );
-		}
+		// mostrar los mensajes de error/update
+		settings_errors( 'ebay_importer_giorgiosaud_messages' );
+		// cargar la plantilla que muestra los datos y la edicion de los mismos
+		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-display.php');
+	}
+	// Funccion que muestra la pagina
+	public function ebay_importer_page_test_view(){
+		if(!$this->secure_plugin_pages()){
+			return;
+		};
 		// mostrar los mensajes de error/update
 		settings_errors( 'ebay_importer_giorgiosaud_messages' );
 		// cargar la plantilla que muestra los datos y la edicion de los mismos
