@@ -125,7 +125,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			);
 	}
 	public function ebay_importer_giorgiosaud_settings_cb(){
-		echo '<p>WPOrg Section Introduction.</p>';
+		echo '<p>Settings for setup ebay dev settings.</p>';
 	}
 	// field content cb
 	public function ebay_api_name_cb()
@@ -140,9 +140,20 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 
 	public function ebay_importer_page_view(){
+		// check user capabilities
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
+		// add error/update messages
+
+ // check if the user have submitted the settings
+ // wordpress will add the "settings-updated" $_GET parameter to the url
+		if ( isset( $_GET['settings-updated'] ) ) {
+ // add settings saved message with the class of "updated"
+			add_settings_error( 'ebay_importer_giorgiosaud_messages', 'ebay_importer_giorgiosaud_message', __( 'Settings Saved', 'ebay-importer-giorgiosaud' ), 'updated' );
+		}
+		// show error/update messages
+		settings_errors( 'wporg_messages' );
 		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-display.php');
 	}
 
