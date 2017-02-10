@@ -113,7 +113,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		add_settings_section(
 			'ebay_importer_giorgiosaud_settings',
 			__( 'Settings for the Ebay Importer.', 'ebay-importer-giorgiosaud' ),
-			array($this,'ebay_importer_giorgiosaud_settings_cb')
+			array($this,'ebay_importer_giorgiosaud_settings_cb'),
 			'ebay-importer-giorgiosaud'
 			);
 		add_settings_field(
