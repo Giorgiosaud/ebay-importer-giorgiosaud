@@ -35,7 +35,7 @@
 				<td><input type="text" name="option_etc" value="<?php echo esc_attr( get_option('option_etc') ); ?>" /></td>
 			</tr>
 		</table>
-		<?
+		<?php
 		submit_button(); ?>
 	</form>
 </div>
