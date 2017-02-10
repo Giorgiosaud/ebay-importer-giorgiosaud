@@ -117,13 +117,27 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			'ebay-importer-giorgiosaud'
 			);
 		add_settings_field(
-        'ebay_api_name',
-        __('Ebay APP ID (Client ID)','ebay-importer-giorgiosaud' ),
-        array($this,'ebay_api_name_cb'),
-        'ebay-importer-giorgiosaud',
-        'ebay_importer_giorgiosaud_settings'
-    );
+			'ebay_api_name',
+			__('Ebay APP ID (Client ID)','ebay-importer-giorgiosaud' ),
+			array($this,'ebay_api_name_cb'),
+			'ebay-importer-giorgiosaud',
+			'ebay_importer_giorgiosaud_settings'
+			);
 	}
+	public function ebay_importer_giorgiosaud_settings_cb(){
+		echo '<p>WPOrg Section Introduction.</p>';
+	}
+	// field content cb
+	public function ebay_api_name_cb()
+	{
+    // get the value of the setting we've registered with register_setting()
+		$setting = get_option('ebay_api_name');
+    // output the field
+		?>
+		<input type="text" name="ebay_api_name" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
+		<?php
+	}
+
 
 	public function ebay_importer_page_view(){
 		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-display.php');
