@@ -17,8 +17,8 @@
 <div class="wrap">
 	<h1>Ebay Importer Setup</h1>
 	<form method="post" action="options.php"> 
-		<?php settings_fields( 'ebay-importer-group' );
-		do_settings_sections( 'ebay-importer-group' );?>
+		<?php settings_fields( 'ebay_importer_group' );
+		do_settings_sections( 'ebay_importer_group' );?>
 		<table class="form-table">
 			<tr valign="top">
 				<th scope="row"><?php _e('Ebay API Name') ?></th>

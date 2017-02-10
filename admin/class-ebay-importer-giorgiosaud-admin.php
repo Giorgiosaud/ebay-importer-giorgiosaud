@@ -101,8 +101,17 @@ class Ebay_Importer_Giorgiosaud_Admin {
 	}
 	public function ebay_importer_menu(){
 			add_menu_page('Ebay Importer', 'Ebay Importer', 'edit_others_posts', 'ebay-importer-giorgiosaud', array($this,'ebay_importer_page_view'),'dashicons-migrate',null);
+				add_action( 'admin_init', array($this,'register_ebay_importer_group' );
+
 
 	}
+	function register_ebay_importer_group() {
+	//register our settings
+	register_setting( 'my-cool-plugin-settings-group', 'ebay_api_name' );
+	register_setting( 'my-cool-plugin-settings-group', 'ebay_api_key' );
+	register_setting( 'my-cool-plugin-settings-group', 'ebay_api_key_secret' );
+}
+
 	public function ebay_importer_page_view(){
 		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-display.php');
 	}
