@@ -101,7 +101,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 	}
 	public function ebay_importer_menu(){
 			add_menu_page('Ebay Importer', 'Ebay Importer', 'edit_others_posts', 'ebay-importer-giorgiosaud', array($this,'ebay_importer_page_view'),'dashicons-migrate',null);
-				add_action( 'admin_init', array($this,'register_ebay_importer_group' );
+				add_action( 'admin_init', array($this,'register_ebay_importer_group' ));
 
 
 	}
