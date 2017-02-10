@@ -104,7 +104,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 	}
 	public function ebay_importer_page_view(){
-		load_template(plugin_dir_url( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-display.php');
+		load_template(plugin_dir( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-display.php');
 	}
 
 }
