@@ -244,9 +244,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$xmlrequest .=$query;
 		$xmlrequest .="</value>";
 		$xmlrequest .="</itemFilter>";
-		$xmlrequest .="<paginationInput>";
-		$xmlrequest .="<entriesPerPage>3</entriesPerPage>";
-		$xmlrequest .="</paginationInput>";
+		// $xmlrequest .="<paginationInput>";
+		// $xmlrequest .="<entriesPerPage>3</entriesPerPage>";
+		// $xmlrequest .="</paginationInput>";
 		$xmlrequest .="<outputSelector>SellerInfo</outputSelector>";
 		$xmlrequest .="</findItemsAdvancedRequest>";
 		$api_name= get_option('ebay_api_name');
