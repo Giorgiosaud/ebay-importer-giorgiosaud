@@ -99,5 +99,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/ebay-importer-giorgiosaud-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+	public function ebay_importer_menu(){
+			add_plugins_page('Ebay Importer Menu', 'Ebay Importer Menu', 'edit_others_posts', 'ebay-importer-giorgiosaud', 'ebay_importer_page_view');
+
+	}
 
 }
