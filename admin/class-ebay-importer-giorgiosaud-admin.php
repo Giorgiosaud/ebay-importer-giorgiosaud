@@ -280,6 +280,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$query = 'expomiamiautoparts';                  
 		$resp = simplexml_load_string($this->constructPostCallAndGetResponse($endpoint, $query));
 		// Check to see if the call was successful, else print an error
+		var_dump($resp);
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
 			$results = '';  
