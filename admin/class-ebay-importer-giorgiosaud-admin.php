@@ -249,12 +249,13 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$xmlrequest .="</paginationInput>";
 		$xmlrequest .="<outputSelector>SellerInfo</outputSelector>";
 		$xmlrequest .="</findItemsAdvancedRequest>";
+		$api_name= get_option('ebay_api_name');
 		$headers=array(
 			"X-EBAY-SOA-OPERATION-NAME:findItemsAdvanced",
 			"X-EBAY-SOA-SERVICE-VERSION:1.3.0",
 			"X-EBAY-SOA-REQUEST-DATA-FORMAT:XML",
 			"X-EBAY-SOA-GLOBAL-ID:EBAY-US",
-			"X-EBAY-SOA-SECURITY-APPNAME:JorgeSau-miamiap-SBX-1cd475433-d5500e90",
+			"X-EBAY-SOA-SECURITY-APPNAME:$api_name",
 			"Content-Type: text/xml;charset=utf-8"
 			);
 		  $session  = curl_init($endpoint);                       // create a curl session
