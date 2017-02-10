@@ -107,9 +107,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
 	}
 	public function register_ebay_importer_group() {
 	//register our settings
-	register_setting( 'my-cool-plugin-settings-group', 'ebay_api_name' );
-	register_setting( 'my-cool-plugin-settings-group', 'ebay_api_key' );
-	register_setting( 'my-cool-plugin-settings-group', 'ebay_api_key_secret' );
+	register_setting( 'ebay_importer_group', 'ebay_api_name' );
+	register_setting( 'ebay_importer_group', 'ebay_api_key' );
+	register_setting( 'ebay_importer_group', 'ebay_api_key_secret' );
 }
 
 	public function ebay_importer_page_view(){
