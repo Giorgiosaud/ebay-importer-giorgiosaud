@@ -254,7 +254,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			"X-EBAY-SOA-SERVICE-VERSION:1.3.0",
 			"X-EBAY-SOA-REQUEST-DATA-FORMAT:XML",
 			"X-EBAY-SOA-GLOBAL-ID:EBAY-US",
-			"X-EBAY-SOA-SECURITY-APPNAME:JorgeSau-miamiap-SBX-1cd475433-d5500e90"
+			"X-EBAY-SOA-SECURITY-APPNAME:JorgeSau-miamiap-SBX-1cd475433-d5500e90",
 			"Content-Type: text/xml;charset=utf-8"
 			);
 		  $session  = curl_init($endpoint);                       // create a curl session
