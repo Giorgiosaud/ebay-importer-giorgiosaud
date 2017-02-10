@@ -109,8 +109,17 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		//el sexto es el icono que puede ser el url al SVG del icono , el nombre del dashicon o pasar none para colocar div.wp-menu-image y asi añadir un icono via css
 		//el septimo es la posicion es un entero que define el orden a mostrar
 		add_menu_page('Ebay Importer', 'Ebay Importer', 'edit_others_posts', 'ebay-importer-giorgiosaud', array($this,'ebay_importer_page_view'),'dashicons-migrate',null);
+		add_submenu_page(
+			string 'ebay-importer-giorgiosaud',
+			string 'Test',
+			string 'Prueba de Funccionamiento',
+			string 'edit_others_posts',
+			string 'ebay-importer-giorgiosaud-test',
+			array($this,'ebay_importer_page_test_view')
+			);
 
 	}
+	// Registrar Configuraciones y campos
 	public function register_ebay_importer_group() {
 		//Registrando las configuaciones individualmente
 		register_setting( 'ebay-importer-giorgiosaud', 'ebay_api_name' );
@@ -203,8 +212,17 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		<input class="regular-text" type="text" name="ebay_api_key_secret" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
 		<?php
 	}
+	protected function secure_plugin_pages(){
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return false;
+		}
+		return true;
+	}
 	// Funccion que muestra la pagina
 	public function ebay_importer_page_view(){
+		if(!$this->secure_plugin_pages()){
+			return;
+		};
 		// Revisa si el usuario cumple con las condiciones sino no muestra la apgina
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
