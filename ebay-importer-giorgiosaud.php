@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Ebay Importer Giorgiosaud
  * Plugin URI:         http://giorgiosaud.com/site/2017/02/09/ebay-importer-giorgiosaud/ ‎
- * Description:       This plugin is to import products from one ebay store to your woocomerce products.
+ * Description:       This plugin is to import products from one ebay store to your woocomerce products
  * Version:           1.0.0
  * Author:            Giorgiosaud
  * Author URI:         http://giorgiosaud.com/site/ 

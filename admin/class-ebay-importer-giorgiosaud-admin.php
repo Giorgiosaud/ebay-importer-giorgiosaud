@@ -100,8 +100,11 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 	}
 	public function ebay_importer_menu(){
-			add_plugins_page('Ebay Importer Menu', 'Ebay Importer Menu', 'edit_others_posts', 'ebay-importer-giorgiosaud', 'ebay_importer_page_view');
+			add_plugins_page('Ebay Importer Menu', 'Ebay Importer Menu', 'edit_others_posts', 'ebay-importer-giorgiosaud', array($this,'ebay_importer_page_view'));
 
+	}
+	public function ebay_importer_page_view(){
+		load_template('admin/partials/ebay-importer-giorgiosaud-admin-display.php');
 	}
 
 }
