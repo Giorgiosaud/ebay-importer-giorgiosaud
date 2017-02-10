@@ -124,7 +124,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			'ebay_importer_giorgiosaud_settings',
 			array(
 				'label_for'=>'ebay_api_name',
-				'class'=>'regular-text ebay_api_name'
+				'class'=>'ebay_api_name'
 				)
 			);
 		add_settings_field(
@@ -135,7 +135,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			'ebay_importer_giorgiosaud_settings',
 			array(
 				'label_for'=>'ebay_api_key',
-				'class'=>'regular-text ebay_api_key'
+				'class'=>'ebay_api_key'
 				)
 			);
 		add_settings_field(
@@ -146,7 +146,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			'ebay_importer_giorgiosaud_settings',
 			array(
 				'label_for'=>'ebay_api_key_secret',
-				'class'=>'regular-text ebay_api_key_secret'
+				'class'=>'ebay_api_key_secret'
 				)
 			);
 
@@ -162,7 +162,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$setting = get_option('ebay_api_name');
     // output the field
 		?>
-		<input type="text" name="ebay_api_name" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
+		<input class="regular-text" type="text" name="ebay_api_name" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
 		<?php
 	}
 
@@ -172,7 +172,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$setting = get_option('ebay_api_key');
     // output the field
 		?>
-		<input type="text" name="ebay_api_key" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
+		<input class="regular-text" type="text" name="ebay_api_key" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
 		<?php
 	}
 	public function ebay_api_key_secret_cb()
@@ -181,7 +181,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$setting = get_option('ebay_api_key_secret');
     // output the field
 		?>
-		<input type="text" name="ebay_api_key_secret" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
+		<input class="regular-text" type="text" name="ebay_api_key_secret" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
 		<?php
 	}
 
