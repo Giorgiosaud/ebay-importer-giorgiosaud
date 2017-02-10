@@ -230,7 +230,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// mostrar los mensajes de error/update
 		settings_errors( 'ebay_importer_giorgiosaud_messages' );
 		// cargar la plantilla que muestra los datos y la edicion de los mismos
-		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-display.php');
+		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-settings.php');
 	}
 	// Funccion que muestra la pagina
 	public function ebay_importer_page_test_view(){
@@ -240,7 +240,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// mostrar los mensajes de error/update
 		settings_errors( 'ebay_importer_giorgiosaud_messages' );
 		// cargar la plantilla que muestra los datos y la edicion de los mismos
-		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-display.php');
+		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-test.php');
 	}
 
 }
