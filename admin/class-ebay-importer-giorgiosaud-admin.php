@@ -129,7 +129,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			);
 		add_settings_field(
 			'ebay_api_key',
-			__('Ebay APP ID (Client ID)','ebay-importer-giorgiosaud' ),
+			__('Dev ID','ebay-importer-giorgiosaud' ),
 			array($this,'ebay_api_key_cb'),
 			'ebay-importer-giorgiosaud',
 			'ebay_importer_giorgiosaud_settings',
@@ -140,7 +140,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			);
 		add_settings_field(
 			'ebay_api_key_secret',
-			__('Ebay APP ID (Client ID)','ebay-importer-giorgiosaud' ),
+			__('Cert ID (Client Secret)','ebay-importer-giorgiosaud' ),
 			array($this,'ebay_api_key_secret_cb'),
 			'ebay-importer-giorgiosaud',
 			'ebay_importer_giorgiosaud_settings',
