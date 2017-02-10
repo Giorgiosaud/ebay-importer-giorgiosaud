@@ -232,15 +232,76 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// cargar la plantilla que muestra los datos y la edicion de los mismos
 		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-settings.php');
 	}
+	private function constructPostCallAndGetResponse($endpoint, $query) {
+		global $xmlrequest;
+
+  // Create the XML request to be POSTed
+		$xmlrequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+		$xmlrequest .= "<findItemsAdvancedRequest xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">";
+		$xmlrequest .= "<itemFilter>";
+		$xmlrequest .="<name>Seller</name>";
+		$xmlrequest .="<value>";
+		$xmlrequest .=$query;
+		$xmlrequest .="</value>";
+		$xmlrequest .="</itemFilter>";
+		$xmlrequest .="<paginationInput>";
+		$xmlrequest .="<entriesPerPage>3</entriesPerPage>";
+		$xmlrequest .="</paginationInput>";
+		$xmlrequest .="<outputSelector>SellerInfo</outputSelector>";
+		$xmlrequest .="</findItemsAdvancedRequest>";
+		$headers=array(
+			"X-EBAY-SOA-OPERATION-NAME:findItemsAdvanced",
+			"X-EBAY-SOA-SERVICE-VERSION:1.3.0",
+			"X-EBAY-SOA-REQUEST-DATA-FORMAT:XML",
+			"X-EBAY-SOA-GLOBAL-ID:EBAY-US",
+			"X-EBAY-SOA-SECURITY-APPNAME:JorgeSau-miamiap-SBX-1cd475433-d5500e90"
+			"Content-Type: text/xml;charset=utf-8"
+			);
+		  $session  = curl_init($endpoint);                       // create a curl session
+		  curl_setopt($session, CURLOPT_POST, true);              // POST request type
+		  curl_setopt($session, CURLOPT_HTTPHEADER, $headers);    // set headers using $headers array
+		  curl_setopt($session, CURLOPT_POSTFIELDS, $xmlrequest); // set the body of the POST
+		  curl_setopt($session, CURLOPT_RETURNTRANSFER, true);    // return values as a string, not to std out
+		    $responsexml = curl_exec($session);                     // send the request
+		    curl_close($session);                                   // close the session
+		    return $responsexml;                                    // returns a string
+	}  // End of constructPostCallAndGetResponse function
 	// Funccion que muestra la pagina
 	public function ebay_importer_page_test_view(){
 		if(!$this->secure_plugin_pages()){
 			return;
 		};
-		// mostrar los mensajes de error/update
-		settings_errors( 'ebay_importer_giorgiosaud_messages' );
+		error_reporting(E_ALL);  // Turn on all errors, warnings, and notices for easier debugging
+
+		// API request variables
+		// // URL to call
+		$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';  
+		// Supply your own query keywords as needed
+		$query = 'expomiamiautoparts';                  
+		$resp = simplexml_load_string($this->constructPostCallAndGetResponse($endpoint, $query));
+		// Check to see if the call was successful, else print an error
+		if ($resp->ack == "Success") {
+  			// Initialize the $results variable
+			$results = '';  
+
+  // Parse the desired information from the response
+			foreach($resp->searchResult->item as $item) {
+				$pic   = $item->galleryURL;
+				$link  = $item->viewItemURL;
+				$title = $item->title;
+
+    // Build the desired HTML code for each searchResult.item node and append it to $results
+				$results .= "<tr><td><img src=\"$pic\"></td><td><a href=\"$link\">$title</a></td></tr>";
+			}
+		}
+		// If the response does not indicate 'Success,' print an error
+		else {  
+			$results  = "<h3>Oops! The request was not successful. Make sure you are using a valid ";
+			$results .= "AppID for the Production environment.</h3>";
+		}
+
 		// cargar la plantilla que muestra los datos y la edicion de los mismos
-		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-test.php');
+		// load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-test.php');
 	}
 
 }
