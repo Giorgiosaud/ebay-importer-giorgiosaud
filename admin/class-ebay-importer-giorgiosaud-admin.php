@@ -285,9 +285,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// var_dump($resp->ack == "Success");
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
-  			var_dump($resp);
+  			// var_dump($resp);
 			$results = '';  
-
+			die(var_dump($resp->searchResult->item[0]));
   // Parse the desired information from the response
 			foreach($resp->searchResult->item as $item) {
 				$pic   = $item->galleryURL;
