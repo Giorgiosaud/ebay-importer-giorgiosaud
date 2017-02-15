@@ -349,8 +349,14 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			$ProductId=$itemTest->itemId->__toString();
 			$prodDetail = $this->getItemDetail($ProductId);
 			?>
-				<h1><?= $prodDetail->Item->Title ?></h1>
+				<a href="<?= $prodDetail->Item->ViewItemURLForNaturalSearch?>"><h1><?= $prodDetail->Item->Title ?></h1></a>
 				<p>Code: <span><?= $prodDetail->Item->ItemID ?></span></p>
+				<?php foreach($prodDetail->Item->PictureURL as $PictureURL){
+					?>
+					<img src="<?= $PictureURL?>" alt="<?= $prodDetail->Item->Title ?>">
+			<?php
+
+			}?>
 			<?php
 			echo '<pre>';
 			var_dump($prodDetail->Item);
