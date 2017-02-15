@@ -341,11 +341,12 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$store = 'expomiamiautoparts';                  
 		$resp = $this->getProductsByStore($store);
 		// Check to see if the call was successful, else print an error
-		die(var_dump($resp));
+		// die(var_dump($resp));
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
-  			// var_dump($resp);
+  			
 			$itemTest=$resp->searchResult->item[0];
+			dd($itemTest);
 			$ProductId=$itemTest->itemId;
 			$prodDetail = $this->getItemDetail($ProductId);
 			die(var_dump($prodDetail));
