@@ -10,9 +10,9 @@ class EbayProductGiorgiosaud{
 		$this->parseXML();
 	}
 	protected function parseXML(){
-		$this->eBayId = $this->xml->ItemID->__toString;
+		$this->eBayId = $this->xml->ItemID->__toString();
 		echo '<pre>';
-		var_dump($this->xml->ItemID);
+		var_dump($this->eBayId);
 		echo '</pre>';
 	}
 
