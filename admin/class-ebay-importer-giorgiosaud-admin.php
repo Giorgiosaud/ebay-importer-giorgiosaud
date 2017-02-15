@@ -348,9 +348,14 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			$itemTest=$resp->searchResult->item[0];
 			$ProductId=$itemTest->itemId->__toString();
 			$prodDetail = $this->getItemDetail($ProductId);
+			?>
+				<h1><?= $prodDetail->Item->Title ?></h1>
+				<p>Code: <span><?= $prodDetail->Item->ItemID ?></span></p>
+			<?php
 			echo '<pre>';
 			var_dump($prodDetail->Item);
 			echo '</pre>';
+
 			die();
 			$results = '';  
 			$respuesta='<div>';
