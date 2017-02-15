@@ -340,7 +340,6 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// Supply your own query keywords as needed
 		$store = 'expomiamiautoparts';                  
 		$resp = $this->getProductsByStore($store);
-		$this->constructPostToGetAllProductsFromStoreCallAndGetResponse($endpoint, $store));
 		// Check to see if the call was successful, else print an error
 		// var_dump($resp->ack == "Success");
 		if ($resp->ack == "Success") {
