@@ -345,7 +345,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
   			foreach($resp->searchResult->item as $item) {
-  				$product=new EbayProductGiorgiosaud();
+  				// $product=new EbayProductGiorgiosaud();
 			// $item=$resp->searchResult->item[0];
 			$ProductId=$item->itemId->__toString();
 			$prodDetail = $this->getItemDetail($ProductId);
