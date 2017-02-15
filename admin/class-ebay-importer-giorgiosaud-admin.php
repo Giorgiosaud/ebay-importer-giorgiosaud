@@ -99,6 +99,32 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/ebay-importer-giorgiosaud-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+	public function woo_add_custom_general_fields(){
+		global $woocommerce, $post;
+
+		echo '<div class="options_group">';
+
+  		// Custom fields will be created here...
+  		// Text Field
+		woocommerce_wp_text_input( 
+			array( 
+				'id'          => '_ebay_id', 
+				'label'       => __( 'eBay Id', 'woocommerce' ), 
+				'placeholder' => 'eBay Id',
+				'desc_tip'    => 'true',
+				'description' => __( 'Enter the custom value here.', 'woocommerce' ) 
+				)
+			);
+
+		echo '</div>';
+	}
+	public function woo_add_custom_general_fields_save(){
+		$woocommerce_text_field = $_POST['_ebay_id'];
+		if( !empty( $woocommerce_text_field ) )
+			update_post_meta( $post_id, '_ebay_id', esc_attr( $woocommerce_text_field ) );
+		}
+
+	}
 	public function ebay_importer_menu(){
 		//Se añade una pagina para poder configurar el sistema
 		//el Primer argumento es el titulo de la pagina (lo que se ve en la pestaña)

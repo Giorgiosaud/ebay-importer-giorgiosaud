@@ -154,6 +154,11 @@ class Ebay_Importer_Giorgiosaud {
 		$this->loader->add_action( 'admin_init', $plugin_admin,'register_ebay_importer_group' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		// Display Field ebay id in product
+		$this->loader->add_action('woocommerce_product_options_general_product_data', $plugin_admin,'woo_add_custom_general_fields' );
+		// Save Field ebay id in product
+		$this->loader->add_action( 'woocommerce_process_product_meta',$plugin_admin, 'woo_add_custom_general_fields_save' );
+
 
 	}
 
