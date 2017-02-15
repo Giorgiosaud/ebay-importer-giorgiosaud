@@ -349,7 +349,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			$ProductId=$itemTest->itemId->__toString();
 			$prodDetail = $this->getItemDetail($ProductId);
 			echo '<pre>';
-			var_dump($prodDetail);
+			var_dump($prodDetail->Item);
 			echo '</pre>';
 			die();
 			$results = '';  
