@@ -15,6 +15,9 @@ class EbayProductGiorgiosaud{
 		echo '<pre>';
 		var_dump($this->xml);
 		echo '</pre>';
+		echo '<pre>';
+		var_dump($this->title);
+		echo '</pre>';
 	}
 
 }
