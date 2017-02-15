@@ -344,9 +344,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// die(var_dump($resp));
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
-  			
-			$itemTest=$resp->searchResult->item[0];
-			$ProductId=$itemTest->itemId->__toString();
+  			foreach($resp->searchResult->item as $item) {
+			// $item=$resp->searchResult->item[0];
+			$ProductId=$item->itemId->__toString();
 			$prodDetail = $this->getItemDetail($ProductId);
 			?>
 				<a href="<?= $prodDetail->Item->ViewItemURLForNaturalSearch?>"><h1><?= $prodDetail->Item->Title ?></h1></a>
@@ -358,34 +358,34 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 			}?>
 			<?php
-			echo '<pre>';
-			var_dump($prodDetail->Item);
-			echo '</pre>';
+			// echo '<pre>';
+			// var_dump($prodDetail->Item);
+			// echo '</pre>';
 
-			die();
-			$results = '';  
-			$respuesta='<div>';
-			$link=$itemTest->viewItemURL;
-			$respuesta.="<a href='$link'>";
-			$respuesta.='<h1>';
-			$respuesta.=$itemTest->title;
-			$respuesta.="</h1>";
+			// die();
+			// $results = '';  
+			// $respuesta='<div>';
+			// $link=$itemTest->viewItemURL;
+			// $respuesta.="<a href='$link'>";
+			// $respuesta.='<h1>';
+			// $respuesta.=$itemTest->title;
+			// $respuesta.="</h1>";
 			
-			$endpoint2="http://open.api.ebay.com/shopping";
+			// $endpoint2="http://open.api.ebay.com/shopping";
 			
-			$respuesta.='</a>';
-			$respuesta.='</div>';
+			// $respuesta.='</a>';
+			// $respuesta.='</div>';
 			// echo $respuesta;
 
-			die(var_dump($prodDetail));
+			// die(var_dump($prodDetail));
   // Parse the desired information from the response
-			foreach($resp->searchResult->item as $item) {
-				$pic   = $item->galleryURL;
-				$link  = $item->viewItemURL;
-				$title = $item->title;
+			// foreach($resp->searchResult->item as $item) {
+				// $pic   = $item->galleryURL;
+				// $link  = $item->viewItemURL;
+				// $title = $item->title;
 
     // Build the desired HTML code for each searchResult.item node and append it to $results
-				$results .= "<tr><td><img src=\"$pic\"></td><td><a href=\"$link\">$title</a></td></tr>";
+				// $results .= "<tr><td><img src=\"$pic\"></td><td><a href=\"$link\">$title</a></td></tr>";
 			}
 		}
 		// If the response does not indicate 'Success,' print an error
