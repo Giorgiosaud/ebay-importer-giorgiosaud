@@ -389,11 +389,11 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			}
 		}
 		// If the response does not indicate 'Success,' print an error
-		else {  
-			$results  = "<h3>Oops! The request was not successful. Make sure you are using a valid ";
-			$results .= "AppID for the Production environment.</h3>";
-		}
-		echo $results;
+		// else {  
+			// $results  = "<h3>Oops! The request was not successful. Make sure you are using a valid ";
+			// $results .= "AppID for the Production environment.</h3>";
+		// }
+		// echo $results;
 		// cargar la plantilla que muestra los datos y la edicion de los mismos
 		// load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-test.php');
 	}
