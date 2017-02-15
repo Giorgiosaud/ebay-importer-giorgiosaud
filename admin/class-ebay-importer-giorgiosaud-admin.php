@@ -326,7 +326,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			$respuesta.='</a>';
 			$respuesta.='</div>';
 			echo $respuesta;
-			die($respuesta);
+			die(var_dump($resp->searchResult->item[0]));
   // Parse the desired information from the response
 			foreach($resp->searchResult->item as $item) {
 				$pic   = $item->galleryURL;
