@@ -10,7 +10,7 @@ class EbayProductGiorgiosaud{
 	}
 	protected function parseXML(){
 		$this->id = $this->xml->itemId->__toString;
-		dd($this->id);
+		dd($this->xml);
 	}
 
 }
