@@ -258,7 +258,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// cargar la plantilla que muestra los datos y la edicion de los mismos
 		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-settings.php');
 	}
-	private function constructPostCallAndGetResponse($endpoint, $query) {
+	private function constructPostToGetAllProductsFromStoreCallAndGetResponse($endpoint, $store) {
 		global $xmlrequest;
 
   // Create the XML request to be POSTed
@@ -267,7 +267,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$xmlrequest .= "<itemFilter>";
 		$xmlrequest .="<name>Seller</name>";
 		$xmlrequest .="<value>";
-		$xmlrequest .=$query;
+		$xmlrequest .=$store;
 		$xmlrequest .="</value>";
 		$xmlrequest .="</itemFilter>";
 		$xmlrequest .="<paginationInput>";
@@ -295,7 +295,47 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		    $responsexml = curl_exec($session);                     // send the request
 		    curl_close($session);                                   // close the session
 		    return $responsexml;                                    // returns a string
-	}  // End of constructPostCallAndGetResponse function
+	}  // End of constructPostToGetAllProductsFromStoreCallAndGetResponse function
+	private function constructPostToGetProductDetailCallAndGetResponse($endpoint, $productId) {
+		global $xmlrequest;
+
+  // Create the XML request to be POSTed
+		$xmlrequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+		$xmlrequest .= "<GetSingleItemRequest xmlns=\"urn:ebay:apis:eBLBaseComponents\">";
+		// <findItemsAdvancedRequest xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">";
+		$xmlrequest .= "<IncludeSelector>Details,Description,TextDescription</IncludeSelector>";
+		$xmlrequest .="<ItemID>$productId</ItemID>";
+		$xmlrequest .="</GetSingleItemRequest>";
+		// $xmlrequest .="<value>";
+		// $xmlrequest .=$store;
+		// $xmlrequest .="</value>";
+		// $xmlrequest .="</itemFilter>";
+		// $xmlrequest .="<paginationInput>";
+		// $xmlrequest .="<entriesPerPage>3</entriesPerPage>";
+		// $xmlrequest .="<pageNumber>1</pageNumber>";
+		// $xmlrequest .="</paginationInput>";
+		// $xmlrequest .="<outputSelector>SellerInfo</outputSelector>";
+		// $xmlrequest .="<outputSelector>GalleryInfo</outputSelector>";
+		// $xmlrequest .="<outputSelector>aspectHistogramContainer</outputSelector>";
+		// $xmlrequest .="</findItemsAdvancedRequest>";
+		$api_name= get_option('ebay_api_name');
+		$headers=array(
+			"X-EBAY-SOA-OPERATION-NAME:GetSingleItemRequest",
+			"X-EBAY-SOA-SERVICE-VERSION:1.3.0",
+			"X-EBAY-SOA-REQUEST-DATA-FORMAT:XML",
+			"X-EBAY-SOA-GLOBAL-ID:EBAY-US",
+			"X-EBAY-SOA-SECURITY-APPNAME:$api_name",
+			"Content-Type: text/xml;charset=utf-8"
+			);
+		  $session  = curl_init($endpoint);                       // create a curl session
+		  curl_setopt($session, CURLOPT_POST, true);              // POST request type
+		  curl_setopt($session, CURLOPT_HTTPHEADER, $headers);    // set headers using $headers array
+		  curl_setopt($session, CURLOPT_POSTFIELDS, $xmlrequest); // set the body of the POST
+		  curl_setopt($session, CURLOPT_RETURNTRANSFER, true);    // return values as a string, not to std out
+		    $responsexml = curl_exec($session);                     // send the request
+		    curl_close($session);                                   // close the session
+		    return $responsexml;                                    // returns a string
+	}  // End of constructPostToGetAllProductsFromStoreCallAndGetResponse function
 	// Funccion que muestra la pagina
 	public function ebay_importer_page_test_view(){
 		if(!$this->secure_plugin_pages()){
@@ -307,8 +347,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// // URL to call
 		$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';  
 		// Supply your own query keywords as needed
-		$query = 'expomiamiautoparts';                  
-		$resp = simplexml_load_string($this->constructPostCallAndGetResponse($endpoint, $query));
+		$store = 'expomiamiautoparts';                  
+		$resp = simplexml_load_string($this->constructPostToGetAllProductsFromStoreCallAndGetResponse($endpoint, $store));
 		// Check to see if the call was successful, else print an error
 		// var_dump($resp->ack == "Success");
 		if ($resp->ack == "Success") {
@@ -322,11 +362,12 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			$respuesta.='<h1>';
 			$respuesta.=$itemTest->title;
 			$respuesta.="</h1>";
-
+			$ProductId=$itemTest->itemId;
+			$prodDetail = simplexml_load_string($this->constructPostToGetProductDetailCallAndGetResponse($endpoint, $ProductId));
 			$respuesta.='</a>';
 			$respuesta.='</div>';
 			echo $respuesta;
-			die(var_dump($resp->searchResult->item[0]));
+			die(var_dump($prodDetail));
   // Parse the desired information from the response
 			foreach($resp->searchResult->item as $item) {
 				$pic   = $item->galleryURL;
