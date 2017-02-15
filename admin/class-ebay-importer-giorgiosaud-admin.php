@@ -303,7 +303,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$xmlrequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 		$xmlrequest .= "<GetSingleItemRequest xmlns=\"urn:ebay:apis:eBLBaseComponents\">";
 		// <findItemsAdvancedRequest xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">";
-		$xmlrequest .= "<IncludeSelector>Details,Description,TextDescription</IncludeSelector>";
+		$xmlrequest .= "<IncludeSelector>Details,Compatibility,Description,TextDescription,ShippingCosts,ItemSpecifics,Variations</IncludeSelector>";
 		$xmlrequest .="<ItemID>$productId</ItemID>";
 		$xmlrequest .="</GetSingleItemRequest>";
 		// $xmlrequest .="<value>";
@@ -320,12 +320,18 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// $xmlrequest .="</findItemsAdvancedRequest>";
 		$api_name= get_option('ebay_api_name');
 		$headers=array(
-			"X-EBAY-SOA-OPERATION-NAME:GetSingleItemRequest",
-			"X-EBAY-SOA-SERVICE-VERSION:1.3.0",
-			"X-EBAY-SOA-REQUEST-DATA-FORMAT:XML",
-			"X-EBAY-SOA-GLOBAL-ID:EBAY-US",
-			"X-EBAY-SOA-SECURITY-APPNAME:$api_name",
+			// "X-EBAY-SOA-OPERATION-NAME:GetSingleItemRequest",
+			// "X-EBAY-SOA-SERVICE-VERSION:1.3.0",
+			// "X-EBAY-SOA-REQUEST-DATA-FORMAT:XML",
+			// "X-EBAY-SOA-GLOBAL-ID:EBAY-US",
+			// "X-EBAY-SOA-SECURITY-APPNAME:$api_name",
 			"Content-Type: text/xml;charset=utf-8"
+
+			"X-EBAY-API-APP-ID:$api_name",
+			"X-EBAY-API-SITE-ID:0",
+			"X-EBAY-API-CALL-NAME:GetSingleItem",
+			"X-EBAY-API-VERSION:991",
+			"X-EBAY-API-REQUEST-ENCODING:xml"
 			);
 		  $session  = curl_init($endpoint);                       // create a curl session
 		  curl_setopt($session, CURLOPT_POST, true);              // POST request type
@@ -354,7 +360,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
   			// var_dump($resp);
-  			$itemTest=$resp->searchResult->item[0];
+			$itemTest=$resp->searchResult->item[0];
 			$results = '';  
 			$respuesta='<div>';
 			$link=$itemTest->viewItemURL;
