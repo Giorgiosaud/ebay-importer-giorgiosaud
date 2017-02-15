@@ -316,7 +316,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			"X-EBAY-API-APP-ID:$api_name",
 			"X-EBAY-API-SITE-ID:0",
 			"X-EBAY-API-CALL-NAME:GetSingleItem",
-			"X-EBAY-API-VERSION:991",
+			"X-EBAY-API-VERSION:965",
 			"X-EBAY-API-REQUEST-ENCODING:xml"
 			);
 		  $session  = curl_init($endpoint);                       // create a curl session
