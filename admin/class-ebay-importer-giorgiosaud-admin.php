@@ -258,8 +258,10 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// cargar la plantilla que muestra los datos y la edicion de los mismos
 		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-settings.php');
 	}
-	private function constructPostToGetAllProductsFromStoreCallAndGetResponse($endpoint, $store) {
+	private function getProductsByStore($store) {
 		global $xmlrequest;
+		$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';  
+
 
   // Create the XML request to be POSTed
 		$xmlrequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
@@ -294,11 +296,11 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		  curl_setopt($session, CURLOPT_RETURNTRANSFER, true);    // return values as a string, not to std out
 		    $responsexml = curl_exec($session);                     // send the request
 		    curl_close($session);                                   // close the session
-		    return $responsexml;                                    // returns a string
+		    return simplexml_load_string($responsexml);                                    // returns a string
 	}  // End of constructPostToGetAllProductsFromStoreCallAndGetResponse function
 	private function getItemDetail($productId) {
 		global $xmlrequest;
-		$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';  
+		$endpoint = 'http://open.api.ebay.com/shopping';
 
   // Create the XML request to be POSTed
 		$xmlrequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
@@ -307,25 +309,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$xmlrequest .= "<IncludeSelector>Details,Compatibility,Description,TextDescription,ShippingCosts,ItemSpecifics,Variations</IncludeSelector>";
 		$xmlrequest .="<ItemID>$productId</ItemID>";
 		$xmlrequest .="</GetSingleItemRequest>";
-		// $xmlrequest .="<value>";
-		// $xmlrequest .=$store;
-		// $xmlrequest .="</value>";
-		// $xmlrequest .="</itemFilter>";
-		// $xmlrequest .="<paginationInput>";
-		// $xmlrequest .="<entriesPerPage>3</entriesPerPage>";
-		// $xmlrequest .="<pageNumber>1</pageNumber>";
-		// $xmlrequest .="</paginationInput>";
-		// $xmlrequest .="<outputSelector>SellerInfo</outputSelector>";
-		// $xmlrequest .="<outputSelector>GalleryInfo</outputSelector>";
-		// $xmlrequest .="<outputSelector>aspectHistogramContainer</outputSelector>";
-		// $xmlrequest .="</findItemsAdvancedRequest>";
 		$api_name= get_option('ebay_api_name');
 		$headers=array(
-			// "X-EBAY-SOA-OPERATION-NAME:GetSingleItemRequest",
-			// "X-EBAY-SOA-SERVICE-VERSION:1.3.0",
-			// "X-EBAY-SOA-REQUEST-DATA-FORMAT:XML",
-			// "X-EBAY-SOA-GLOBAL-ID:EBAY-US",
-			// "X-EBAY-SOA-SECURITY-APPNAME:$api_name",
 			"Content-Type: text/xml;charset=utf-8",
 
 			"X-EBAY-API-APP-ID:$api_name",
@@ -352,10 +337,10 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 		// API request variables
 		// // URL to call
-		$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';  
 		// Supply your own query keywords as needed
 		$store = 'expomiamiautoparts';                  
-		$resp = simplexml_load_string($this->constructPostToGetAllProductsFromStoreCallAndGetResponse($endpoint, $store));
+		$resp = $this->getProductsByStore($store);
+		$this->constructPostToGetAllProductsFromStoreCallAndGetResponse($endpoint, $store));
 		// Check to see if the call was successful, else print an error
 		// var_dump($resp->ack == "Success");
 		if ($resp->ack == "Success") {
