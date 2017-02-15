@@ -296,8 +296,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		    curl_close($session);                                   // close the session
 		    return $responsexml;                                    // returns a string
 	}  // End of constructPostToGetAllProductsFromStoreCallAndGetResponse function
-	private function constructPostToGetProductDetailCallAndGetResponse($endpoint, $productId) {
+	private function getItemDetail($productId) {
 		global $xmlrequest;
+		$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';  
 
   // Create the XML request to be POSTed
 		$xmlrequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
@@ -340,7 +341,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		  curl_setopt($session, CURLOPT_RETURNTRANSFER, true);    // return values as a string, not to std out
 		    $responsexml = curl_exec($session);                     // send the request
 		    curl_close($session);                                   // close the session
-		    return $responsexml;                                    // returns a string
+		    return simplexml_load_string($responsexml);                                    // returns a string
 	}  // End of constructPostToGetAllProductsFromStoreCallAndGetResponse function
 	// Funccion que muestra la pagina
 	public function ebay_importer_page_test_view(){
@@ -370,11 +371,11 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			$respuesta.="</h1>";
 			$ProductId=$itemTest->itemId;
 			$endpoint2="http://open.api.ebay.com/shopping";
-			$prodDetail = simplexml_load_string($this->constructPostToGetProductDetailCallAndGetResponse($endpoint2, $ProductId));
+			$prodDetail = $this->getItemDetail($ProductId);
 			$respuesta.='</a>';
 			$respuesta.='</div>';
 			echo $respuesta;
-			die(var_dump($itemTest));
+			die(var_dump($prodDetail));
   // Parse the desired information from the response
 			foreach($resp->searchResult->item as $item) {
 				$pic   = $item->galleryURL;
