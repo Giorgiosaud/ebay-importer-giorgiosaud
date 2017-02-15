@@ -358,7 +358,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			$prodDetail = $this->getItemDetail($ProductId);
 			$respuesta.='</a>';
 			$respuesta.='</div>';
-			echo $respuesta;
+			// echo $respuesta;
+			
 			die(var_dump($prodDetail));
   // Parse the desired information from the response
 			foreach($resp->searchResult->item as $item) {
