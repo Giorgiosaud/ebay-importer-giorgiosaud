@@ -349,7 +349,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			// $item=$resp->searchResult->item[0];
 			$ProductId=$item->itemId->__toString();
 			$prodDetail = $this->getItemDetail($ProductId);
-			$product=new EbayProductGiorgiosaud($prodDetail);
+			$product=new EbayProductGiorgiosaud($prodDetail->Item);
 			?>
 				<a href="<?= $prodDetail->Item->ViewItemURLForNaturalSearch?>"><h1><?= $prodDetail->Item->Title ?></h1></a>
 				<p>Code: <span><?= $prodDetail->Item->ItemID ?></span></p>
@@ -360,11 +360,11 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 			}?>
 			<?php
-			$ProductId=$resp->searchResult->item[0]->itemId->__toString();
-			$prodDetail = $this->getItemDetail($ProductId);
-			echo '<pre>';
-			var_dump($prodDetail->Item);
-			echo '</pre>';
+			// $ProductId=$resp->searchResult->item[0]->itemId->__toString();
+			// $prodDetail = $this->getItemDetail($ProductId);
+			// echo '<pre>';
+			// var_dump($prodDetail->Item);
+			// echo '</pre>';
 
 			// die();
 			// $results = '';  
