@@ -345,10 +345,11 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
   			foreach($resp->searchResult->item as $item) {
-  				// $product=new EbayProductGiorgiosaud();
+
 			// $item=$resp->searchResult->item[0];
 			$ProductId=$item->itemId->__toString();
 			$prodDetail = $this->getItemDetail($ProductId);
+			$product=new EbayProductGiorgiosaud($prodDetail);
 			?>
 				<a href="<?= $prodDetail->Item->ViewItemURLForNaturalSearch?>"><h1><?= $prodDetail->Item->Title ?></h1></a>
 				<p>Code: <span><?= $prodDetail->Item->ItemID ?></span></p>
