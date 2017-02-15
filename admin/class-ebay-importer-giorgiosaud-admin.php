@@ -363,7 +363,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			$respuesta.=$itemTest->title;
 			$respuesta.="</h1>";
 			$ProductId=$itemTest->itemId;
-			$prodDetail = simplexml_load_string($this->constructPostToGetProductDetailCallAndGetResponse($endpoint, $ProductId));
+			$endpoint2="http://open.api.sandbox.ebay.com/shopping"
+			$prodDetail = simplexml_load_string($this->constructPostToGetProductDetailCallAndGetResponse($endpoint2, $ProductId));
 			$respuesta.='</a>';
 			$respuesta.='</div>';
 			echo $respuesta;
