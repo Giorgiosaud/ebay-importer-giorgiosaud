@@ -14,11 +14,9 @@ class EbayProductGiorgiosaud{
 		$this->eBayId = $this->xml->ItemID->__toString();
 		$this->title = $this->xml->Title->__toString();
 		$this->description=$this->xml->Description->__toString();
+		$this->eBayUrl=$this->xml->ViewItemURLForNaturalSearch->__toString();
 		echo '<pre>';
-		var_dump($this->xml);
-		echo '</pre>';
-		echo '<pre>';
-		var_dump($this->description);
+		var_dump($this);
 		echo '</pre>';
 	}
 
