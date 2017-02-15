@@ -325,7 +325,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			// "X-EBAY-SOA-REQUEST-DATA-FORMAT:XML",
 			// "X-EBAY-SOA-GLOBAL-ID:EBAY-US",
 			// "X-EBAY-SOA-SECURITY-APPNAME:$api_name",
-			"Content-Type: text/xml;charset=utf-8"
+			"Content-Type: text/xml;charset=utf-8",
 
 			"X-EBAY-API-APP-ID:$api_name",
 			"X-EBAY-API-SITE-ID:0",
