@@ -346,6 +346,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
   			// Initialize the $results variable
   			// var_dump($resp);
 			$itemTest=$resp->searchResult->item[0];
+			$ProductId=$itemTest->itemId;
+			$prodDetail = $this->getItemDetail($ProductId);
+			die(var_dump($prodDetail));
 			$results = '';  
 			$respuesta='<div>';
 			$link=$itemTest->viewItemURL;
@@ -353,13 +356,13 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			$respuesta.='<h1>';
 			$respuesta.=$itemTest->title;
 			$respuesta.="</h1>";
-			$ProductId=$itemTest->itemId;
+			
 			$endpoint2="http://open.api.ebay.com/shopping";
-			$prodDetail = $this->getItemDetail($ProductId);
+			
 			$respuesta.='</a>';
 			$respuesta.='</div>';
 			// echo $respuesta;
-			
+
 			die(var_dump($prodDetail));
   // Parse the desired information from the response
 			foreach($resp->searchResult->item as $item) {
