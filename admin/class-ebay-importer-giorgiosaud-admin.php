@@ -346,7 +346,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
   			// Initialize the $results variable
   			
 			$itemTest=$resp->searchResult->item[0];
-			dd($itemTest);
+			dd($itemTest->itemId);
 			$ProductId=$itemTest->itemId;
 			$prodDetail = $this->getItemDetail($ProductId);
 			die(var_dump($prodDetail));
