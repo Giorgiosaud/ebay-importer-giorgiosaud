@@ -2,7 +2,7 @@
 class EbayProductGiorgiosaud{
 	private $xml;
 	public $eBayId;
-	private $id;
+	public $title;
 
 	public function __construct($xml)
 	{
@@ -11,6 +11,7 @@ class EbayProductGiorgiosaud{
 	}
 	protected function parseXML(){
 		$this->eBayId = $this->xml->ItemID->__toString();
+		$this->title = $this->xml->Title->__toString();
 		echo '<pre>';
 		var_dump($this->xml);
 		echo '</pre>';
