@@ -369,7 +369,6 @@ class Ebay_Importer_Giorgiosaud_Admin {
 								?>
 							<!-- </tr> -->
 						<!-- </table> -->
-						<?php var_dump($product->specifications)?>
 						<?php
 
 					}?>
