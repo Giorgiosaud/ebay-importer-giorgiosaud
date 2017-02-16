@@ -5,6 +5,9 @@ class EbayProductGiorgiosaud{
 	public $title;
 	public $description;
 	public $mainPicture;
+	public $qty;
+	public $price;
+	public $specifications;
 
 	public function __construct($xml)
 	{
@@ -15,10 +18,17 @@ class EbayProductGiorgiosaud{
 		$this->eBayId = $this->xml->ItemID->__toString();
 		$this->title = $this->xml->Title->__toString();
 		$this->eBayUrl=$this->xml->ViewItemURLForNaturalSearch->__toString();
+		$this->qty=$this->xml->Quantity->__toString();
 		$picurl=$this->xml->PictureURL[0]->__toString();
+		$this->price=$this->xml->ConvertedCurrentPrice->__toString();
+		foreach($this->xml->ItemSpecifics as $specifics){
+			die(var_dump($specifics));
+		}
+		
 		$this->mainPicture=substr($picurl,0,strpos( $picurl, 'JPG' )+3);
 		// die(var_dump($this->mainPicture));
 		$this->description=$text = preg_replace('#(<[a-z ]*)(style=("|\')(.*?)("|\'))([a-z ]*>)#', '\\1\\6', strip_tags( $this->xml->Description->__toString(),'<a>'));
+
 		echo '<pre>';
 		var_dump($this);
 		echo '</pre>';
