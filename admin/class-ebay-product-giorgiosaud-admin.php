@@ -74,7 +74,7 @@ class EbayProductGiorgiosaud{
 			// }
 			array_push($this->compatibility,$compatibleTempItem);
 		}
-		var_dump(get_object_vars($this->compatibility[0]));
+		var_dump(array_keys((array)$this->compatibility[0]));
 		echo '</pre>';
 		die();
 		// die('<pre>'.var_dump($this->specifications->manufacturerpartnumber).'</pre>');
