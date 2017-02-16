@@ -73,7 +73,7 @@ class EbayProductGiorgiosaud{
 			$name=$this->slugify($specifics->Name->__toString());
 			$fullName=$specifics->Name->__toString();
 			$temp=array();
-			$temp[$name]=$fullname;
+			$temp[$name]=$fullName;
 			array_push($this->specificationsTitles,$temp);
 		}
 		// $this->specificationsTitles=array_keys((array)$this->specifications);
