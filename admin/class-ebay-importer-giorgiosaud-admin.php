@@ -360,8 +360,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 					<p>Price:<span><?= $product->price ?></span>
 						<table>
 						<tr>
-							<?php	foreach ($product->specificationsTitles as $title) {
-								echo "<td>$title</td>";
+							<?php	foreach ($product->specificationsTitles as $key=>$value) {
+								echo "<td>$value</td>";
 							}?>
 							</tr>
 						</table>
