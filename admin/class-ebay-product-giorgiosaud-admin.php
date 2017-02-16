@@ -61,7 +61,7 @@ class EbayProductGiorgiosaud{
 		foreach($this->xml->ItemCompatibilityList->Compatibility as $compatibilityList){
 			
 			// $compatibleTempItem=new stdClass();
-			foreach($compatibility->NameValueList as $compatibleElement){
+			foreach($compatibilityList->NameValueList as $compatibleElement){
 				var_dump($compatibleElement);
 				// if($compatiblieElement->Name){
 					// $name=$this->slugify($compatibleElement->Name->__toString());	
