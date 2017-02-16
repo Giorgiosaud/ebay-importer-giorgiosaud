@@ -10,6 +10,8 @@ class EbayProductGiorgiosaud{
 	public $specifications;
 	public $compatibilityTitles;
 	public $compatibility;
+	public $conditionDescription;
+	public $SKU;
 
 	public function __construct($xml)
 	{
@@ -51,6 +53,8 @@ class EbayProductGiorgiosaud{
 		$this->qty=$this->xml->Quantity->__toString();
 		$picurl=$this->xml->PictureURL[0]->__toString();
 		$this->price=$this->xml->ConvertedCurrentPrice->__toString();
+		$this->conditionDescription=$this->xml->ConditionDescription->__toString();
+		$this->SKU=$this->xml->SKU->__toString();
 		// die(var_dump($this->xml->ItemSpecifics));
 		foreach($this->xml->ItemSpecifics->NameValueList as $specifics){
 			$name=$this->slugify($specifics->Name->__toString());
@@ -74,6 +78,7 @@ class EbayProductGiorgiosaud{
 			array_push($this->compatibility,$compatibleTempItem);
 		}
 		$this->compatibilityTitles=array_keys((array)$this->compatibility[0]);
+
 		echo '<pre>';
 		var_dump($this->xml);
 		echo '</pre>';
