@@ -347,7 +347,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			// $item=$resp->searchResult->item[0];
 				$ProductId=$item->itemId->__toString();
 				$prodDetail = $this->getItemDetail($ProductId);
-				dd($prodDetail);
+				dd($prodDetail->Ack);
 					$product=new EbayProductGiorgiosaud($prodDetail->Item);
 
 					array_push($items, $product);
