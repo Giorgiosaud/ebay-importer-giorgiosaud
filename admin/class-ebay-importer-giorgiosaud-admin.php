@@ -274,7 +274,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$xmlrequest .="</itemFilter>";
 		$xmlrequest .="<paginationInput>";
 		$xmlrequest .="<entriesPerPage>2</entriesPerPage>";
-		$xmlrequest .="<pageNumber>1</pageNumber>";
+		$xmlrequest .="<pageNumber>2</pageNumber>";
 		$xmlrequest .="</paginationInput>";
 		$xmlrequest .="<outputSelector>SellerInfo</outputSelector>";
 		$xmlrequest .="<outputSelector>GalleryInfo</outputSelector>";
