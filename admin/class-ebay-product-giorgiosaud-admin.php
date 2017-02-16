@@ -74,7 +74,11 @@ class EbayProductGiorgiosaud{
 			array_push($this->compatibility,$compatibleTempItem);
 		}
 		$this->compatibilityTitles=array_keys((array)$this->compatibility[0]);
-		die('<pre>'.var_dump($this->xml).'</pre>');
+		echo '<pre>';
+		var_dump($this->xml);
+		echo '</pre>';
+
+		die();
 		$this->mainPicture=substr($picurl,0,strpos( $picurl, 'JPG' )+3);
 		// die(var_dump($this->mainPicture));
 		$this->description=$text = preg_replace('#(<[a-z ]*)(style=("|\')(.*?)("|\'))([a-z ]*>)#', '\\1\\6', strip_tags( $this->xml->Description->__toString(),'<a>'));
