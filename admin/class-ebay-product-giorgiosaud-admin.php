@@ -54,6 +54,8 @@ class EbayProductGiorgiosaud{
 			$val=$specifics->Value->__toString();
 			$this->specifications->{$name}=$val;
 		}
+
+		die(var_dump($this->xml->ItemCompatibilityList->Compatibility));
 		// die('<pre>'.var_dump($this->specifications->manufacturerpartnumber).'</pre>');
 		$this->mainPicture=substr($picurl,0,strpos( $picurl, 'JPG' )+3);
 		// die(var_dump($this->mainPicture));
