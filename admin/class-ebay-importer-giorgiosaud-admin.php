@@ -352,9 +352,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			?>
 				<a href="<?= $product->eBayUrl?>"><h1><?= $product->title ?></h1></a>
 				<p>Code: <span><?= $product->eBayId ?></span></p>
-				<?php foreach($product->pictures as $PictureURL){
 					?>
-					<img src="<?= $PictureURL?>" alt="<?= $product->xml->Item->Title ?>">
+					<img src="<?= $this->mainPicture?>" alt="<?= $product->title ?>">
 					<p>
 						<?=$product->description?>
 					</p>
