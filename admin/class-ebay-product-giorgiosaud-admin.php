@@ -4,7 +4,7 @@ class EbayProductGiorgiosaud{
 	public $eBayId;
 	public $title;
 	public $description;
-	public $pictures;
+	public $mainPicture;
 
 	public function __construct($xml)
 	{
