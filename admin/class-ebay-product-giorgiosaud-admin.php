@@ -16,7 +16,7 @@ class EbayProductGiorgiosaud{
 		$this->title = $this->xml->Title->__toString();
 		$this->eBayUrl=$this->xml->ViewItemURLForNaturalSearch->__toString();
 		$picurl=$this->xml->PictureURL[0]->__toString();
-		$this->mainPicture=substr($picurl,0,strpos( $picurl, 'JPG' ));
+		$this->mainPicture=substr($picurl,0,strpos( $picurl, 'JPG' )+3);
 		die(var_dump($this->mainPicture));
 		$this->description=$text = preg_replace('#(<[a-z ]*)(style=("|\')(.*?)("|\'))([a-z ]*>)#', '\\1\\6', strip_tags( $this->xml->Description->__toString(),'<a>'));
 		echo '<pre>';
