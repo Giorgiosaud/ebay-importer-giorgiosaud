@@ -358,16 +358,16 @@ class Ebay_Importer_Giorgiosaud_Admin {
 				</p>
 				<p>Qty:<span><?= $product->qty ?></span>
 					<p>Price:<span><?= $product->price ?></span>
-						<!-- <table> -->
-							<!-- <tr> -->
+						<table>
+							<tr>
 								<?php
-								var_dump($product->specificationsTitles);	
-								// foreach ($product->specificationsTitles as $key=>$value) {
-									// echo "<td>$value</td>";
-								// }
+								// var_dump($product->specificationsTitles);	
+								foreach ($product->specificationsTitles as $value) {
+									echo "<td>$value</td>";
+								}
 								?>
-							<!-- </tr> -->
-						<!-- </table> -->
+							</tr>
+						</table>
 						<?php
 
 					}?>
