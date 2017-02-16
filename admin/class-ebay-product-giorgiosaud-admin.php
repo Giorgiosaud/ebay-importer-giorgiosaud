@@ -85,6 +85,10 @@ class EbayProductGiorgiosaud{
 			// }
 			array_push($this->compatibility,$compatibleTempItem);
 		}
+		echo '<pre>';
+		var_dump($this->compatibility);
+		echo '</pre>';
+		die();
 		$this->compatibilityTitles=array_keys((array)$this->compatibility[0]);
 
 

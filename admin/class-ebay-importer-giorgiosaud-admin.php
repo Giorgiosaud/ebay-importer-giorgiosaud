@@ -303,7 +303,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$xmlrequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 		$xmlrequest .= "<GetSingleItemRequest xmlns=\"urn:ebay:apis:eBLBaseComponents\">";
 		// <findItemsAdvancedRequest xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">";
-		$xmlrequest .= "<IncludeSelector>Details,Compatibility,TextDescription,ShippingCosts,ItemSpecifics,Variations</IncludeSelector>";
+		$xmlrequest .= "<IncludeSelector>Details,Compatibility,TextDescription,ItemSpecifics,Variations</IncludeSelector>";
 		$xmlrequest .="<ItemID>$productId</ItemID>";
 		$xmlrequest .="</GetSingleItemRequest>";
 		$api_name= get_option('ebay_api_name');
@@ -313,7 +313,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			"X-EBAY-API-APP-ID:$api_name",
 			"X-EBAY-API-SITE-ID:0",
 			"X-EBAY-API-CALL-NAME:GetSingleItem",
-			"X-EBAY-API-VERSION:665",
+			"X-EBAY-API-VERSION:863",
 			"X-EBAY-API-REQUEST-ENCODING:xml"
 			);
 		  $session  = curl_init($endpoint);                       // create a curl session
