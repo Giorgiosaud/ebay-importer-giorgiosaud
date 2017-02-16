@@ -4,6 +4,7 @@ class EbayProductGiorgiosaud{
 	public $eBayId;
 	public $title;
 	public $description;
+	public $pictures;
 
 	public function __construct($xml)
 	{
@@ -14,6 +15,7 @@ class EbayProductGiorgiosaud{
 		$this->eBayId = $this->xml->ItemID->__toString();
 		$this->title = $this->xml->Title->__toString();
 		$this->eBayUrl=$this->xml->ViewItemURLForNaturalSearch->__toString();
+		$this->pictures=$this->xml->Item->PictureURL
 		$this->description=$text = preg_replace('#(<[a-z ]*)(style=("|\')(.*?)("|\'))([a-z ]*>)#', '\\1\\6', strip_tags( $this->xml->Description->__toString(),'<a>'));
 		echo '<pre>';
 		var_dump($this->description);
