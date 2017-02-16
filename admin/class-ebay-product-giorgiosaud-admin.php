@@ -60,14 +60,14 @@ class EbayProductGiorgiosaud{
 		echo '<pre>';
 		foreach($this->xml->ItemCompatibilityList->Compatibility as $compatibilityList){
 			
-				var_dump($compatibilityList);
 			// $compatibleTempItem=new stdClass();
-			// foreach($compatibility->NameValueList as $compatibleElement){
+			foreach($compatibility->NameValueList as $compatibleElement){
+				var_dump($compatibleElement);
 				// if($compatiblieElement->Name){
 					// $name=$this->slugify($compatibleElement->Name->__toString());	
 					// $val=$specifics->compatibleElement->__toString();
 					// $compatibleTempItem->{$name}=$val;
-				// }
+				}
 			// }
 			// array_push($this->compatibility,$compatibleTempItem);
 		}
