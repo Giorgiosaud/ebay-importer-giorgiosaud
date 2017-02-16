@@ -367,6 +367,16 @@ class Ebay_Importer_Giorgiosaud_Admin {
 								}
 								?>
 							</tr>
+							<?php foreach ($product->specifications as $specification): ?>
+								<tr>
+								<?php foreach ($product->specificationsTitles as $key->value) {
+								$val=$specification->$key;
+								echo "<td>$val</td>";	
+								}?>
+								</tr>
+
+								
+							<?php endforeach ?>
 						</table>
 						<?php
 
