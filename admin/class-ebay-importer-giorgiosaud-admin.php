@@ -355,7 +355,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 				?>
 				<img src="<?= $product->mainPicture?>" alt="<?= $product->title ?>">
 				<p>
-					<?=$product->description?>
+					<?= $product->description ?>
 				</p>
 				<p>Qty:<span><?= $product->qty ?></span>
 					<p>Price:<span><?= $product->price ?></span>

@@ -8,6 +8,7 @@ class EbayProductGiorgiosaud{
 	public $qty;
 	public $price;
 	public $specifications;
+	public $specificationsTitles;
 	public $compatibilityTitles;
 	public $compatibility;
 	public $conditionDescription;
@@ -60,6 +61,7 @@ class EbayProductGiorgiosaud{
 		
 		// die(var_dump($this->xml->ItemSpecifics));
 		foreach($this->xml->ItemSpecifics->NameValueList as $specifics){
+			array_push($this->specificationsTitles,$specifics->Name->__toString());
 			$name=$this->slugify($specifics->Name->__toString());
 			$val=$specifics->Value->__toString();
 			$this->specifications->{$name}=$val;
