@@ -17,10 +17,10 @@ class EbayProductGiorgiosaud{
 		$this->eBayUrl=$this->xml->ViewItemURLForNaturalSearch->__toString();
 		$picurl=$this->xml->PictureURL[0]->__toString();
 		$this->mainPicture=substr($picurl,0,strpos( $picurl, 'JPG' )+3);
-		die(var_dump($this->mainPicture));
+		// die(var_dump($this->mainPicture));
 		$this->description=$text = preg_replace('#(<[a-z ]*)(style=("|\')(.*?)("|\'))([a-z ]*>)#', '\\1\\6', strip_tags( $this->xml->Description->__toString(),'<a>'));
 		echo '<pre>';
-		var_dump($this->description);
+		var_dump($this);
 		echo '</pre>';
 		// echo '<pre>';
 		// var_dump($this);
