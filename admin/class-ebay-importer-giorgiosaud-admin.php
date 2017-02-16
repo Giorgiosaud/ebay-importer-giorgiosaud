@@ -276,9 +276,6 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$xmlrequest .="<entriesPerPage>2</entriesPerPage>";
 		$xmlrequest .="<pageNumber>2</pageNumber>";
 		$xmlrequest .="</paginationInput>";
-		$xmlrequest .="<outputSelector>SellerInfo</outputSelector>";
-		$xmlrequest .="<outputSelector>GalleryInfo</outputSelector>";
-		$xmlrequest .="<outputSelector>aspectHistogramContainer</outputSelector>";
 		$xmlrequest .="</findItemsAdvancedRequest>";
 		$api_name= get_option('ebay_api_name');
 		$headers=array(
