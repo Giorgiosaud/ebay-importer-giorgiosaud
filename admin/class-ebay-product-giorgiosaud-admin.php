@@ -25,7 +25,7 @@ class EbayProductGiorgiosaud{
 		foreach($this->xml->ItemSpecifics->NameValueList as $specifics){
 			$name=$this->$specifics->Name->__toString();
 			$val=$this->$specifics->Value->__toString();
-			$this->$specifics->{$name}=$val;
+			$this->specifications->{$name}=$val;
 		}
 		die('<pre>'.var_dump($specifics).'</pre>');
 		$this->mainPicture=substr($picurl,0,strpos( $picurl, 'JPG' )+3);
