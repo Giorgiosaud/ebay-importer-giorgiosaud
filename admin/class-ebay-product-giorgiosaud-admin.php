@@ -51,10 +51,13 @@ class EbayProductGiorgiosaud{
 		$this->title = $this->xml->Title->__toString();
 		$this->eBayUrl=$this->xml->ViewItemURLForNaturalSearch->__toString();
 		$this->qty=$this->xml->Quantity->__toString();
-		$picurl=$this->xml->PictureURL[0]->__toString();
 		$this->price=$this->xml->ConvertedCurrentPrice->__toString();
 		$this->conditionDescription=$this->xml->ConditionDescription->__toString();
 		$this->SKU=$this->xml->SKU->__toString();
+		$picurl=$this->xml->PictureURL[0]->__toString();
+		$this->mainPicture=substr($picurl,0,strpos( $picurl, 'JPG' )+3);
+		$this->description=$text = preg_replace('#(<[a-z ]*)(style=("|\')(.*?)("|\'))([a-z ]*>)#', '\\1\\6', strip_tags( $this->xml->Description->__toString(),'<a>'));
+		
 		// die(var_dump($this->xml->ItemSpecifics));
 		foreach($this->xml->ItemSpecifics->NameValueList as $specifics){
 			$name=$this->slugify($specifics->Name->__toString());
@@ -79,21 +82,7 @@ class EbayProductGiorgiosaud{
 		}
 		$this->compatibilityTitles=array_keys((array)$this->compatibility[0]);
 
-		echo '<pre>';
-		var_dump($this->xml);
-		echo '</pre>';
 
-		die();
-		$this->mainPicture=substr($picurl,0,strpos( $picurl, 'JPG' )+3);
-		// die(var_dump($this->mainPicture));
-		$this->description=$text = preg_replace('#(<[a-z ]*)(style=("|\')(.*?)("|\'))([a-z ]*>)#', '\\1\\6', strip_tags( $this->xml->Description->__toString(),'<a>'));
-
-		echo '<pre>';
-		var_dump($this);
-		echo '</pre>';
-		// echo '<pre>';
-		// var_dump($this);
-		// echo '</pre>';
 	}
 	/* Import media from url
  *

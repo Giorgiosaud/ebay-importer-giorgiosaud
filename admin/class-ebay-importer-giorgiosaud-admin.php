@@ -357,10 +357,17 @@ class Ebay_Importer_Giorgiosaud_Admin {
 				<p>
 					<?=$product->description?>
 				</p>
-				<?php
+				<p>Qty:<span><?= $product->qty ?></span>
+					<p>Price:<span><?= $product->price ?></span>
+						<p>
+							<?php	foreach ($product->specifications as $key => $value) {
+								echo "$key => $value\n";
+							}?>
+						</p>
+						<?php
 
-			}?>
-			<?php
+					}?>
+					<?php
+				}
+			}
 		}
-	}
-}
