@@ -339,6 +339,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$resp = $this->getProductsByStore($store);
 		// Check to see if the call was successful, else print an error
 		// die(var_dump($resp));
+		dd($resp->ack);
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
 			$items=array();
