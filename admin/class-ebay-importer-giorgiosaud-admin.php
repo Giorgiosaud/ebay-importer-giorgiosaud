@@ -350,8 +350,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			$product=new EbayProductGiorgiosaud($prodDetail->Item);
 			array_push($items, $product);
 			?>
-				<a href="<?= $product->xml->Item->ViewItemURLForNaturalSearch?>"><h1><?= $product->xml->Item->Title ?></h1></a>
-				<p>Code: <span><?= $product->xml->Item->ItemID ?></span></p>
+				<a href="<?= $product->eBayUrl?>"><h1><?= $product->title ?></h1></a>
+				<p>Code: <span><?= $product->eBayId ?></span></p>
 				<?php foreach($product->xml->Item->PictureURL as $PictureURL){
 					?>
 					<img src="<?= $PictureURL?>" alt="<?= $product->xml->Item->Title ?>">
