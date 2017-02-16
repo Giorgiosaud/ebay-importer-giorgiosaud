@@ -364,7 +364,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 								// var_dump($product->specificationsTitles);	
 								foreach ($product->specificationsTitles as $key->value) {
 									$valor=$product->specifications->$key;
-									echo "<strong>$value: $valor</td>";
+									echo "<p><strong>$value: </strong>$valor</p>";
 								}
 								?>
 							<!-- </tr> -->
