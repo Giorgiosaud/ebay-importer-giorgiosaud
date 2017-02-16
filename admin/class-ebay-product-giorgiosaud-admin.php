@@ -68,7 +68,7 @@ class EbayProductGiorgiosaud{
 			$val=$specifics->Value->__toString();
 			$this->specifications->{$name}=$val;
 		}
-		dd($this->xml->ItemCompatibilityList->Compatibility);
+		dd($this->xml->ItemCompatibilityList);
 		foreach($this->xml->ItemCompatibilityList->Compatibility as $compatibilityList){
 			
 			$compatibleTempItem=new stdClass();
