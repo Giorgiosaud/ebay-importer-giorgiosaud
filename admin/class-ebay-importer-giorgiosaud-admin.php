@@ -339,7 +339,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$resp = $this->getProductsByStore($store);
 		// Check to see if the call was successful, else print an error
 		// die(var_dump($resp));
-		dd($resp->ack);
+		// dd($resp->ack);
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
 			$items=array();
@@ -348,7 +348,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			// $item=$resp->searchResult->item[0];
 				$ProductId=$item->itemId->__toString();
 				$prodDetail = $this->getItemDetail($ProductId);
-				dd($prodDetail->Ack);
+				if($prodDetail->Ack=="Success"){
 					$product=new EbayProductGiorgiosaud($prodDetail->Item);
 
 					array_push($items, $product);
@@ -376,7 +376,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 						}?>
 						<?php
-					// }
+					}
 				}
 			}
 		}
