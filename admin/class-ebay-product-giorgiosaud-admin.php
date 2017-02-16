@@ -62,21 +62,12 @@ class EbayProductGiorgiosaud{
 		
 		// die(var_dump($this->xml->ItemSpecifics));
 		foreach($this->xml->ItemSpecifics->NameValueList as $specifics){
-			$name=$this->slugify($specifics->Name->__toString());
-			// $titleItem[$specifics->Name->__toString()]=$name;
-			// array_push($this->specificationsTitles,$titleItem);
-
+			$fullName=$specifics->Name->__toString();
+			$name=$this->slugify($fullName);
+			$specificationsTitles[$name]=$fullName;
 			$val=$specifics->Value->__toString();
 			$this->specifications->{$name}=$val;
 		}
-		foreach($this->xml->ItemSpecifics->NameValueList as $specifics){
-			$name=$this->slugify($specifics->Name->__toString());
-			$fullName=$specifics->Name->__toString();
-			// $temp=array();
-			$specificationsTitles[$name]=$fullName;
-			// array_push($this->specificationsTitles,$temp);
-		}
-		// $this->specificationsTitles=array_keys((array)$this->specifications);
 		foreach($this->xml->ItemCompatibilityList->Compatibility as $compatibilityList){
 			
 			$compatibleTempItem=new stdClass();
