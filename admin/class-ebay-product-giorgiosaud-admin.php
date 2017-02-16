@@ -13,6 +13,7 @@ class EbayProductGiorgiosaud{
 	{
 		$this->xml = $xml;
 		$this->parseXML();
+		$this->specifications=new stdClass();
 	}
 	protected function parseXML(){
 		$this->eBayId = $this->xml->ItemID->__toString();
