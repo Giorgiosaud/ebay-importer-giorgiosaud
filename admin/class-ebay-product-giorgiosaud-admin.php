@@ -23,9 +23,11 @@ class EbayProductGiorgiosaud{
 		$this->price=$this->xml->ConvertedCurrentPrice->__toString();
 		// die(var_dump($this->xml->ItemSpecifics));
 		foreach($this->xml->ItemSpecifics->NameValueList as $specifics){
-			die('<pre>'.var_dump($specifics).'</pre>');
+			$name=$this->$specifics->Name->__toString();
+			$val=$this->$specifics->Value->__toString();
+			$this->$specifics->{$name}=$val;
 		}
-		
+		die('<pre>'.var_dump($specifics).'</pre>');
 		$this->mainPicture=substr($picurl,0,strpos( $picurl, 'JPG' )+3);
 		// die(var_dump($this->mainPicture));
 		$this->description=$text = preg_replace('#(<[a-z ]*)(style=("|\')(.*?)("|\'))([a-z ]*>)#', '\\1\\6', strip_tags( $this->xml->Description->__toString(),'<a>'));
