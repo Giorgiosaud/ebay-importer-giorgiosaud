@@ -28,7 +28,7 @@ class EbayProductGiorgiosaud{
 			$val=$specifics->Value->__toString();
 			$this->specifications->{$name}=$val;
 		}
-		die('<pre>'.var_dump($specifics).'</pre>');
+		die('<pre>'.var_dump($this->specifications).'</pre>');
 		$this->mainPicture=substr($picurl,0,strpos( $picurl, 'JPG' )+3);
 		// die(var_dump($this->mainPicture));
 		$this->description=$text = preg_replace('#(<[a-z ]*)(style=("|\')(.*?)("|\'))([a-z ]*>)#', '\\1\\6', strip_tags( $this->xml->Description->__toString(),'<a>'));
