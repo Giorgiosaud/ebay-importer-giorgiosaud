@@ -18,7 +18,7 @@ class EbayProductGiorgiosaud{
 	{
 		$this->xml = $xml;
 		$this->specifications=new stdClass();
-		$this->specificationsTitles=array();
+		// $this->specificationsTitles=array();
 		$this->compatibility=array();
 		$this->parseXML();
 	}
@@ -69,7 +69,7 @@ class EbayProductGiorgiosaud{
 			$val=$specifics->Value->__toString();
 			$this->specifications->{$name}=$val;
 		}
-		$this->compatibilityTitles=array_keys((array)$this->specifications[0]);
+		$this->specificationsTitles=array_keys((array)$this->specifications);
 		foreach($this->xml->ItemCompatibilityList->Compatibility as $compatibilityList){
 			
 			$compatibleTempItem=new stdClass();
