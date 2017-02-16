@@ -15,6 +15,32 @@ class EbayProductGiorgiosaud{
 		$this->specifications=new stdClass();
 		$this->parseXML();
 	}
+	static public function slugify($text)
+	{
+  // replace non letter or digits by -
+		$text = preg_replace('~[^\pL\d]+~u', '-', $text);
+
+  // transliterate
+		$text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+  // remove unwanted characters
+		$text = preg_replace('~[^-\w]+~', '', $text);
+
+  // trim
+		$text = trim($text, '-');
+
+  // remove duplicate -
+		$text = preg_replace('~-+~', '-', $text);
+
+  // lowercase
+		$text = strtolower($text);
+
+		if (empty($text)) {
+			return 'n-a';
+		}
+
+		return $text;
+	}
 	protected function parseXML(){
 		$this->eBayId = $this->xml->ItemID->__toString();
 		$this->title = $this->xml->Title->__toString();
@@ -24,7 +50,7 @@ class EbayProductGiorgiosaud{
 		$this->price=$this->xml->ConvertedCurrentPrice->__toString();
 		// die(var_dump($this->xml->ItemSpecifics));
 		foreach($this->xml->ItemSpecifics->NameValueList as $specifics){
-			$name=$specifics->Name->__toString();
+			$name=$this->slugify($specifics->Name->__toString());
 			$val=$specifics->Value->__toString();
 			$this->specifications->{$name}=$val;
 		}
