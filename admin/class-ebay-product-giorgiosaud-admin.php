@@ -23,8 +23,8 @@ class EbayProductGiorgiosaud{
 		$this->price=$this->xml->ConvertedCurrentPrice->__toString();
 		// die(var_dump($this->xml->ItemSpecifics));
 		foreach($this->xml->ItemSpecifics->NameValueList as $specifics){
-			$name=$this->$specifics->Name->__toString();
-			$val=$this->$specifics->Value->__toString();
+			$name=$specifics->Name->__toString();
+			$val=$specifics->Value->__toString();
 			$this->specifications->{$name}=$val;
 		}
 		die('<pre>'.var_dump($specifics).'</pre>');
