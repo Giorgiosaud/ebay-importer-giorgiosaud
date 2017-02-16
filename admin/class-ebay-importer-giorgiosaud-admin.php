@@ -355,6 +355,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
 				<?php foreach($product->xml->Item->PictureURL as $PictureURL){
 					?>
 					<img src="<?= $PictureURL?>" alt="<?= $product->xml->Item->Title ?>">
+					<p>
+						<?=$product->description?>
+					</p>
 			<?php
 
 			}?>
