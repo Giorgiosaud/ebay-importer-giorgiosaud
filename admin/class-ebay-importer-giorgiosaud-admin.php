@@ -347,32 +347,35 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			// $item=$resp->searchResult->item[0];
 				$ProductId=$item->itemId->__toString();
 				$prodDetail = $this->getItemDetail($ProductId);
-				$product=new EbayProductGiorgiosaud($prodDetail->Item);
-				array_push($items, $product);
-				?>
-				<a href="<?= $product->eBayUrl?>"><h1><?= $product->title ?></h1></a>
-				<p>Code: <span><?= $product->eBayId ?></span></p>
-				<img src="<?= $product->mainPicture ?>" alt="<?= $product->title ?>">
-				<p>
-					<?= $product->description ?>
-				</p>
-				<p>Qty:<span><?= $product->qty ?></span>
-					<p>Price:<span><?= $product->price ?></span>
-						<!-- <table> -->
-							<!-- <tr> -->
-								<?php
-								// var_dump($product->specificationsTitles);	
-								foreach ($product->specificationsTitles as $key=>$value) {
-									$valor=$product->specifications->$key;
-									echo "<p><strong>$value: </strong>$valor</p>";
-								}
-								?>
-							<!-- </tr> -->
-						<!-- </table> -->
-						<?php
+				if ($prodDetail->ack == "Success") {
+					$product=new EbayProductGiorgiosaud($prodDetail->Item);
 
-					}?>
-					<?php
+					array_push($items, $product);
+					?>
+					<a href="<?= $product->eBayUrl?>"><h1><?= $product->title ?></h1></a>
+					<p>Code: <span><?= $product->eBayId ?></span></p>
+					<img src="<?= $product->mainPicture ?>" alt="<?= $product->title ?>">
+					<p>
+						<?= $product->description ?>
+					</p>
+					<p>Qty:<span><?= $product->qty ?></span>
+						<p>Price:<span><?= $product->price ?></span>
+							<!-- <table> -->
+							<!-- <tr> -->
+							<?php
+								// var_dump($product->specificationsTitles);	
+							foreach ($product->specificationsTitles as $key=>$value) {
+								$valor=$product->specifications->$key;
+								echo "<p><strong>$value: </strong>$valor</p>";
+							}
+							?>
+							<!-- </tr> -->
+							<!-- </table> -->
+							<?php
+
+						}?>
+						<?php
+					}
 				}
 			}
 		}
