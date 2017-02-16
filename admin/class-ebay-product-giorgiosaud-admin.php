@@ -23,7 +23,7 @@ class EbayProductGiorgiosaud{
 		$this->price=$this->xml->ConvertedCurrentPrice->__toString();
 		die(var_dump($this->xml->ItemSpecifics));
 		foreach($this->xml->ItemSpecifics as $specifics){
-			die(var_dump($specifics));
+			die(var_dump($specifics->attributes()));
 		}
 		
 		$this->mainPicture=substr($picurl,0,strpos( $picurl, 'JPG' )+3);
