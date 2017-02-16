@@ -59,18 +59,20 @@ class EbayProductGiorgiosaud{
 		}
 		echo '<pre>';
 		foreach($this->xml->ItemCompatibilityList->Compatibility as $compatibility){
-			$compatibleTempItem=new stdClass();
-			foreach($compatibility->NameValueList as $compatibleElement){
-				if($compatiblieElement->Name){
-					$name=$this->slugify($compatibleElement->Name->__toString());	
-					$val=$specifics->compatibleElement->__toString();
-					$compatibleTempItem->{$name}=$val;
-				}
-			}
-			array_push($this->compatibility,$compatibleTempItem);
+			var_dump($compatibility);
+			// $compatibleTempItem=new stdClass();
+			// foreach($compatibility->NameValueList as $compatibleElement){
+				// if($compatiblieElement->Name){
+					// $name=$this->slugify($compatibleElement->Name->__toString());	
+					// $val=$specifics->compatibleElement->__toString();
+					// $compatibleTempItem->{$name}=$val;
+				// }
+			// }
+			// array_push($this->compatibility,$compatibleTempItem);
 		}
-		var_dump($this->compatibility);
+		// var_dump($this->compatibility);
 		echo '</pre>';
+		die();
 		// die('<pre>'.var_dump($this->specifications->manufacturerpartnumber).'</pre>');
 		$this->mainPicture=substr($picurl,0,strpos( $picurl, 'JPG' )+3);
 		// die(var_dump($this->mainPicture));
