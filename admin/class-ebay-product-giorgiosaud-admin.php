@@ -62,7 +62,7 @@ class EbayProductGiorgiosaud{
 			
 			// $compatibleTempItem=new stdClass();
 			foreach($compatibilityList->NameValueList as $compatibleElement){
-				var_dump($compatibleElement);
+				var_dump($compatibleElement->count());
 				// if($compatiblieElement->Name){
 					// $name=$this->slugify($compatibleElement->Name->__toString());	
 					// $val=$specifics->compatibleElement->__toString();
