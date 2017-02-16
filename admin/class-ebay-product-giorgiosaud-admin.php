@@ -87,8 +87,7 @@ class EbayProductGiorgiosaud{
 		}
 
 		$this->compatibilityTitles=array_keys((array)$this->compatibility[0]);
-		dd($this->title);
-
+		// dd($this->title);
 	}
 	/* Import media from url
  *
