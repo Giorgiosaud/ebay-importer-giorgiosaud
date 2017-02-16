@@ -341,66 +341,26 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// die(var_dump($resp));
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
-  			$items=array();
-  			foreach($resp->searchResult->item as $item) {
+			$items=array();
+			foreach($resp->searchResult->item as $item) {
 
 			// $item=$resp->searchResult->item[0];
-			$ProductId=$item->itemId->__toString();
-			$prodDetail = $this->getItemDetail($ProductId);
-			$product=new EbayProductGiorgiosaud($prodDetail->Item);
-			array_push($items, $product);
-			?>
+				$ProductId=$item->itemId->__toString();
+				$prodDetail = $this->getItemDetail($ProductId);
+				$product=new EbayProductGiorgiosaud($prodDetail->Item);
+				array_push($items, $product);
+				?>
 				<a href="<?= $product->eBayUrl?>"><h1><?= $product->title ?></h1></a>
 				<p>Code: <span><?= $product->eBayId ?></span></p>
-					?>
-					<img src="<?= $this->mainPicture?>" alt="<?= $product->title ?>">
-					<p>
-						<?=$product->description?>
-					</p>
-			<?php
+				?>
+				<img src="<?= $this->mainPicture?>" alt="<?= $product->title ?>">
+				<p>
+					<?=$product->description?>
+				</p>
+				<?php
 
 			}?>
 			<?php
-			// $ProductId=$resp->searchResult->item[0]->itemId->__toString();
-			// $prodDetail = $this->getItemDetail($ProductId);
-			// echo '<pre>';
-			// var_dump($prodDetail->Item);
-			// echo '</pre>';
-
-			// die();
-			// $results = '';  
-			// $respuesta='<div>';
-			// $link=$itemTest->viewItemURL;
-			// $respuesta.="<a href='$link'>";
-			// $respuesta.='<h1>';
-			// $respuesta.=$itemTest->title;
-			// $respuesta.="</h1>";
-			
-			// $endpoint2="http://open.api.ebay.com/shopping";
-			
-			// $respuesta.='</a>';
-			// $respuesta.='</div>';
-			// echo $respuesta;
-
-			// die(var_dump($prodDetail));
-  // Parse the desired information from the response
-			// foreach($resp->searchResult->item as $item) {
-				// $pic   = $item->galleryURL;
-				// $link  = $item->viewItemURL;
-				// $title = $item->title;
-
-    // Build the desired HTML code for each searchResult.item node and append it to $results
-				// $results .= "<tr><td><img src=\"$pic\"></td><td><a href=\"$link\">$title</a></td></tr>";
-			}
 		}
-		// If the response does not indicate 'Success,' print an error
-		// else {  
-			// $results  = "<h3>Oops! The request was not successful. Make sure you are using a valid ";
-			// $results .= "AppID for the Production environment.</h3>";
-		// }
-		// echo $results;
-		// cargar la plantilla que muestra los datos y la edicion de los mismos
-		// load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-test.php');
 	}
-
 }
