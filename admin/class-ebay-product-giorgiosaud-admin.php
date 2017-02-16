@@ -64,7 +64,7 @@ class EbayProductGiorgiosaud{
 		foreach($this->xml->ItemSpecifics->NameValueList as $specifics){
 			$fullName=$specifics->Name->__toString();
 			$name=$this->slugify($fullName);
-			$specificationsTitles[$name]=$fullName;
+			$this->specificationsTitles[$name]=$fullName;
 			$val=$specifics->Value->__toString();
 			$this->specifications->{$name}=$val;
 		}
