@@ -59,9 +59,8 @@ class EbayProductGiorgiosaud{
 		}
 		echo '<pre>';
 		foreach($this->xml->ItemCompatibilityList->Compatibility as $compatibilityList){
-			foreach($compatibilityList as $compatibilityItem){
-				var_dump($compatibilityItem->NameValueList);
-			}
+			
+				var_dump($compatibilityList);
 			// $compatibleTempItem=new stdClass();
 			// foreach($compatibility->NameValueList as $compatibleElement){
 				// if($compatiblieElement->Name){
