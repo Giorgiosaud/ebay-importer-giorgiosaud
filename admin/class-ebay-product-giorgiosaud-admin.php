@@ -58,8 +58,10 @@ class EbayProductGiorgiosaud{
 			$this->specifications->{$name}=$val;
 		}
 		echo '<pre>';
-		foreach($this->xml->ItemCompatibilityList->Compatibility as $compatibility){
-			var_dump($compatibility->NameValueList);
+		foreach($this->xml->ItemCompatibilityList->Compatibility as $compatibilityList){
+			foreach($compatibilityList as $compatibilityItem){
+				var_dump($compatibilityItem->NameValueList);
+			}
 			// $compatibleTempItem=new stdClass();
 			// foreach($compatibility->NameValueList as $compatibleElement){
 				// if($compatiblieElement->Name){
