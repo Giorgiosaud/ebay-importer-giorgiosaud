@@ -341,18 +341,20 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// die(var_dump($resp));
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
+  			$items=array();
   			foreach($resp->searchResult->item as $item) {
 
 			// $item=$resp->searchResult->item[0];
 			$ProductId=$item->itemId->__toString();
 			$prodDetail = $this->getItemDetail($ProductId);
 			$product=new EbayProductGiorgiosaud($prodDetail->Item);
+			array_push($items, $product);
 			?>
-				<a href="<?= $prodDetail->Item->ViewItemURLForNaturalSearch?>"><h1><?= $prodDetail->Item->Title ?></h1></a>
-				<p>Code: <span><?= $prodDetail->Item->ItemID ?></span></p>
-				<?php foreach($prodDetail->Item->PictureURL as $PictureURL){
+				<a href="<?= $product->xml->Item->ViewItemURLForNaturalSearch?>"><h1><?= $product->xml->Item->Title ?></h1></a>
+				<p>Code: <span><?= $product->xml->Item->ItemID ?></span></p>
+				<?php foreach($product->xml->Item->PictureURL as $PictureURL){
 					?>
-					<img src="<?= $PictureURL?>" alt="<?= $prodDetail->Item->Title ?>">
+					<img src="<?= $PictureURL?>" alt="<?= $product->xml->Item->Title ?>">
 			<?php
 
 			}?>
