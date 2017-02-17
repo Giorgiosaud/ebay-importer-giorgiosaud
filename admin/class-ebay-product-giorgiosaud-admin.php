@@ -74,7 +74,12 @@ class EbayProductGiorgiosaud{
 			foreach($compatibilityList["Compatibility"] as $compatibilityItem){
 			// dd($compatibilityItem);
 				$compatibleFull=new stdClass();
-				$compatibleFull->notes=$compatibilityItem["CompatibilityNotes"]??'';
+				if(count($compatibilityItem["CompatibilityNotes"])==0){
+					$compatibleFull->notes='';	
+				}
+				else{
+					$compatibleFull->notes=$compatibilityItem["CompatibilityNotes"];
+				}
 				foreach($compatibilityItem["NameValueList"] as $compatibleElement){
 
 					if(count($compatibleElement)>0){
@@ -128,7 +133,7 @@ class EbayProductGiorgiosaud{
 					<?php foreach ($this->compatibility as $compatibility) {
 						?>
 						<tr>
-							<td><?php var_dump($compatibility->notes)?></td>
+							<td><?= $compatibility->notes?></td>
 							<td><?= $compatibility->year?></td>
 							<td><?= $compatibility->make?></td>
 							<td><?= $compatibility->model?></td>
