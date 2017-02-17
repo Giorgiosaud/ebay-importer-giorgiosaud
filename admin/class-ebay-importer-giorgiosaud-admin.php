@@ -215,13 +215,16 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			);
 
 	}
-	public function ebay_store_cb(){
+	protected function showTextInput($id){
 		// get the value of the setting we've registered with register_setting()
-		$setting = get_option('ebay_store');
+		$setting = get_option($id);
     // output the field
 		?>
-		<input class="regular-text" type="text" name="ebay_store" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
+		<input class="regular-text" type="text" name="<?=$id?>" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
 		<?php
+	}
+	public function ebay_store_cb(){
+		showTextInput('ebay_store');
 	}
 	// funccion que uestra el titulo de la secion
 	public function ebay_importer_giorgiosaud_settings_cb(){
