@@ -74,22 +74,20 @@ class EbayProductGiorgiosaud{
 		foreach($compatibilityList["Compatibility"] as $compatibilityItem){
 			dd($compatibilityItem);
 			$compatibleTempItem=new stdClass();
-			foreach($compatibilityList->NameValueList as $compatibleElement){
+			$compatibleTempItem->notes=$compatibilityItem["CompatibilityNotes"];
+			foreach($compatibleTempItem["NameValueList"] as $compatibleElement){
 				
-				if($compatibleElement->count()>0){
+				if(count($compatibleElement)>0){
 
-					$name=$this->slugify($compatibleElement->Name->__toString());	
-					// var_dump($name);
-					$val=$compatibleElement->Value->__toString();
+					$name=$this->slugify($compatibleElement["Name"]);	
+					$val=$compatibleElement["Value"];
 					$compatibleTempItem->{$name}=$val;
 				}
 			}
-			// }
 			array_push($this->compatibility,$compatibleTempItem);
 		}
-
+		dd($this->compatibility);
 		$this->compatibilityTitles=array_keys((array)$this->compatibility[0]);
-		// dd($this->title);
 	}
 	/* Import media from url
  *
