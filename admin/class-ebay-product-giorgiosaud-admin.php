@@ -90,7 +90,7 @@ class EbayProductGiorgiosaud{
 			$this->compatibilityTitles=array_keys((array)$this->compatibility[0]);
 		}
 	}
-	public function showProduct(){
+	public function showHTMLProduct(){
 		?>
 		<a href="<?= $this->eBayUrl?>"><h1><?= $this->title ?></h1></a>
 		<p>Code: <span><?= $this->eBayId ?></span></p>
@@ -109,65 +109,68 @@ class EbayProductGiorgiosaud{
 			echo "<p><strong>$value: </strong>$valor</p>";
 		}
 		?>
-		<?php if(isset($this->compatibility)){?>
-		<table>
-			<caption>Compatibility Table</caption>
-			<thead>
-				<tr>
-					<?php foreach ($this->compatibilityTitles as $title) {
-						?>
-						<th><?= $title?></th>
+		<?php if(isset($this->compatibility))
+		{
+			?>
+			<table>
+				<caption>Compatibility Table</caption>
+				<thead>
+					<tr>
+						<?php foreach ($this->compatibilityTitles as $title) {
+							?>
+							<th><?= $title?></th>
 
+							<?php										
+						}?>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ($this->compatibility as $compatibility) {
+						?>
+						<tr>
+							<td><?= $compatibility->notes?></td>
+							<td><?= $compatibility->year?></td>
+							<td><?= $compatibility->make?></td>
+							<td><?= $compatibility->model?></td>
+							<td><?= $compatibility->trim?></td>
+							<td><?= $compatibility->engine?></td>
+						</tr>
 						<?php										
 					}?>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($this->compatibility as $compatibility) {
-					?>
-					<tr>
-						<td><?= $compatibility->notes?></td>
-						<td><?= $compatibility->year?></td>
-						<td><?= $compatibility->make?></td>
-						<td><?= $compatibility->model?></td>
-						<td><?= $compatibility->trim?></td>
-						<td><?= $compatibility->engine?></td>
-					</tr>
-					<?php										
-				}?>
-			</tbody>
-		</table>
-		<!-- </tr> -->
-		<!-- </table> -->
-		<?php	
+				</tbody>
+			</table>
+			<!-- </tr> -->
+			<!-- </table> -->
+			<?php	
+		}
 	}
-			/* Import media from url
-			*
-			* @param string $file_url URL of the existing file from the original site
-			* @param int $post_id The post ID of the post to which the imported media is to be attached
-			*
-			* @return boolean True on success, false on failure
-			*/
+	/* Import media from url
+	*
+	* @param string $file_url URL of the existing file from the original site
+	* @param int $post_id The post ID of the post to which the imported media is to be attached
+	*
+	* @return boolean True on success, false on failure
+	*/
 
-			public function fetch_media_for_post($file_url, $post_id) {
-				require_once(ABSPATH . 'wp-load.php');
-				require_once(ABSPATH . 'wp-admin/includes/image.php');
-				global $wpdb;
+	public function fetch_media_for_post($file_url, $post_id) {
+		require_once(ABSPATH . 'wp-load.php');
+		require_once(ABSPATH . 'wp-admin/includes/image.php');
+		global $wpdb;
 
-				if(!$post_id) {
-					return false;
-				}
+		if(!$post_id) {
+			return false;
+		}
 
 		//directory to import to	
-				$artDir = 'wp-content/uploads/importedmedia/';
+		$artDir = 'wp-content/uploads/importedmedia/';
 
 		//if the directory doesn't exist, create it	
-				if(!file_exists(ABSPATH.$artDir)) {
-					mkdir(ABSPATH.$artDir);
-				}
+		if(!file_exists(ABSPATH.$artDir)) {
+			mkdir(ABSPATH.$artDir);
+		}
 
 	//rename the file... alternatively, you could explode on "/" and keep the original file name
-				$ext = array_pop(explode(".", $file_url));
+		$ext = array_pop(explode(".", $file_url));
 	$new_filename = 'product-'.$post_id.".".$ext; //if your post has multiple files, you may need to add a random number to the file name to prevent overwrites
 
 	if (@fclose(@fopen($file_url, "r"))) { //make sure the file actually exists

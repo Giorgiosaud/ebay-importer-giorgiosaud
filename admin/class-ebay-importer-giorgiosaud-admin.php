@@ -354,7 +354,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 					$product=new EbayProductGiorgiosaud($prodDetail->Item);
 					// dd($product);
 					// array_push($items, $product);
-					$product->showProduct();
+					$product->showHTMLProduct();
 				}
 			}
 		}
