@@ -70,7 +70,7 @@ class EbayProductGiorgiosaud{
 		}
 		 $array = json_decode(json_encode($this->xml->ItemCompatibilityList), TRUE);
 
-		dd($array);
+		dd($array["Compatibility"]);
 		foreach($this->xml->ItemCompatibilityList as $compatibilityList){
 			dd($compatibilityList["Compatibility"]);
 			
