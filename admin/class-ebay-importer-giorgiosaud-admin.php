@@ -230,6 +230,10 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		<?php
 	}
 
+	// funccion que uestra el titulo de la secion
+	public function ebay_importer_giorgiosaud_settings_cb(){
+		echo '<p>Settings for setup ebay dev settings.</p>';
+	}
 	protected function secure_plugin_pages(){
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return false;
