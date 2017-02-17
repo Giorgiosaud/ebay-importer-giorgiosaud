@@ -130,12 +130,12 @@ class EbayProductGiorgiosaud{
 					<?php foreach ($this->compatibility as $compatibility) {
 						?>
 						<tr>
-							<td><?= $compatibility->notes?></td>
-							<td><?= $compatibility->year?></td>
-							<td><?= $compatibility->make?></td>
-							<td><?= $compatibility->model?></td>
-							<td><?= $compatibility->trim?></td>
-							<td><?= $compatibility->engine?></td>
+							<?php foreach ($this->compatibilityTitles as $title) {
+								?>
+								<td><?= $compatibility->$title ?></td>
+								<?php
+							}?>
+							
 						</tr>
 						<?php										
 					}?>
