@@ -278,7 +278,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// cargar la plantilla que muestra los datos y la edicion de los mismos
 		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-settings.php');
 	}
-	private function getProductsByStore($store) {
+	private function getProductsByStore($store,$productsPerPage=2,$page=1) {
 		global $xmlrequest;
 		$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';  
 
@@ -293,8 +293,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$xmlrequest .="</value>";
 		$xmlrequest .="</itemFilter>";
 		$xmlrequest .="<paginationInput>";
-		$xmlrequest .="<entriesPerPage>2</entriesPerPage>";
-		$xmlrequest .="<pageNumber>2</pageNumber>";
+		$xmlrequest .="<entriesPerPage>$productsPerPage</entriesPerPage>";
+		$xmlrequest .="<pageNumber>$page</pageNumber>";
 		$xmlrequest .="</paginationInput>";
 		$xmlrequest .="</findItemsAdvancedRequest>";
 		$api_name= get_option('ebay_api_name');
@@ -356,7 +356,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// API request variables
 		// // URL to call
 		// Supply your own query keywords as needed
-		$store = 'expomiamiautoparts';                  
+		$store = get_option('ebay_store');
 		$resp = $this->getProductsByStore($store);
 		// Check to see if the call was successful, else print an error
 		// die(var_dump($resp));
