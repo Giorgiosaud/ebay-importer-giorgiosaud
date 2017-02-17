@@ -209,6 +209,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			);
 		$this->addTextInputFieldToSettingsPage('ebay_store','Ebay Store','ebay_importer_giorgiosaud_settings');
 
+		$this->addTextInputFieldToSettingsPage('ebay_store','Ebay Store','ebay_importer_giorgiosaud_settings');
+
 	}
 	protected function addTextInputFieldToSettingsPage($id,$textToShow,$section){
 		add_settings_field(
@@ -351,62 +353,13 @@ class Ebay_Importer_Giorgiosaud_Admin {
 				if($prodDetail->Ack=="Success"){
 					$product=new EbayProductGiorgiosaud($prodDetail->Item);
 					// dd($product);
-					array_push($items, $product);
-					?>
-					<a href="<?= $product->eBayUrl?>"><h1><?= $product->title ?></h1></a>
-					<p>Code: <span><?= $product->eBayId ?></span></p>
-					<img src="<?= $product->mainPicture ?>" alt="<?= $product->title ?>">
-					<p>
-						<?= $product->description ?>
-					</p>
-					<p>Qty:<span><?= $product->qty ?></span>
-						<p>Price:<span><?= $product->price ?></span>
-							<!-- <table> -->
-							<!-- <tr> -->
-							<?php
-								// var_dump($product->specificationsTitles);	
-							foreach ($product->specificationsTitles as $key=>$value) {
-								$valor=$product->specifications->$key;
-								echo "<p><strong>$value: </strong>$valor</p>";
-							}
-							?>
-							<?php if(isset($product->compatibility)){?>
-							<table>
-								<caption>Compatibility Table</caption>
-								<thead>
-									<tr>
-										<?php foreach ($product->compatibilityTitles as $title) {
-											?>
-											<th><?= $title?></th>
-
-											<?php										
-										}?>
-									</tr>
-								</thead>
-								<tbody>
-									<?php foreach ($product->compatibility as $compatibility) {
-										?>
-										<tr>
-											<td><?= $compatibility->notes?></td>
-											<td><?= $compatibility->year?></td>
-											<td><?= $compatibility->make?></td>
-											<td><?= $compatibility->model?></td>
-											<td><?= $compatibility->trim?></td>
-											<td><?= $compatibility->engine?></td>
-										</tr>
-										<?php										
-									}?>
-								</tbody>
-							</table>
-							<!-- </tr> -->
-							<!-- </table> -->
-							<?php
-
-						}
-					}
-					?>
-					<?php
+					// array_push($items, $product);
+					$product->showProduct();
 				}
 			}
+			?>
+			<?php
 		}
 	}
+}
+}

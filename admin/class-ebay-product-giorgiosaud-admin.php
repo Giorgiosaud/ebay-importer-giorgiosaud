@@ -76,7 +76,7 @@ class EbayProductGiorgiosaud{
 				$compatibleFull=new stdClass();
 				$compatibleFull->notes=$compatibilityItem["CompatibilityNotes"];
 				foreach($compatibilityItem["NameValueList"] as $compatibleElement){
-					
+
 					if(count($compatibleElement)>0){
 
 						$name=$this->slugify($compatibleElement["Name"]);	
@@ -90,33 +90,84 @@ class EbayProductGiorgiosaud{
 			$this->compatibilityTitles=array_keys((array)$this->compatibility[0]);
 		}
 	}
-	/* Import media from url
- *
- * @param string $file_url URL of the existing file from the original site
- * @param int $post_id The post ID of the post to which the imported media is to be attached
- *
- * @return boolean True on success, false on failure
- */
-
-	public function fetch_media_for_post($file_url, $post_id) {
-		require_once(ABSPATH . 'wp-load.php');
-		require_once(ABSPATH . 'wp-admin/includes/image.php');
-		global $wpdb;
-
-		if(!$post_id) {
-			return false;
+	public function showProduct(){
+		?>
+		<a href="<?= $this->eBayUrl?>"><h1><?= $this->title ?></h1></a>
+		<p>Code: <span><?= $this->eBayId ?></span></p>
+		<img src="<?= $this->mainPicture ?>" alt="<?= $this->title ?>">
+		<p>
+			<?= $this->description ?>
+		</p>
+		<p>Qty:<span><?= $this->qty ?></span></p>
+		<p>Price:<span><?= $this->price ?></span></p>
+		<!-- <table> -->
+		<!-- <tr> -->
+		<?php
+								// var_dump($this->specificationsTitles);	
+		foreach ($this->specificationsTitles as $key=>$value) {
+			$valor=$this->specifications->$key;
+			echo "<p><strong>$value: </strong>$valor</p>";
 		}
+		?>
+		<?php if(isset($this->compatibility)){?>
+		<table>
+			<caption>Compatibility Table</caption>
+			<thead>
+				<tr>
+					<?php foreach ($this->compatibilityTitles as $title) {
+						?>
+						<th><?= $title?></th>
 
-	//directory to import to	
-		$artDir = 'wp-content/uploads/importedmedia/';
+						<?php										
+					}?>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($this->compatibility as $compatibility) {
+					?>
+					<tr>
+						<td><?= $compatibility->notes?></td>
+						<td><?= $compatibility->year?></td>
+						<td><?= $compatibility->make?></td>
+						<td><?= $compatibility->model?></td>
+						<td><?= $compatibility->trim?></td>
+						<td><?= $compatibility->engine?></td>
+					</tr>
+					<?php										
+				}?>
+			</tbody>
+		</table>
+		<!-- </tr> -->
+		<!-- </table> -->
+		<?php	
+	}
+			/* Import media from url
+			*
+			* @param string $file_url URL of the existing file from the original site
+			* @param int $post_id The post ID of the post to which the imported media is to be attached
+			*
+			* @return boolean True on success, false on failure
+			*/
 
-	//if the directory doesn't exist, create it	
-		if(!file_exists(ABSPATH.$artDir)) {
-			mkdir(ABSPATH.$artDir);
-		}
+			public function fetch_media_for_post($file_url, $post_id) {
+				require_once(ABSPATH . 'wp-load.php');
+				require_once(ABSPATH . 'wp-admin/includes/image.php');
+				global $wpdb;
+
+				if(!$post_id) {
+					return false;
+				}
+
+		//directory to import to	
+				$artDir = 'wp-content/uploads/importedmedia/';
+
+		//if the directory doesn't exist, create it	
+				if(!file_exists(ABSPATH.$artDir)) {
+					mkdir(ABSPATH.$artDir);
+				}
 
 	//rename the file... alternatively, you could explode on "/" and keep the original file name
-		$ext = array_pop(explode(".", $file_url));
+				$ext = array_pop(explode(".", $file_url));
 	$new_filename = 'product-'.$post_id.".".$ext; //if your post has multiple files, you may need to add a random number to the file name to prevent overwrites
 
 	if (@fclose(@fopen($file_url, "r"))) { //make sure the file actually exists
@@ -125,7 +176,7 @@ class EbayProductGiorgiosaud{
 		$siteurl = get_option('siteurl');
 		$file_info = getimagesize(ABSPATH.$artDir.$new_filename);
 
-		//create an array of attachment data to insert into wp_posts table
+	//create an array of attachment data to insert into wp_posts table
 		$artdata = array();
 		$artdata = array(
 			'post_author' => 1, 
@@ -149,15 +200,15 @@ class EbayProductGiorgiosaud{
 		$uploads = wp_upload_dir();
 		$save_path = $uploads['basedir'].'/importedmedia/'.$new_filename;
 
-		//insert the database record
+	//insert the database record
 		$attach_id = wp_insert_attachment( $artdata, $save_path, $post_id );
 
-		//generate metadata and thumbnails
+	//generate metadata and thumbnails
 		if ($attach_data = wp_generate_attachment_metadata( $attach_id, $save_path)) {
 			wp_update_attachment_metadata($attach_id, $attach_data);
 		}
 
-		//optional make it the featured image of the post it's attached to
+//optional make it the featured image of the post it's attached to
 		$rows_affected = $wpdb->insert($wpdb->prefix.'postmeta', array('post_id' => $post_id, 'meta_key' => '_thumbnail_id', 'meta_value' => $attach_id));
 	}
 	else {
