@@ -224,7 +224,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		<?php
 	}
 	public function ebay_store_cb(){
-		showTextInput('ebay_store');
+		$this->showTextInput('ebay_store');
 	}
 	// funccion que uestra el titulo de la secion
 	public function ebay_importer_giorgiosaud_settings_cb(){
