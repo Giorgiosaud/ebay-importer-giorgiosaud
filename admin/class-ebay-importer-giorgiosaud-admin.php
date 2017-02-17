@@ -351,7 +351,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 				$prodDetail = $this->getItemDetail($ProductId);
 				if($prodDetail->Ack=="Success"){
 					$product=new EbayProductGiorgiosaud($prodDetail->Item);
-
+					dd($product);
 					array_push($items, $product);
 					?>
 					<a href="<?= $product->eBayUrl?>"><h1><?= $product->title ?></h1></a>
