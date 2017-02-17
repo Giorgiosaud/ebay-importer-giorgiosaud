@@ -30,6 +30,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
 	private $plugin_name;
+	protected $page='ebay-importer-giorgiosaud';
 
 	/**
 	 * The version of this plugin.
@@ -206,21 +207,23 @@ class Ebay_Importer_Giorgiosaud_Admin {
 				'class'=>'ebay_api_key_secret'
 				)
 			);
-		add_settings_field(
-			'ebay_store',
-			__('Ebay Store','ebay-importer-giorgiosaud' ),
-			array($this,'text_field_cb'),
-			'ebay-importer-giorgiosaud',
-			'ebay_importer_giorgiosaud_settings',
-			array(
-				'id_field'=>'ebay_store',
-				'label_for'=>'ebay_store',
-				'class'=>'ebay_store'
-				)
-			);
+		$this->addTextInputFieldToSettingsPage('ebay_store','Ebay Store','ebay_importer_giorgiosaud_settings');
 
 	}
-	
+	protected function addTextInputFieldToSettingsPage($id,$textToShow,$section){
+		add_settings_field(
+			$id,
+			__($textToShow,'ebay-importer-giorgiosaud' ),
+			array($this,'text_field_cb'),
+			$this->page,
+			$section,
+			array(
+				'id_field'=>$id,
+				'label_for'=>$id,
+				'class'=>$id
+				)
+			);
+	}
 	public function text_field_cb($args){
 		$id=$args['id_field'];
 		$setting = get_option($id);
