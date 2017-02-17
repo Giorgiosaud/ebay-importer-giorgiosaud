@@ -172,10 +172,12 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		add_settings_field(
 			'ebay_api_name',
 			__('Ebay APP ID (Client ID)','ebay-importer-giorgiosaud' ),
-			array($this,'ebay_api_name_cb'),
+			array($this,'text_field_cb'),
 			'ebay-importer-giorgiosaud',
-			'ebay_importer_giorgiosaud_settings',
+			'ebay_importer_giorgio
+			saud_settings',
 			array(
+				'id_field'=>'ebay_api_name',
 				'label_for'=>'ebay_api_name',
 				'class'=>'ebay_api_name'
 				)
@@ -183,10 +185,11 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		add_settings_field(
 			'ebay_api_key',
 			__('Dev ID','ebay-importer-giorgiosaud' ),
-			array($this,'ebay_api_key_cb'),
+			array($this,'text_field_cb'),
 			'ebay-importer-giorgiosaud',
 			'ebay_importer_giorgiosaud_settings',
 			array(
+				'id_field'=>'ebay_api_key',
 				'label_for'=>'ebay_api_key',
 				'class'=>'ebay_api_key'
 				)
@@ -194,10 +197,11 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		add_settings_field(
 			'ebay_api_key_secret',
 			__('Cert ID (Client Secret)','ebay-importer-giorgiosaud' ),
-			array($this,'ebay_api_key_secret_cb'),
+			array($this,'text_field_cb'),
 			'ebay-importer-giorgiosaud',
 			'ebay_importer_giorgiosaud_settings',
 			array(
+				'id_field'=>'ebay_api_key_secret',
 				'label_for'=>'ebay_api_key_secret',
 				'class'=>'ebay_api_key_secret'
 				)
@@ -216,52 +220,16 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			);
 
 	}
-	protected function showTextInput($id){
-		// get the value of the setting we've registered with register_setting()
+	
+	public function text_field_cb($args){
+		$id=$args['id_field'];
 		$setting = get_option($id);
     // output the field
 		?>
 		<input class="regular-text" type="text" name="<?=$id?>" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
 		<?php
 	}
-	public function text_field_cb($args){
-		$this->showTextInput($args['id_field']);
-	}
-	// funccion que uestra el titulo de la secion
-	public function ebay_importer_giorgiosaud_settings_cb(){
-		echo '<p>Settings for setup ebay dev settings.</p>';
-	}
-	
-	// funccion que muestra como se ve el input y se obtiene los datos de la base de datos si existen
-	public function ebay_api_name_cb()
-	{
-    // get the value of the setting we've registered with register_setting()
-		$setting = get_option('ebay_api_name');
-    // output the field
-		?>
-		<input class="regular-text" type="text" name="ebay_api_name" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
-		<?php
-	}
-	// funccion que muestra como se ve el input y se obtiene los datos de la base de datos si existen
-	public function ebay_api_key_cb()
-	{
-    // get the value of the setting we've registered with register_setting()
-		$setting = get_option('ebay_api_key');
-    // output the field
-		?>
-		<input class="regular-text" type="text" name="ebay_api_key" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
-		<?php
-	}
-	// funccion que muestra como se ve el input y se obtiene los datos de la base de datos si existen
-	public function ebay_api_key_secret_cb()
-	{
-    // get the value of the setting we've registered with register_setting()
-		$setting = get_option('ebay_api_key_secret');
-    // output the field
-		?>
-		<input class="regular-text" type="text" name="ebay_api_key_secret" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
-		<?php
-	}
+
 	protected function secure_plugin_pages(){
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return false;
