@@ -351,7 +351,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 				$prodDetail = $this->getItemDetail($ProductId);
 				if($prodDetail->Ack=="Success"){
 					$product=new EbayProductGiorgiosaud($prodDetail->Item);
-					dd($product);
+					// dd($product);
 					array_push($items, $product);
 					?>
 					<a href="<?= $product->eBayUrl?>"><h1><?= $product->title ?></h1></a>
@@ -371,6 +371,33 @@ class Ebay_Importer_Giorgiosaud_Admin {
 								echo "<p><strong>$value: </strong>$valor</p>";
 							}
 							?>
+							<table>
+								<caption>Compatibility Table</caption>
+								<thead>
+									<tr>
+									<?php foreach ($product->compatibilityTitles as $title) {
+?>
+										<th><?= $title?></th>
+
+										<?php										
+									}?>
+									</tr>
+								</thead>
+								<tbody>
+								<?php foreach ($product->compatibility as $compatibility) {
+?>
+									<tr>
+										<td><?= $compatibility->notes?></td>
+										<td><?= $compatibility->year?></td>
+										<td><?= $compatibility->make?></td>
+										<td><?= $compatibility->model?></td>
+										<td><?= $compatibility->trim?></td>
+										<td><?= $compatibility->engine?></td>
+									</tr>
+									<?php										
+									}?>
+								</tbody>
+							</table>
 							<!-- </tr> -->
 							<!-- </table> -->
 							<?php
