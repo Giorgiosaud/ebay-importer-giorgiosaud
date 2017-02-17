@@ -205,10 +205,11 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		add_settings_field(
 			'ebay_store',
 			__('Ebay Store','ebay-importer-giorgiosaud' ),
-			array($this,'ebay_store_cb'),
+			array($this,'text_field_cb'),
 			'ebay-importer-giorgiosaud',
 			'ebay_importer_giorgiosaud_settings',
 			array(
+				'id_field'=>'ebay_store',
 				'label_for'=>'ebay_store',
 				'class'=>'ebay_store'
 				)
@@ -223,8 +224,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		<input class="regular-text" type="text" name="<?=$id?>" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
 		<?php
 	}
-	public function ebay_store_cb(){
-		$this->showTextInput('ebay_store');
+	public function text_field_cb($args){
+		$this->showTextInput($args['id']);
 	}
 	// funccion que uestra el titulo de la secion
 	public function ebay_importer_giorgiosaud_settings_cb(){
