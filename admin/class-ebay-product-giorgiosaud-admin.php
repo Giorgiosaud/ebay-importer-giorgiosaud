@@ -68,7 +68,7 @@ class EbayProductGiorgiosaud{
 			$val=$specifics->Value->__toString();
 			$this->specifications->{$name}=$val;
 		}
-		 $array = json_decode(json_encode($this->xml->ItemCompatibilityList->Compatibility), TRUE);
+		 $array = json_decode(json_encode($this->xml->ItemCompatibilityList), TRUE);
 
 		dd($array);
 		foreach($this->xml->ItemCompatibilityList as $compatibilityList){
