@@ -74,7 +74,6 @@ class EbayProductGiorgiosaud{
 			foreach($compatibilityList["Compatibility"] as $compatibilityItem){
 			// dd($compatibilityItem);
 				$compatibleFull=new stdClass();
-				
 				$compatibleFull->notes=$compatibilityItem["CompatibilityNotes"]??'';
 				foreach($compatibilityItem["NameValueList"] as $compatibleElement){
 
@@ -152,6 +151,9 @@ class EbayProductGiorgiosaud{
 	*
 	* @return boolean True on success, false on failure
 	*/
+	public function SaveOrUpdate(){
+		return $this;
+	}
 
 	public function fetch_media_for_post($file_url, $post_id) {
 		require_once(ABSPATH . 'wp-load.php');
