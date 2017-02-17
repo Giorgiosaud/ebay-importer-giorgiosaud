@@ -151,6 +151,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		register_setting( 'ebay-importer-giorgiosaud', 'ebay_api_name' );
 		register_setting( 'ebay-importer-giorgiosaud', 'ebay_api_key' );
 		register_setting( 'ebay-importer-giorgiosaud', 'ebay_api_key_secret' );
+		register_setting( 'ebay-importer-giorgiosaud', 'ebay_store' );
 		// Se Registra una seccion para dentro de ella llamar a los campos a configurar
 		// el primer argumento es el id de la seccion
 		// el segundo un titulo de la seccion que en nuestro caso es traducible con el languages/ebay-importer-giorgiosaud.pot file
@@ -201,7 +202,26 @@ class Ebay_Importer_Giorgiosaud_Admin {
 				'class'=>'ebay_api_key_secret'
 				)
 			);
+		add_settings_field(
+			'ebay_store',
+			__('Ebay Store','ebay-importer-giorgiosaud' ),
+			array($this,'ebay_store_cb'),
+			'ebay-importer-giorgiosaud',
+			'ebay_importer_giorgiosaud_settings',
+			array(
+				'label_for'=>'ebay_store',
+				'class'=>'ebay_store'
+				)
+			);
 
+	}
+	public function ebay_store_cb(){
+		// get the value of the setting we've registered with register_setting()
+		$setting = get_option('ebay_store');
+    // output the field
+		?>
+		<input class="regular-text" type="text" name="ebay_store" value="<?= isset($setting) ? esc_attr($setting) : ''; ?>">
+		<?php
 	}
 	// funccion que uestra el titulo de la secion
 	public function ebay_importer_giorgiosaud_settings_cb(){
