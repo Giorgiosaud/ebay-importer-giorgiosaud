@@ -58,7 +58,8 @@ class EbayProductGiorgiosaud{
 		$this->SKU=$this->xml->SKU->__toString();
 		$picurl=$this->xml->PictureURL[0]->__toString();
 		$this->mainPicture=substr($picurl,0,strpos( $picurl, 'JPG' )+3);
-		$this->description=$text = preg_replace('#(<[a-z ]*)(style=("|\')(.*?)("|\'))([a-z ]*>)#', '\\1\\6', strip_tags( $this->xml->Description->__toString(),'<a>'));
+		$this->descriptiontext = preg_replace('#(<[a-z ]*)(style=("|\')(.*?)("|\'))([a-z ]*>)#', '\\1\\6', strip_tags( $this->xml->Description->__toString(),'<a>'));
+		$this->description=$this->xml->Description->__toString()
 		
 		// die(var_dump($this->xml->ItemSpecifics));
 		foreach($this->xml->ItemSpecifics->NameValueList as $specifics){
