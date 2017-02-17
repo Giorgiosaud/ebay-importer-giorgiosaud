@@ -68,26 +68,27 @@ class EbayProductGiorgiosaud{
 			$val=$specifics->Value->__toString();
 			$this->specifications->{$name}=$val;
 		}
-		 $compatibilityList = json_decode(json_encode($this->xml->ItemCompatibilityList), TRUE);
+		$compatibilityList = json_decode(json_encode($this->xml->ItemCompatibilityList), TRUE);
 
-		
-		foreach($compatibilityList["Compatibility"] as $compatibilityItem){
+		if(isset($compatibilityList["Compatibility"])){
+			foreach($compatibilityList["Compatibility"] as $compatibilityItem){
 			// dd($compatibilityItem);
-			$compatibleFull=new stdClass();
-			$compatibleFull->notes=$compatibilityItem["CompatibilityNotes"];
-			foreach($compatibilityItem["NameValueList"] as $compatibleElement){
-				
-				if(count($compatibleElement)>0){
+				$compatibleFull=new stdClass();
+				$compatibleFull->notes=$compatibilityItem["CompatibilityNotes"];
+				foreach($compatibilityItem["NameValueList"] as $compatibleElement){
+					
+					if(count($compatibleElement)>0){
 
-					$name=$this->slugify($compatibleElement["Name"]);	
-					$val=$compatibleElement["Value"];
-					$compatibleFull->{$name}=$val;
+						$name=$this->slugify($compatibleElement["Name"]);	
+						$val=$compatibleElement["Value"];
+						$compatibleFull->{$name}=$val;
+					}
 				}
+				array_push($this->compatibility,$compatibleFull);
 			}
-			array_push($this->compatibility,$compatibleFull);
-		}
 		// dd($this->compatibility);
-		$this->compatibilityTitles=array_keys((array)$this->compatibility[0]);
+			$this->compatibilityTitles=array_keys((array)$this->compatibility[0]);
+		}
 	}
 	/* Import media from url
  *
