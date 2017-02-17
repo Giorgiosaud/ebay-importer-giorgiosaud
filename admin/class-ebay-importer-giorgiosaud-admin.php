@@ -357,9 +357,6 @@ class Ebay_Importer_Giorgiosaud_Admin {
 					$product->showProduct();
 				}
 			}
-			?>
-			<?php
 		}
 	}
-}
 }
