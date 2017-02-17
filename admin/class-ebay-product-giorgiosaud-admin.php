@@ -86,7 +86,7 @@ class EbayProductGiorgiosaud{
 			}
 			array_push($this->compatibility,$compatibleFull);
 		}
-		dd($this->compatibility);
+		// dd($this->compatibility);
 		$this->compatibilityTitles=array_keys((array)$this->compatibility[0]);
 	}
 	/* Import media from url
