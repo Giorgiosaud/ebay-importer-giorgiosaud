@@ -74,10 +74,7 @@ class EbayProductGiorgiosaud{
 			foreach($compatibilityList["Compatibility"] as $compatibilityItem){
 			// dd($compatibilityItem);
 				$compatibleFull=new stdClass();
-				if(count($compatibilityItem["CompatibilityNotes"])==0){
-					$compatibleFull->notes='';	
-				}
-				else{
+				if(count($compatibilityItem["CompatibilityNotes"])>0){
 					$compatibleFull->notes=$compatibilityItem["CompatibilityNotes"];
 				}
 				foreach($compatibilityItem["NameValueList"] as $compatibleElement){
