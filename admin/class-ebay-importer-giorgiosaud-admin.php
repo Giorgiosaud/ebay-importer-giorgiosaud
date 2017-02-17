@@ -225,7 +225,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		<?php
 	}
 	public function text_field_cb($args){
-		$this->showTextInput($args['id']);
+		$this->showTextInput($args['id_field']);
 	}
 	// funccion que uestra el titulo de la secion
 	public function ebay_importer_giorgiosaud_settings_cb(){
