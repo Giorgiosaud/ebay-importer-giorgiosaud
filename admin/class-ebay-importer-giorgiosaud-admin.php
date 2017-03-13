@@ -141,8 +141,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			'Test',
 			'Prueba de Funccionamiento',
 			'edit_others_posts',
-			'ebay-importer-giorgiosaud-test',
-			array($this,'ebay_importer_page_test_view')
+			'ebay-importer-giorgiosaud-list',
+			array($this,'ebay_importer_page_list_view')
 			);
 
 	}
@@ -325,7 +325,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 	protected function showProductsList($results){
 		die(var_dump($results));
 	}
-	public function ebay_importer_page_test_view(){
+	public function ebay_importer_page_list_view(){
 		if(!$this->secure_plugin_pages()){
 			return;
 		};
