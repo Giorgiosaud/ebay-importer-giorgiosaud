@@ -322,8 +322,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		    return simplexml_load_string($responsexml);                                    // returns a string
 	}  // End of constructPostToGetAllProductsFromStoreCallAndGetResponse function
 	// Funccion que muestra la pagina
-	protected showProductsList($results){
-		die(var_dumo($results));
+	protected function showProductsList($results){
+		die(var_dump($results));
 	}
 	public function ebay_importer_page_test_view(){
 		if(!$this->secure_plugin_pages()){
