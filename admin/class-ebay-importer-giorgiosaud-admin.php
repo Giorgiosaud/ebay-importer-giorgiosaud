@@ -259,31 +259,25 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// cargar la plantilla que muestra los datos y la edicion de los mismos
 		load_template(plugin_dir_path( __FILE__ ).'partials/ebay-importer-giorgiosaud-admin-settings.php');
 	}
-	private function getProductsByStore($store,$productsPerPage=2,$page=1) {
+	private function getProductsByStore($store,$productsPerPage=100,$page=1) {
 		global $xmlrequest;
 		$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';  
 
 
   // Create the XML request to be POSTed
 		$xmlrequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
-		$xmlrequest .= "<findItemsAdvancedRequest xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">";
-		$xmlrequest .= "<itemFilter>";
-		$xmlrequest .="<name>Seller</name>";
-		$xmlrequest .="<value>";
-		$xmlrequest .=$store;
-		$xmlrequest .="</value>";
-		$xmlrequest .="</itemFilter>";
+		$xmlrequest .= "<findItemsIneBayStoresRequest xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">";
+		$xmlrequest.="<storeName>EM-Autoparts-Corp</storeName>";
+		$xmlrequest .="<outputSelector>StoreInfo</outputSelector>";
 		$xmlrequest .="<paginationInput>";
 		$xmlrequest .="<entriesPerPage>$productsPerPage</entriesPerPage>";
 		$xmlrequest .="<pageNumber>$page</pageNumber>";
 		$xmlrequest .="</paginationInput>";
-		$xmlrequest .="</findItemsAdvancedRequest>";
+		$xmlrequest .="</findItemsIneBayStoresRequest>";
 		$api_name= get_option('ebay_api_name');
 		$headers=array(
-			"X-EBAY-SOA-OPERATION-NAME:findItemsAdvanced",
-			"X-EBAY-SOA-SERVICE-VERSION:1.3.0",
-			"X-EBAY-SOA-REQUEST-DATA-FORMAT:XML",
-			"X-EBAY-SOA-GLOBAL-ID:EBAY-US",
+			"X-EBAY-SOA-OPERATION-NAME:findItemsIneBayStores",
+			"X-EBAY-SOA-SERVICE-VERSION:1.13.0",
 			"X-EBAY-SOA-SECURITY-APPNAME:$api_name",
 			"Content-Type: text/xml;charset=utf-8"
 			);
@@ -337,6 +331,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// API request variables
 		// // URL to call
 		// Supply your own query keywords as needed
+		die(var_dump($_GET['page']);
 		$store = get_option('ebay_store');
 		$resp = $this->getProductsByStore($store);
 		// Check to see if the call was successful, else print an error

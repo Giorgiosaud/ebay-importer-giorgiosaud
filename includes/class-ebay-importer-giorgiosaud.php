@@ -112,7 +112,7 @@ class Ebay_Importer_Giorgiosaud {
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-ebay-importer-giorgiosaud-admin.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-ebay-product-giorgiosaud-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/EbayProductGiorgiosaud.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
