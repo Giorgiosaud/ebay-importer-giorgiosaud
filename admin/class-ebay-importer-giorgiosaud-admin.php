@@ -322,8 +322,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		    return simplexml_load_string($responsexml);                                    // returns a string
 	}  // End of constructPostToGetAllProductsFromStoreCallAndGetResponse function
 	// Funccion que muestra la pagina
-	protected function showProductsList($results){
-		die(var_dump($results));
+	protected function showProductsList($results,$pages){
+		die(var_dump($pages));
 	}
 	public function ebay_importer_page_list_view(){
 		if(!$this->secure_plugin_pages()){
@@ -348,7 +348,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// dd($resp->ack);
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
-			$this->showProductsList($resp->searchResult);
+			$this->showProductsList($resp->searchResult,$resp->paginationOutput->totalPages);
   			// die();
 			// $items=array();
 			// foreach($resp->searchResult->item as $item) {
