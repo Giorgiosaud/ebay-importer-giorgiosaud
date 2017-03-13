@@ -331,7 +331,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// API request variables
 		// // URL to call
 		// Supply your own query keywords as needed
-		die(var_dump($_GET['page']);
+		die(var_dump($_GET['page']));
 		$store = get_option('ebay_store');
 		$resp = $this->getProductsByStore($store);
 		// Check to see if the call was successful, else print an error
