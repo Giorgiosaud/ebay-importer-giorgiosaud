@@ -331,6 +331,12 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// API request variables
 		// // URL to call
 		// Supply your own query keywords as needed
+		if (!isset($_GET['pageNumber'])){
+			$pagenumber=1;
+		}
+		else{
+			$pagenumber=$_GET['pageNumber'];	
+		}
 		die(var_dump($_GET['pageNumber']));
 		$store = get_option('ebay_store');
 		$resp = $this->getProductsByStore($store);
