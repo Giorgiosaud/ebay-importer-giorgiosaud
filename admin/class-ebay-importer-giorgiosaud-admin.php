@@ -337,7 +337,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		else{
 			$pagenumber=$_GET['pageNumber'];	
 		}
-		die(var_dump($_GET['pageNumber']));
+		die(var_dump($pageNumber));
 		$store = get_option('ebay_store');
 		$resp = $this->getProductsByStore($store);
 		// Check to see if the call was successful, else print an error
