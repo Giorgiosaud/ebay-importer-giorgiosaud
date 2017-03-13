@@ -322,6 +322,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		    return simplexml_load_string($responsexml);                                    // returns a string
 	}  // End of constructPostToGetAllProductsFromStoreCallAndGetResponse function
 	// Funccion que muestra la pagina
+	protected showProductsList($results){
+		die(var_dumo($results));
+	}
 	public function ebay_importer_page_test_view(){
 		if(!$this->secure_plugin_pages()){
 			return;
@@ -332,31 +335,33 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// // URL to call
 		// Supply your own query keywords as needed
 		if (!isset($_GET['pageNumber'])){
-			$pageNumber=1;
+			$pageNumber="1";
 		}
 		else{
 			$pageNumber=$_GET['pageNumber'];	
 		}
-		die(var_dump($pageNumber));
+		// die(var_dump($pageNumber));
 		$store = get_option('ebay_store');
-		$resp = $this->getProductsByStore($store);
+		$resp = $this->getProductsByStore($store,100,$pageNumber);
 		// Check to see if the call was successful, else print an error
 		// die(var_dump($resp));
 		// dd($resp->ack);
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
-			$items=array();
-			foreach($resp->searchResult->item as $item) {
+  			$this->showProductsList($resp->searchResult);
+  			// die();
+			// $items=array();
+			// foreach($resp->searchResult->item as $item) {
 
 			// $item=$resp->searchResult->item[0];
-				$ProductId=$item->itemId->__toString();
-				$prodDetail = $this->getItemDetail($ProductId);
-				if($prodDetail->Ack=="Success"){
-					$product=new EbayProductGiorgiosaud($prodDetail->Item);
+				// $ProductId=$item->itemId->__toString();
+				// $prodDetail = $this->getItemDetail($ProductId);
+				// if($prodDetail->Ack=="Success"){
+					// $product=new EbayProductGiorgiosaud($prodDetail->Item);
 					// dd($product);
 					// array_push($items, $product);
-					$product->showHTMLProduct();
-				}
+					// $product->showHTMLProduct();
+				// }
 			}
 		}
 	}
