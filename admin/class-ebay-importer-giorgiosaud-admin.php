@@ -332,10 +332,10 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// // URL to call
 		// Supply your own query keywords as needed
 		if (!isset($_GET['pageNumber'])){
-			$pagenumber=1;
+			$pageNumber=1;
 		}
 		else{
-			$pagenumber=$_GET['pageNumber'];	
+			$pageNumber=$_GET['pageNumber'];	
 		}
 		die(var_dump($pageNumber));
 		$store = get_option('ebay_store');
