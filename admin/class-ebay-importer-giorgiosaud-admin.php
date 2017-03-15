@@ -348,7 +348,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// dd($resp);
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
-  			dd($resp);
+  			// dd($resp);
 			// $this->showProductsList($resp->searchResult,$resp->paginationOutput->totalPages);
 			new EbayProductGiorgiosaud($resp->searchResult,$resp->paginationOutput->totalPages,$resp->paginationOutput->totalEntries,$resp->paginationOutput->entriesPerPage);
   			// die();
