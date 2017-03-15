@@ -27,7 +27,7 @@ class EbayProductGiorgiosaud extends WP_List_Table{
 // 	public $compatibility;
 // 	public $conditionitemsion;
 // 	public $SKU;
-	private $PROPERTY;
+	// private $PROPERTY;
 
 // 	public function __construct($xml)
 // 	{
@@ -96,70 +96,8 @@ class EbayProductGiorgiosaud extends WP_List_Table{
 // 				foreach($compatibilityItem["NameValueList"] as $compatibleElement){
 
 // 					if(count($compatibleElement)>0){
-
-// 						$name=$this->slugify($compatibleElement["Name"]);	
-// 						$val=$compatibleElement["Value"];
-// 						$compatibleFull->{$name}=$val;
-// 					}
-// 				}
-// 				array_push($this->compatibility,$compatibleFull);
-// 			}
-// 		// dd($this->compatibility);
-// 			$this->compatibilityTitles=array_keys((array)$this->compatibility[0]);
-// 		}
-// 	}
-// 	public function showHTMLProduct(){
-// 		?>
-// 		<a href="<?= $this->eBayUrl?>"><h1><?= $this->title ?></h1></a>
-// 		<p>Code: <span><?= $this->eBayId ?></span></p>
-// 		<img src="<?= $this->mainPicture ?>" alt="<?= $this->title ?>">
-// 		<p>
-// 			<?= $this->description ?>
-// 		</p>
-// 		<p>Qty:<span><?= $this->qty ?></span></p>
-// 		<p>Price:<span><?= $this->price ?></span></p>
-// 		<!-- <table> -->
-// 		<!-- <tr> -->
-// 		<?php
-// 								// var_dump($this->specificationsTitles);	
-// 		foreach ($this->specificationsTitles as $key=>$value) {
-// 			$valor=$this->specifications->$key;
-// 			echo "<p><strong>$value: </strong>$valor</p>";
-// 		}
-// 		?>
-// 		<?php if(isset($this->compatibility))
-// 		{
-// 			?>
-// 			<table>
-// 				<caption>Compatibility Table</caption>
-// 				<thead>
-// 					<tr>
-// 						<?php foreach ($this->compatibilityTitles as $title) {
-// 							?>
-// 							<th><?= $title?></th>
-
-// 							<?php										
-// 						}?>
-// 					</tr>
-// 				</thead>
-// 				<tbody>
-// 					<?php foreach ($this->compatibility as $compatibility) {
-// 						?>
-// 						<tr>
-// 							<?php foreach ($this->compatibilityTitles as $title) {
-// 								?>
-// 								<td><?= $compatibility->$title ?></td>
-// 								<?php
-// 							}?>
-
-// 						</tr>
-// 						<?php										
-// 					}?>
-// 				</tbody>
-// 			</table>
-// 			<!-- </tr> -->
-// 			<!-- </table> -->
-// 			<?php	
+// var_dump($this->specificationsTitles);	
+// 		foreach ($this->speci
 // 		}
 // 	}
 // 	/* Import media from url
