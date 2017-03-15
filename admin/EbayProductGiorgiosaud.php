@@ -52,7 +52,7 @@ class EbayProductGiorgiosaud extends WP_List_Table{
  	* Prepare the table with different parameters, pagination, columns and table elements
  	*/
  	function prepare_items() {
- 		// dd($this->elementos);
+ 		// dd($this->productos);
  		global $_wp_column_headers;
  		$screen = get_current_screen();
 
@@ -75,7 +75,7 @@ class EbayProductGiorgiosaud extends WP_List_Table{
  		// 			)
  		// 		);
  	}
- 	
+
 
 
  }
