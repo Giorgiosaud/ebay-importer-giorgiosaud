@@ -342,7 +342,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			$pageNumber=$_GET['pageNumber'];	
 		}
 		// die(var_dump($pageNumber));
-		$store = get_option('ebay_store');
+		$store = get_option('ebay_api_key_secret');
 		dd(get_option('ebay_api_key'));
 		$resp = $this->getProductsByStore($store,100,$pageNumber);
 		// Check to see if the call was successful, else print an error
