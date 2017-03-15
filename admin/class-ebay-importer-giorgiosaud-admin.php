@@ -323,7 +323,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 	}  // End of constructPostToGetAllProductsFromStoreCallAndGetResponse function
 	// Funccion que muestra la pagina
 	protected function showProductsList($results,$pages){
-		die(var_dump($pages));
+		die(var_dump($results,$pages));
 	}
 	public function ebay_importer_page_list_view(){
 		if(!$this->secure_plugin_pages()){
