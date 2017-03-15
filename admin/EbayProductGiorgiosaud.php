@@ -71,6 +71,7 @@ class EbayProductGiorgiosaud extends WP_List_Table{
  		// 			)
  		// 		);
  		$this->items=$this->productos;
+ 		dd($this->get_column_info());
  	}
 
 
