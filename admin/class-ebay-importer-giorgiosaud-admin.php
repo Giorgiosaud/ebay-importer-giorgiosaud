@@ -364,10 +364,10 @@ class Ebay_Importer_Giorgiosaud_Admin {
 				}
 			}
 		}
-		dd($productos);
+		// dd($productos);
 
 			// $this->showProductsList($resp->searchResult,$resp->paginationOutput->totalPages);
-		$ebayList=new EbayProductGiorgiosaud($resp->searchResult,$resp->paginationOutput->totalPages,$resp->paginationOutput->totalEntries,$resp->paginationOutput->entriesPerPage);
+		$ebayList=new EbayProductGiorgiosaud($productos);
 		$ebayList->prepare_items();
 		$ebayList->display();
 

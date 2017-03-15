@@ -4,21 +4,14 @@ class EbayProductGiorgiosaud extends WP_List_Table{
     * Constructor, we override the parent to pass our own arguments
     * We usually focus on three parameters: singular and plural labels, as well as whether the class supports AJAX.
     */
-	public $elementos;
-	public $pages;
-	public $totalItems;
-	public $entriesPerPage;
-	function __construct($elementos, $pages,$totalItems,$entriesPerPage) {
+	public $productos;
+	function __construct($productos) {
 		parent::__construct( array(
 			'singular'=> 'wp_ebay_products_list', //Singular label
 			'plural' => 'wp_ebay_products_lists', //plural label, also this well be one of the table css class
 			'ajax'   => false //We won't support Ajax for this table
 			));
-		$this->elementos = $elementos;
-		$this->pages = $pages;
-		$this->totalItems=$totalItems;
-		$this->entriesPerPage=$entriesPerPage;
-
+		$this->productos = $productos;
 	}
 	/**
  * Add extra markup in the toolbars before or after the list
@@ -65,22 +58,22 @@ class EbayProductGiorgiosaud extends WP_List_Table{
 
  		// $totalitems
  		// if(empty($paged) || !is_numeric($paged) || $paged<=0 ){ $paged=1; } //How many pages do we have in total? $totalpages = ceil($totalitems/$perpage); //adjust the query to take pagination into account if(!empty($paged) && !empty($perpage)){ $offset=($paged-1)*$perpage; $query.=' LIMIT '.(int)$offset.','.(int)$perpage; } /* -- Register the pagination -- */ 
- 		$this->set_pagination_args( array(
- 			"total_items" => $this->totalitems,
- 			"total_pages" => $this->pages,
- 			"per_page" => $this->entriesPerPage,
- 			) );
+ 		// $this->set_pagination_args( array(
+ 		// 	"total_items" => $this->totalitems,
+ 		// 	"total_pages" => $this->pages,
+ 		// 	"per_page" => $this->entriesPerPage,
+ 		// 	) );
  		$columns = $this->get_columns();
  		$_wp_column_headers[$screen->id]=$columns;
- 		$elementos=array();
- 		foreach ($this->items as $item) {
- 			array_push(
- 				$elementos,array(
- 					'ID'=>$item['itemId'],
- 					'Name'=>$item['title'],
- 					'URL'=>$item['viewItemURL'],
- 					)
- 				);
+ 		// $elementos=array();
+ 		// foreach ($this->productos as $item) {
+ 		// 	array_push(
+ 		// 		$elementos,array(
+ 		// 			'ID'=>$item['itemId'],
+ 		// 			'Name'=>$item['title'],
+ 		// 			'URL'=>$item['viewItemURL'],
+ 		// 			)
+ 		// 		);
  		}
  		
 
@@ -94,7 +87,7 @@ class EbayProductGiorgiosaud extends WP_List_Table{
  	function display_rows() {
 
    //Get the records registered in the prepare_items method
- 		$records = $this->items;
+ 		$records = $this->productos;
 
    //Get the columns registered in the get_columns and get_sortable_columns methods
  		list( $columns, $hidden ) = $this->get_column_info();
