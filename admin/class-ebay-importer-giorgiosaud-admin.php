@@ -349,8 +349,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
   			// dd($resp);
-  			foreach($resp->searchResult as $item){
-  				var_dump($item->attributes);
+  			foreach($resp->searchResult['item'] as $item){
+  				var_dump($item);
   			}
   			die();
 			// $this->showProductsList($resp->searchResult,$resp->paginationOutput->totalPages);
