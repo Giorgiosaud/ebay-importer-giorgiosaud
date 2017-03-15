@@ -343,7 +343,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		}
 		// die(var_dump($pageNumber));
 		$store = get_option('ebay_store');
-		dd($store);
+		dd(get_option('ebay_api_name'));
 		$resp = $this->getProductsByStore($store,100,$pageNumber);
 		// Check to see if the call was successful, else print an error
 		// die(var_dump($resp));
