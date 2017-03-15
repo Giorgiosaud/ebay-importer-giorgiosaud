@@ -29,7 +29,8 @@ class EbayProductGiorgiosaud{
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach($this->productos as $producto){
+					<?php foreach($this->productos as $producto)
+					{
 						?>
 						<tr id="<?=$producto['ID']?>" class="iedit author-self level-0 type-post status-publish format-standard hentry category-sport category-workshop tag-bike tag-race tag-speed">
 							<td class="id column-id" data-colname="ID"><?=$producto['ID']?></td>
@@ -39,7 +40,6 @@ class EbayProductGiorgiosaud{
 						</tr>
 						<?php
 					}?>
-				}
 			</tbody>
 		</table>
 	</div>
