@@ -47,7 +47,7 @@ class EbayProductGiorgiosaud extends WP_List_Table{
  		global $_wp_column_headers;
  		$screen = get_current_screen();
  		$columns = $this->get_columns();
- 		dd($columns);
+ 		// dd($columns);
 		$_wp_column_headers[$screen->id]=$columns;
 
 
@@ -88,7 +88,8 @@ class EbayProductGiorgiosaud extends WP_List_Table{
 
    //Get the columns registered in the get_columns and get_sortable_columns methods
  		list( $columns, $hidden ) = $this->get_column_info();
-
+ 		dd($columns);
+ 		dd($hidden);
    //Loop for each record
  		if(!empty($records)){foreach($records as $rec){
 
