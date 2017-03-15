@@ -88,6 +88,7 @@ class EbayProductGiorgiosaud extends WP_List_Table{
 
    //Get the records registered in the prepare_items method
  		$records = $this->productos;
+ 		dd($records);
 
    //Get the columns registered in the get_columns and get_sortable_columns methods
  		list( $columns, $hidden ) = $this->get_column_info();
