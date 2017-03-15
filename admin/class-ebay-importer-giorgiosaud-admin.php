@@ -353,9 +353,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			var_dump($resp->paginationOutput->totalEntries->__toString());
 			$productos=array();
 			for ($i=0; $i <= $totalPaginas; $i++) { 
-				if($i!=0){
-					$resp = $this->getProductsByStore($store,100,$i);
-				}
+				$resp = $this->getProductsByStore($store,100,$i);
 				foreach($resp->searchResult->item as $item){
   				// var_dump($item);
 					$producto=array(
