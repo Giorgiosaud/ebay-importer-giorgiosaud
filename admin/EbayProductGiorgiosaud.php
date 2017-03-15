@@ -4,10 +4,10 @@ class EbayProductGiorgiosaud extends WP_List_Table{
     * Constructor, we override the parent to pass our own arguments
     * We usually focus on three parameters: singular and plural labels, as well as whether the class supports AJAX.
     */
-   public $items;
-   public $pages;
-   public $totalItems;
-   public $entriesPerPage
+	public $items;
+	public $pages;
+	public $totalItems;
+	public $entriesPerPage
 	function __construct($items, $pages,$totalItems,$entriesPerPage) {
 		parent::__construct( array(
 			'singular'=> 'wp_ebay_products_list', //Singular label
@@ -43,8 +43,6 @@ class EbayProductGiorgiosaud extends WP_List_Table{
 			'col_link_id'=>__('ID'),
 			'col_link_name'=>__('Name'),
 			'col_link_url'=>__('Url'),
-			'col_link_description'=>__('Description'),
-			'col_link_visible'=>__('Visible')
 			);
 	}
 	/**
@@ -55,22 +53,79 @@ class EbayProductGiorgiosaud extends WP_List_Table{
 		return $sortable = array(
 			'col_link_id'=>'link_id',
 			'col_link_name'=>'link_name',
-			'col_link_visible'=>'link_visible'
 			);
 	}
 	/**
  	* Prepare the table with different parameters, pagination, columns and table elements
  	*/
  	function prepare_items() {
+ 		global $_wp_column_headers;
  		// $totalitems
  		// if(empty($paged) || !is_numeric($paged) || $paged<=0 ){ $paged=1; } //How many pages do we have in total? $totalpages = ceil($totalitems/$perpage); //adjust the query to take pagination into account if(!empty($paged) && !empty($perpage)){ $offset=($paged-1)*$perpage; $query.=' LIMIT '.(int)$offset.','.(int)$perpage; } /* -- Register the pagination -- */ 
  		$this->set_pagination_args( array(
-         "total_items" => $this->totalitems,
-         "total_pages" => $this->pages,
-         "per_page" => $this->entriesPerPage,
-   //    ) );
+ 			"total_items" => $this->totalitems,
+ 			"total_pages" => $this->pages,
+ 			"per_page" => $this->entriesPerPage,
+ 			) );
+ 		$columns = $this->get_columns();
+ 		$_wp_column_headers[$screen->id]=$columns;
+ 		$elementos=array();
+ 		foreach ($this->items as $item) {
+ 			array_push(
+ 				$elementos,array(
+ 					'ID'=>$item['itemId'],
+ 					'Name'=>$item['title'],
+ 					'URL'=>$item['viewItemURL'],
+ 					)
+ 				);
+ 		}
+ 		$this->items = $elementos;
+
 
  	}
+ 	/**
+ * Display the rows of records in the table
+ * @return string, echo the markup of the rows
+ */
+ 	function display_rows() {
+
+   //Get the records registered in the prepare_items method
+ 		$records = $this->items;
+
+   //Get the columns registered in the get_columns and get_sortable_columns methods
+ 		list( $columns, $hidden ) = $this->get_column_info();
+
+   //Loop for each record
+ 		if(!empty($records)){foreach($records as $rec){
+
+      //Open the line
+ 			echo '< tr id="record_'.$rec->link_id.'">';
+ 			foreach ( $columns as $column_name => $column_display_name ) {
+
+         //Style attributes for each col
+ 				$class = "class='$column_name column-$column_name'";
+ 				$style = "";
+ 				if ( in_array( $column_name, $hidden ) ) $style = ' style="display:none;"';
+ 				$attributes = $class . $style;
+
+         //edit link
+ 				$editlink  = '/wp-admin/link.php?action=edit&link_id='.(int)$rec->link_id;
+
+         //Display the cell
+ 				switch ( $column_name ) {
+ 					case "col_link_id":  echo '< td '.$attributes.'>'.stripslashes($rec->link_id).'< /td>';   break;
+ 					case "col_link_name": echo '< td '.$attributes.'>'.stripslashes($rec->link_name).'7< /td>'; break;
+ 					case "col_link_url": echo '< td '.$attributes.'>'.stripslashes($rec->link_url).'< /td>'; break;
+ 					case "col_link_description": echo '< td '.$attributes.'>'.$rec->link_description.'< /td>'; break;
+ 					case "col_link_visible": echo '< td '.$attributes.'>'.$rec->link_visible.'< /td>'; break;
+ 				}
+ 			}
+
+      //Close the line
+ 			echo'< /tr>';
+ 		}}
+ 	}
+
 
  }
 // 	private $xml;
