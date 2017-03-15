@@ -349,18 +349,24 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
   			// dd($resp);
-  			$productos=array();
-  			$producto=array();
-  			foreach($resp->searchResult->item as $item){
+			$totalPaginas=$resp->paginationOutput->totalPages->__toString();
+			$productos=array();
+			for ($i=0; $i <= $totalPaginas; $i++) { 
+				if($i!=0){
+					$resp = $this->getProductsByStore($store,100,$i);
+				}
+				foreach($resp->searchResult->item as $item){
   				// var_dump($item);
-  				$producto=array(
-  				'ID'=>$item->itemId->__toString(),
-  				'Name'=>$item->title->__toString(),
- 				'URL'=>$item->viewItemURL->__toString(),
-  					);
-  				array_push($productos,$producto);
-  			}
-  			dd($productos);
+					$producto=array(
+						'ID'=>$item->itemId->__toString(),
+						'Name'=>$item->title->__toString(),
+						'URL'=>$item->viewItemURL->__toString(),
+						);
+					array_push($productos,$producto);
+				}
+				
+			}
+			dd($productos);
 			// $this->showProductsList($resp->searchResult,$resp->paginationOutput->totalPages);
 			$ebayList=new EbayProductGiorgiosaud($resp->searchResult,$resp->paginationOutput->totalPages,$resp->paginationOutput->totalEntries,$resp->paginationOutput->entriesPerPage);
 			$ebayList->prepare_items();
