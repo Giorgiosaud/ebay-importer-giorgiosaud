@@ -350,7 +350,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
   			// Initialize the $results variable
   			dd($resp);
 			// $this->showProductsList($resp->searchResult,$resp->paginationOutput->totalPages);
-			new EbayProductGiorgiosaud($resp->searchResult,$resp->paginationOutput->totalPages);
+			new EbayProductGiorgiosaud($resp->searchResult,$resp->paginationOutput->totalPages,$resp->paginationOutput->totalEntries,$resp->paginationOutput->entriesPerPage);
   			// die();
 			// $items=array();
 			// foreach($resp->searchResult->item as $item) {

@@ -6,7 +6,9 @@ class EbayProductGiorgiosaud extends WP_List_Table{
     */
    public $items;
    public $pages;
-	function __construct($items, $pages) {
+   public $totalItems;
+   public $entriesPerPage
+	function __construct($items, $pages,$totalItems,$entriesPerPage) {
 		parent::__construct( array(
 			'singular'=> 'wp_ebay_products_list', //Singular label
 			'plural' => 'wp_ebay_products_lists', //plural label, also this well be one of the table css class
@@ -14,6 +16,9 @@ class EbayProductGiorgiosaud extends WP_List_Table{
 			));
 		$this->items = $items;
 		$this->pages = $pages;
+		$this->totalItems=$totalItems;
+		$this->entriesPerPage=$entriesPerPage;
+
 	}
 	/**
  * Add extra markup in the toolbars before or after the list
@@ -59,10 +64,10 @@ class EbayProductGiorgiosaud extends WP_List_Table{
  	function prepare_items() {
  		// $totalitems
  		// if(empty($paged) || !is_numeric($paged) || $paged<=0 ){ $paged=1; } //How many pages do we have in total? $totalpages = ceil($totalitems/$perpage); //adjust the query to take pagination into account if(!empty($paged) && !empty($perpage)){ $offset=($paged-1)*$perpage; $query.=' LIMIT '.(int)$offset.','.(int)$perpage; } /* -- Register the pagination -- */ 
- 		// $this->set_pagination_args( array(
-   //       "total_items" => $totalitems,
-   //       "total_pages" => $totalpages,
-   //       "per_page" => $perpage,
+ 		$this->set_pagination_args( array(
+         "total_items" => $this->totalitems,
+         "total_pages" => $this->pages,
+         "per_page" => $this->entriesPerPage,
    //    ) );
 
  	}
