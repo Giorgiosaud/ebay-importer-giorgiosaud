@@ -83,8 +83,9 @@ class EbayProductGiorgiosaud extends WP_List_Table{
  		}
  		$this->items = $elementos;
 
-
+ 		dd($this->items);
  	}
+
  	/**
  * Display the rows of records in the table
  * @return string, echo the markup of the rows
