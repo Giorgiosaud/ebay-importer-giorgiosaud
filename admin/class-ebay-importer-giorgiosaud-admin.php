@@ -351,7 +351,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
   			// dd($resp);
 			$totalPaginas=$resp->paginationOutput->totalPages->__toString();
 			$productos=array();
-			for ($i=0; $i <= $totalPaginas; $i++) { 
+			for ($i=0; $i < $totalPaginas; $i++) { 
 				if($i!=0){
 					$resp = $this->getProductsByStore($store,100,$i);
 				}
