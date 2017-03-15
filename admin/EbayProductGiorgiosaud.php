@@ -25,6 +25,7 @@ class EbayProductGiorgiosaud{
 						</th>
 						<th scope="col" id="name" class="manage-column ">Name</th>
 						<th scope="col" id="url" class="manage-column column-url">URL</th>
+						<th scope="col" id="url" class="manage-column column-impotar">Importar</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -33,7 +34,8 @@ class EbayProductGiorgiosaud{
 						<tr id="<?=$producto['ID']?>" class="iedit author-self level-0 type-post status-publish format-standard hentry category-sport category-workshop tag-bike tag-race tag-speed">
 							<td class="id column-id" data-colname="ID"><?=$producto['ID']?></td>
 							<td class="id column-name" data-colname="Name"><?=$producto['Name']?></td>
-							<td class="id column-URL" data-colname="URL"><?=$producto['URL']?></td>
+							<td class="id column-URL" data-colname="URL"><a href="<?=$producto['URL']?>">Link eBay</a></td>
+							<td>Importar</td>
 						</tr>
 						<?php
 					}?>
