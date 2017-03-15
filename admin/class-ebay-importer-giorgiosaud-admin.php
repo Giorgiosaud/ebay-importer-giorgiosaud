@@ -281,6 +281,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			"X-EBAY-SOA-SECURITY-APPNAME:$api_name",
 			"Content-Type: text/xml;charset=utf-8"
 			);
+
+		dd($xmlrequest);
 		  $session  = curl_init($endpoint);                       // create a curl session
 		  curl_setopt($session, CURLOPT_POST, true);              // POST request type
 		  curl_setopt($session, CURLOPT_HTTPHEADER, $headers);    // set headers using $headers array
