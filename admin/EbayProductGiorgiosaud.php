@@ -4,16 +4,68 @@ class EbayProductGiorgiosaud extends WP_List_Table{
     * Constructor, we override the parent to pass our own arguments
     * We usually focus on three parameters: singular and plural labels, as well as whether the class supports AJAX.
     */
-	function __construct($items) {
+	function __construct($items, $pages) {
 		parent::__construct( array(
 			'singular'=> 'wp_ebay_products_list', //Singular label
 			'plural' => 'wp_ebay_products_lists', //plural label, also this well be one of the table css class
 			'ajax'   => false //We won't support Ajax for this table
-		));
+			));
 		$this->items = $items;
+		$this->pages = $pages;
 	}
+	/**
+ * Add extra markup in the toolbars before or after the list
+ * @param string $which, helps you decide if you add the markup after (bottom) or before (top) the list
+ */
+	function extra_tablenav( $which ) {
+		if ( $which == "top" ){
+      //The code that goes before the table is here
+			echo"Hello, I'm before the table";
+		}
+		if ( $which == "bottom" ){
+      //The code that goes after the table is there
+			echo"Hi, I'm after the table";
+		}
+	}
+	/**
+ * Define the columns that are going to be used in the table
+ * @return array $columns, the array of columns to use with the table
+ */
+	function get_columns() {
+		return $columns= array(
+			'col_link_id'=>__('ID'),
+			'col_link_name'=>__('Name'),
+			'col_link_url'=>__('Url'),
+			'col_link_description'=>__('Description'),
+			'col_link_visible'=>__('Visible')
+			);
+	}
+	/**
+ * Decide which columns to activate the sorting functionality on
+ * @return array $sortable, the array of columns that can be sorted by the user
+ */
+	public function get_sortable_columns() {
+		return $sortable = array(
+			'col_link_id'=>'link_id',
+			'col_link_name'=>'link_name',
+			'col_link_visible'=>'link_visible'
+			);
+	}
+	/**
+ 	* Prepare the table with different parameters, pagination, columns and table elements
+ 	*/
+ 	function prepare_items() {
+ 		// $totalitems
+ 		// if(empty($paged) || !is_numeric($paged) || $paged<=0 ){ $paged=1; } //How many pages do we have in total? $totalpages = ceil($totalitems/$perpage); //adjust the query to take pagination into account if(!empty($paged) && !empty($perpage)){ $offset=($paged-1)*$perpage; $query.=' LIMIT '.(int)$offset.','.(int)$perpage; } /* -- Register the pagination -- */ 
+ 		// $this->set_pagination_args( array(
+   //       "total_items" => $totalitems,
+   //       "total_pages" => $totalpages,
+   //       "per_page" => $perpage,
+   //    ) );
 
-}
+ 	}
+
+ }
 // 	private $xml;
 // 	public $eBayId;
 // 	public $title;
@@ -26,8 +78,9 @@ class EbayProductGiorgiosaud extends WP_List_Table{
 // 	public $compatibilityTitles;
 // 	public $compatibility;
 // 	public $conditionitemsion;
-// 	public $SKU;
+// 	publpages
 	// private $PROPERTY;
+	private $PROPERTY;
 
 // 	public function __construct($xml)
 // 	{
