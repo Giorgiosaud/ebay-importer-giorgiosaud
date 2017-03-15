@@ -67,7 +67,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-ebay-importer-giorgiosaud.
  * @since    1.0.0
  */
 function run_ebay_importer_giorgiosaud() {
-
+	//Our class extends the WP_List_Table class, so we need to make sure that it's there
+	if(!class_exists('WP_List_Table')){
+		require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+	}
 	$plugin = new Ebay_Importer_Giorgiosaud();
 	$plugin->run();
 

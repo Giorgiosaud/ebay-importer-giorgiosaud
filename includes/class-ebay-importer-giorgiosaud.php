@@ -109,10 +109,15 @@ class Ebay_Importer_Giorgiosaud {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-ebay-importer-giorgiosaud-i18n.php';
 
 		/**
+		 * The class responsible for show products of ebay.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/EbayProductGiorgiosaud.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-ebay-importer-giorgiosaud-admin.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/EbayProductGiorgiosaud.php';
+		
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -151,6 +156,7 @@ class Ebay_Importer_Giorgiosaud {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Ebay_Importer_Giorgiosaud_Admin( $this->get_plugin_name(), $this->get_version() );
+		// $this->loader->add_action('admin_init',$plugin_admin,'ebay_importer_menu');
 		$this->loader->add_action('admin_menu',$plugin_admin,'ebay_importer_menu');
 		$this->loader->add_action( 'admin_init', $plugin_admin,'register_ebay_importer_group' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );

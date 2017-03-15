@@ -348,7 +348,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// dd($resp);
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
-			$this->showProductsList($resp->searchResult,$resp->paginationOutput->totalPages);
+			// $this->showProductsList($resp->searchResult,$resp->paginationOutput->totalPages);
+			new EbayProductGiorgiosaud($results);
   			// die();
 			// $items=array();
 			// foreach($resp->searchResult->item as $item) {
@@ -366,6 +367,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 	}
 	// Funccion que muestra la pagina
 	protected function showProductsList($results,$pages){
-		die(var_dump($results,$pages));
+		
+		// die(var_dump($results,$pages));
 	}
 }
