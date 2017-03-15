@@ -38,16 +38,7 @@ class EbayProductGiorgiosaud extends WP_List_Table{
 			'col_link_url'=>__('Url'),
 			);
 	}
-	/**
- * Decide which columns to activate the sorting functionality on
- * @return array $sortable, the array of columns that can be sorted by the user
- */
-	public function get_sortable_columns() {
-		return $sortable = array(
-			'col_link_id'=>'link_id',
-			'col_link_name'=>'link_name',
-			);
-	}
+	
 	/**
  	* Prepare the table with different parameters, pagination, columns and table elements
  	*/
@@ -68,8 +59,8 @@ class EbayProductGiorgiosaud extends WP_List_Table{
  		// 	"total_pages" => $this->pages,
  		// 	"per_page" => $this->entriesPerPage,
  		// 	) );
- 		$columns = $this->get_columns();
- 		$_wp_column_headers[$screen->id]=$columns;
+ 		// $columns = $this->get_columns();
+ 		// $_wp_column_headers[$screen->id]=$columns;
  		// $elementos=array();
  		// foreach ($this->productos as $item) {
  		// 	array_push(
