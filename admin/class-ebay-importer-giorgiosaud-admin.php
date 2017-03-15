@@ -175,8 +175,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			__('Ebay APP ID (Client ID)','ebay-importer-giorgiosaud' ),
 			array($this,'text_field_cb'),
 			'ebay-importer-giorgiosaud',
-			'ebay_importer_giorgio
-			saud_settings',
+			'ebay_importer_giorgiosaud_settings',
 			array(
 				'id_field'=>'ebay_api_name',
 				'label_for'=>'ebay_api_name',
