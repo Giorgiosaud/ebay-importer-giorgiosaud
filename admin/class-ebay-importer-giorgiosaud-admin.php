@@ -354,7 +354,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
   			foreach($resp->searchResult->item as $item){
   				// var_dump($item);
   				$producto=array(
-  				'ID'=>$item->itemId->to_string(),
+  				'ID'=>$item->itemId->toString(),
   				'Name'=>$item->title,
  				'URL'=>$item->viewItemURL,
   					);
