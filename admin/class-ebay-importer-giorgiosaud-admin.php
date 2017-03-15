@@ -349,7 +349,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
   			// dd($resp);
-  			foreach($resp->searchResult['item'] as $item){
+  			foreach($resp->searchResult->item as $item){
   				var_dump($item);
   			}
   			die();
