@@ -4,17 +4,17 @@ class EbayProductGiorgiosaud extends WP_List_Table{
     * Constructor, we override the parent to pass our own arguments
     * We usually focus on three parameters: singular and plural labels, as well as whether the class supports AJAX.
     */
-	public $items;
+	public $elementos;
 	public $pages;
 	public $totalItems;
 	public $entriesPerPage;
-	function __construct($items, $pages,$totalItems,$entriesPerPage) {
+	function __construct($elementos, $pages,$totalItems,$entriesPerPage) {
 		parent::__construct( array(
 			'singular'=> 'wp_ebay_products_list', //Singular label
 			'plural' => 'wp_ebay_products_lists', //plural label, also this well be one of the table css class
 			'ajax'   => false //We won't support Ajax for this table
 			));
-		$this->items = $items;
+		$this->elementos = $elementos;
 		$this->pages = $pages;
 		$this->totalItems=$totalItems;
 		$this->entriesPerPage=$entriesPerPage;
@@ -59,6 +59,7 @@ class EbayProductGiorgiosaud extends WP_List_Table{
  	* Prepare the table with different parameters, pagination, columns and table elements
  	*/
  	function prepare_items() {
+ 		dd($this->elementos);
  		global $_wp_column_headers;
 	   $screen = get_current_screen();
 
@@ -81,9 +82,9 @@ class EbayProductGiorgiosaud extends WP_List_Table{
  					)
  				);
  		}
- 		$this->items = $elementos;
+ 		
 
- 		dd($this->items);
+
  	}
 
  	/**
