@@ -70,6 +70,7 @@ class EbayProductGiorgiosaud extends WP_List_Table{
  		// 			'URL'=>$item['viewItemURL'],
  		// 			)
  		// 		);
+ 		$this->items=$this->productos;
  	}
 
 
