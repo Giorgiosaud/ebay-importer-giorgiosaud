@@ -4,6 +4,8 @@ class EbayProductGiorgiosaud extends WP_List_Table{
     * Constructor, we override the parent to pass our own arguments
     * We usually focus on three parameters: singular and plural labels, as well as whether the class supports AJAX.
     */
+   public $items;
+   public $pages;
 	function __construct($items, $pages) {
 		parent::__construct( array(
 			'singular'=> 'wp_ebay_products_list', //Singular label
@@ -80,7 +82,7 @@ class EbayProductGiorgiosaud extends WP_List_Table{
 // 	public $conditionitemsion;
 // 	publpages
 	// private $PROPERTY;
-	private $PROPERTY;
+	// private $PROPERTY;
 
 // 	public function __construct($xml)
 // 	{
