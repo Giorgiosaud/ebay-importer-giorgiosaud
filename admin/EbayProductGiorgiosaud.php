@@ -7,7 +7,7 @@ class EbayProductGiorgiosaud extends WP_List_Table{
 	public $items;
 	public $pages;
 	public $totalItems;
-	public $entriesPerPage
+	public $entriesPerPage;
 	function __construct($items, $pages,$totalItems,$entriesPerPage) {
 		parent::__construct( array(
 			'singular'=> 'wp_ebay_products_list', //Singular label
