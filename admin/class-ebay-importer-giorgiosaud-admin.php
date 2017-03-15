@@ -138,8 +138,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		add_menu_page('Ebay Importer', 'Ebay Importer', 'edit_others_posts', 'ebay-importer-giorgiosaud', array($this,'ebay_importer_page_view'),'dashicons-migrate',null);
 		add_submenu_page(
 			'ebay-importer-giorgiosaud',
-			'Test',
-			'Prueba de Funccionamiento',
+			'Listado',
+			'Listado de Productos',
 			'edit_others_posts',
 			'ebay-importer-giorgiosaud-list',
 			array($this,'ebay_importer_page_list_view')
