@@ -54,7 +54,7 @@ class EbayProductGiorgiosaud extends WP_List_Table{
  	function prepare_items() {
  		dd($this->elementos);
  		global $_wp_column_headers;
-	   $screen = get_current_screen();
+ 		$screen = get_current_screen();
 
  		// $totalitems
  		// if(empty($paged) || !is_numeric($paged) || $paged<=0 ){ $paged=1; } //How many pages do we have in total? $totalpages = ceil($totalitems/$perpage); //adjust the query to take pagination into account if(!empty($paged) && !empty($perpage)){ $offset=($paged-1)*$perpage; $query.=' LIMIT '.(int)$offset.','.(int)$perpage; } /* -- Register the pagination -- */ 
@@ -74,11 +74,11 @@ class EbayProductGiorgiosaud extends WP_List_Table{
  		// 			'URL'=>$item['viewItemURL'],
  		// 			)
  		// 		);
- 		}
- 		
-
-
  	}
+ 	
+
+
+ }
 
  	/**
  * Display the rows of records in the table
@@ -120,11 +120,11 @@ class EbayProductGiorgiosaud extends WP_List_Table{
 
       //Close the line
  			echo'< /tr>';
- 		}}
+ 		}
  	}
-
-
  }
+
+
 // 	private $xml;
 // 	public $eBayId;
 // 	public $title;
