@@ -355,7 +355,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			$resp = $this->getProductsByStore($store,100,$i);
 			if ($resp->ack == "Success") {
 				foreach($resp->searchResult->item as $item){
-					dd(getItemDetail($item->itemId->__toString()));
+					dd($this->getItemDetail($item->itemId->__toString()));
 					$producto=array(
 						'ID'=>$item->itemId->__toString(),
 						'Name'=>$item->title->__toString(),
