@@ -346,16 +346,15 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// Check to see if the call was successful, else print an error
 		// die(var_dump($resp));
 		// dd($resp);
-		if ($resp->ack == "Success") {
   			// Initialize the $results variable
   			// dd($resp);
-			$totalPaginas=$resp->paginationOutput->totalPages->__toString();
-			var_dump($resp->paginationOutput->totalEntries->__toString());
-			$productos=array();
-			for ($i=0; $i <= $totalPaginas; $i++) { 
-				$resp = $this->getProductsByStore($store,100,$i);
+		$totalPaginas=$resp->paginationOutput->totalPages->__toString();
+		var_dump($resp->paginationOutput->totalEntries->__toString());
+		$productos=array();
+		for ($i=0; $i <= $totalPaginas; $i++) { 
+			$resp = $this->getProductsByStore($store,100,$i);
+			if ($resp->ack == "Success") {
 				foreach($resp->searchResult->item as $item){
-  				// var_dump($item);
 					$producto=array(
 						'ID'=>$item->itemId->__toString(),
 						'Name'=>$item->title->__toString(),
@@ -363,13 +362,14 @@ class Ebay_Importer_Giorgiosaud_Admin {
 						);
 					array_push($productos,$producto);
 				}
-				
 			}
-			dd($productos);
+		}
+		dd($productos);
+
 			// $this->showProductsList($resp->searchResult,$resp->paginationOutput->totalPages);
-			$ebayList=new EbayProductGiorgiosaud($resp->searchResult,$resp->paginationOutput->totalPages,$resp->paginationOutput->totalEntries,$resp->paginationOutput->entriesPerPage);
-			$ebayList->prepare_items();
-			$ebayList->display();
+		$ebayList=new EbayProductGiorgiosaud($resp->searchResult,$resp->paginationOutput->totalPages,$resp->paginationOutput->totalEntries,$resp->paginationOutput->entriesPerPage);
+		$ebayList->prepare_items();
+		$ebayList->display();
 
 
   			// die();
@@ -385,11 +385,10 @@ class Ebay_Importer_Giorgiosaud_Admin {
 					// array_push($items, $product);
 					// $product->showHTMLProduct();
 				// }
-		}
 	}
 	// Funccion que muestra la pagina
 	protected function showProductsList($results,$pages){
-		
+
 		// die(var_dump($results,$pages));
 	}
 }
