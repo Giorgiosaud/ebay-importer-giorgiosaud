@@ -343,10 +343,11 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		}
 		// die(var_dump($pageNumber));
 		$store = get_option('ebay_store');
+		dd($store);
 		$resp = $this->getProductsByStore($store,100,$pageNumber);
 		// Check to see if the call was successful, else print an error
 		// die(var_dump($resp));
-		dd($resp);
+		// dd($resp);
 		if ($resp->ack == "Success") {
   			// Initialize the $results variable
 			$this->showProductsList($resp->searchResult,$resp->paginationOutput->totalPages);
