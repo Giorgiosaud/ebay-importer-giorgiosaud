@@ -368,7 +368,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 			// $this->showProductsList($resp->searchResult,$resp->paginationOutput->totalPages);
 		$ebayList=new EbayProductGiorgiosaud($productos);
-		$ebayList->prepare_items();
+		// $ebayList->prepare_items();
 		$ebayList->display();
 
 
