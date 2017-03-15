@@ -350,6 +350,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
   			// Initialize the $results variable
   			// dd($resp);
 			$totalPaginas=$resp->paginationOutput->totalPages->__toString();
+			var_dump($resp->paginationOutput->totalEntries->__toString());
 			$productos=array();
 			for ($i=0; $i < $totalPaginas; $i++) { 
 				if($i!=0){
