@@ -282,7 +282,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			"Content-Type: text/xml;charset=utf-8"
 			);
 
-		dd($xmlrequest);
+		dd($api_name);
 		  $session  = curl_init($endpoint);                       // create a curl session
 		  curl_setopt($session, CURLOPT_POST, true);              // POST request type
 		  curl_setopt($session, CURLOPT_HTTPHEADER, $headers);    // set headers using $headers array
