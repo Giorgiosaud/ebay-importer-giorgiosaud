@@ -99,8 +99,8 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// dd($this->plugin_name);
 		wp_enqueue_script( 'ebayData', plugin_dir_url( __FILE__ ) . 'js/ebay-importer-giorgiosaud-admin.js', array( 'jquery' ), $this->version, false );
 		wp_localize_script('ebayData', 'ajax_custom', array(
-			'ajaxurl' => admin_url('admin-ajax.php')
-			'nonce'=> wp_create_nonce( 'UpdateOrCreateProductCompatibility' );
+			'ajaxurl' => admin_url('admin-ajax.php'),
+			'nonce'=> wp_create_nonce( 'UpdateOrCreateProductCompatibility' )
 
 			));
 		add_action( 'wp_ajax_UpdateOrCreateProductCompatibility', array($this,'UpdateOrCreateProductCompatibility') );
