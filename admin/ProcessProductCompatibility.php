@@ -51,7 +51,7 @@ class ProcessProductCompatibility{
 					
 				}	
 				$table['p']['o']['uh']=1;
-				$table['c']=array('p'=>'');
+				$table['c']=array(array('p'=>''));
 				$table['h']=$header;
 				$table['b']=$body;
 
