@@ -9,6 +9,23 @@ class ProcessProductCompatibility{
 		$this->details = $details;
 	}
 	public function newOrUpdateCompatibility(){
-		echo $this->details;
+		$args = array(
+			'post_type'  => 'product',
+			'meta_query' => array(
+				'key'     => '_ebay_id',
+				'value'   => $this->idEbay,
+				'compare' => '=',
+				)
+			);
+		$query=new WP_Query($args);
+		if ( $query->have_posts() ) {
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				echo $query->post->ID;
+			}
+		}
+		else{
+			echo 'not Found post with Ebay Id'.$this->idEbay;
+		}
 	}
 }
