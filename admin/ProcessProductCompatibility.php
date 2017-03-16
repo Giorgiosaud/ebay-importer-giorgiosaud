@@ -21,7 +21,7 @@ class ProcessProductCompatibility{
 				$header=array();
 				$column=array();
 				foreach($this->details->ItemCompatibilityList->Compatibility as $compatible){
-					var_dump($compatible);
+					var_dump($compatible[0]);
 				}
 				// var_dump($this->details->ItemCompatibilityList);
 				// die();
