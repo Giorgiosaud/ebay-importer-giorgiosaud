@@ -3,7 +3,7 @@
 	jQuery(document).ready(function($) {
 		$('.importUpdateCompatibility').submit(function(e){
 			alert('Start Importing');
-			alert($(this).find( "idEbay" ).val());
+			alert($(this).find( ".idEbay" ).val());
 
 			// $.ajax({
 			// 	url: ajaxurl,
