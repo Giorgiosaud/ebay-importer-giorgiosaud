@@ -33,15 +33,17 @@ class ProcessProductCompatibility{
 				$table=array();
 				$table['header']=$header;
 				$body=array();
-				var_dump(get_field('compatible_table'));
-				die();
+				// var_dump(get_field('compatible_table'));
+				// die();
 				foreach($this->details->ItemCompatibilityList->Compatibility as $compatible){
+					$linea=array();
 					foreach($compatible->NameValueList as $listElement){
 						if($listElement->Value!=''){
-							$column=array('c'=>$listElement->Value->__toString());
-							array_push($header,$column);
+							$elemento=array('c'=>$listElement->Value->__toString());
+							array_push($linea,$elemento);
 						}
 					}
+					
 					var_dump($compatible);
 					die();
 				}
