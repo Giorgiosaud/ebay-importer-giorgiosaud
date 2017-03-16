@@ -22,7 +22,7 @@ class ProcessProductCompatibility{
 				$headerElement=$this->details->ItemCompatibilityList->Compatibility[0];
 				foreach($headerElement->NameValueList as $listElement){
 					if($listElement->Name!=''){
-						$column=array('c'=>$listElement->Name);
+						$column=array('c'=>$listElement->Name->__toString());
 						array_push($header,$column);
 					}
 
@@ -30,7 +30,7 @@ class ProcessProductCompatibility{
 				$column=array(
 					'c'=>'Compatibility Notes');
 				array_push($header,$column);
-				var_dump($header);
+				var_dump(get_field('compatible_table'));
 				die();
 				foreach($this->details->ItemCompatibilityList->Compatibility as $compatible){
 
@@ -39,7 +39,7 @@ class ProcessProductCompatibility{
 			}
 				// var_dump($this->details->ItemCompatibilityList);
 				// die();
-				// var_dump(get_field('compatible_table'));
+				
 				// echo 'Product Id '.$query->post->ID;
 		}
 		else{
