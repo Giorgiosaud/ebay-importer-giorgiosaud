@@ -116,6 +116,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		
 		// $json=json_decode(stripslashes($_POST['data']), true);
 		echo $_POST['data']['ebayId'];
+		echo 'listp';
 		// echo 'hola';
 		// $pid = $_REQUEST;
 		// var_dump($pid);
