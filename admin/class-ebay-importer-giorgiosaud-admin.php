@@ -164,8 +164,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
 	}
 	public function woo_add_custom_general_fields_save(){
 		$woocommerce_text_field = $_POST['_ebay_id'];
-		dd($woocommerce_text_field);
+
 		if( !empty( $woocommerce_text_field ) ){
+			dd($woocommerce_text_field);
 			update_post_meta( $post_id, '_ebay_id', esc_attr( $woocommerce_text_field ) );
 		}
 
