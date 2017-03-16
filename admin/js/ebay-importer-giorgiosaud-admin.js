@@ -1,6 +1,7 @@
 (function( $ ) {
 	'use strict';
 	$('.importUpdateCompatibility').submit(function(e){
+		alert('importing');
 		return false;
 	});
 	/**
