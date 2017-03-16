@@ -12,6 +12,7 @@
 					nonce:ajax_custom.nonce
 				}
 			}
+			console.info('fetching ID '+IdProd);
 			$.post(ajax_custom.ajaxurl,data)
 			.done(function(response){
 				console.log(response);
