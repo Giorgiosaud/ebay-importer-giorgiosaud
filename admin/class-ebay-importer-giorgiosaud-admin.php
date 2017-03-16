@@ -115,9 +115,10 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		
 		$ebayId= $_POST['idEbay'];
 		$prodDetail = self::getItemDetail($ebayId);
-			var_dump($prodDetail);
+			
 		if($prodDetail->Ack=="Success"){
 			$product=new ProcessProductCompatibility($ebayId,$prodDetail->Item);
+			var_dump($product);
 			$product->newOrUpdateCompatibility();
 		}
 		exit;
