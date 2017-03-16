@@ -112,10 +112,10 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 	}
 	static public function get_compatibility_list(){
-		var_dump($_POST);
+		
 		$ebayId= $_POST['idEbay'];
 		$prodDetail = self::getItemDetail($ebayId);
-
+			var_dump($prodDetail);
 		if($prodDetail->Ack=="Success"){
 			$product=new ProcessProductCompatibility($ebayId,$prodDetail->Item);
 			$product->newOrUpdateCompatibility();
