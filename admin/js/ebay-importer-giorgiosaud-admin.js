@@ -1,10 +1,32 @@
 (function( $ ) {
 	'use strict';
 	jQuery(document).ready(function($) {
-		alert(ebay_api_key);
-		alert('Start importing');
 		$('.importUpdateCompatibility').submit(function(e){
-			alert('importing');
+			alert('Start Importing');
+			alert($(this).find( "idEbay" ).val());
+
+			// $.ajax({
+			// 	url: ajaxurl,
+			// 	headers: {
+			// 		"Content-Type": "text/xml;charset=utf-8",
+			// 		"X-EBAY-API-APP-ID":ebay_api_name,
+			// 		"X-EBAY-API-SITE-ID":"0",
+			// 		"X-EBAY-API-CALL-NAME":"GetSingleItem",
+			// 		"X-EBAY-API-VERSION":"863",
+			// 		"X-EBAY-API-REQUEST-ENCODING":"json"
+			// 	},
+			// 	data: "<GetSingleItemRequest xmlns=\"urn:ebay:apis:eBLBaseComponents\"><IncludeSelector>Compatibility</IncludeSelector><ItemID>$productId</ItemID></GetSingleItemRequest>", 
+			// 	type: 'POST',
+			// 	contentType: "text/xml",
+			// 	dataType: "xml",
+			// 	success : function(){
+
+			// 	},
+			// 	error : function (xhr, ajaxOptions, thrownError){  
+			// 		console.log(xhr.status);          
+			// 		console.log(thrownError);
+			// 	} 
+			// }); 
 			return false;
 		});	
 	});
