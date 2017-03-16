@@ -18,7 +18,7 @@ class ProcessProductCompatibility{
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
 				$query->the_post();
-				var_dump($this->details->ItemCompatibilityList);
+				var_dump($this->details->ItemCompatibilityList->Compatibility);
 				die();
 				var_dump(get_field('compatible_table'));
 				// echo 'Product Id '.$query->post->ID;
