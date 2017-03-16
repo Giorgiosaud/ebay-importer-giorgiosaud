@@ -38,7 +38,7 @@ class EbayProductGiorgiosaud{
 							<td class="id column-URL" data-colname="URL"><a href="<?=$producto['URL']?>">Link eBay</a></td>
 							<td>
 								<form class="importUpdateCompatibility">
-									<input type="hidden" name="idEbay" value="<?=$producto['ID']?>">		
+									<input type="hidden" name="idEbay" class="idEbay" value="<?=$producto['ID']?>">		
 									<input type="submit" value="Importar">
 								</form>
 							</td>
