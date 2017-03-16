@@ -19,24 +19,32 @@ class ProcessProductCompatibility{
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				$header=array();
-				die(var_dump($this->details->ItemCompatibilityList->Compatibility[0]));
-				foreach($this->details->ItemCompatibilityList->Compatibility as $compatible){
-					foreach($compatible[0]->NameValueList as $listElement){
-						if($listElement->Name!=''){
-							$column=array('c'=>$listElement->Name);
-							array_push($header,$column);
-						}
-
+				$headerElement=$this->details->ItemCompatibilityList->Compatibility[0];
+				foreach($headerElement->NameValueList as $listElement){
+					if($listElement->Name!=''){
+						$column=array('c'=>$listElement->Name);
+						array_push($header,$column);
 					}
+
 				}
+				$column=array(
+					'c'=>'Compatibility Notes');
+				array_push($header,$column);
+				var_dump($header);
+				die();
+				foreach($this->details->ItemCompatibilityList->Compatibility as $compatible){
+
+
+				}
+			}
 				// var_dump($this->details->ItemCompatibilityList);
 				// die();
 				// var_dump(get_field('compatible_table'));
 				// echo 'Product Id '.$query->post->ID;
-			}
-		}
-		else{
-			echo 'not Found post with Ebay Id'.$this->idEbay;
 		}
 	}
+	else{
+		echo 'not Found post with Ebay Id'.$this->idEbay;
+	}
+}
 }
