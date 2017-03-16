@@ -1,9 +1,13 @@
 (function( $ ) {
 	'use strict';
-	$('.importUpdateCompatibility').submit(function(e){
-		alert('importing');
-		return false;
+	jQuery(document).ready(function($) {
+		alert('Start importing');
+		$('.importUpdateCompatibility').submit(function(e){
+			alert('importing');
+			return false;
+		});	
 	});
+	
 	/**
 	 * All of the code for your admin-facing JavaScript source
 	 * should reside in this file.
