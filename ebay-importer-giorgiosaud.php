@@ -72,7 +72,10 @@ function run_ebay_importer_giorgiosaud() {
 		require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 	}
 	$plugin = new Ebay_Importer_Giorgiosaud();
+
 	$plugin->run();
+	add_action( 'wp_ajax_compatibility', array('Ebay_Importer_Giorgiosaud_Admin','UpdateOrCreateProductCompatibility') );
+	add_action( 'wp_ajax_nopriv_compatibility', array('Ebay_Importer_Giorgiosaud_Admin','UpdateOrCreateProductCompatibility') );
 
 }
 run_ebay_importer_giorgiosaud();
