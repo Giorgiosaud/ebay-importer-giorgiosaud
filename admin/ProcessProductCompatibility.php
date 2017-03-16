@@ -53,7 +53,7 @@ class ProcessProductCompatibility{
 				$table['body']=$body;
 
 				
-				update_field('compatible_table', $table, $query->post->ID);
+				update_field('compatible_table', json_encode($table), $query->post->ID);
 				die();
 
 				
