@@ -112,6 +112,10 @@ class Ebay_Importer_Giorgiosaud {
 		 * The class responsible for show products of ebay.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/EbayProductGiorgiosaud.php';
+		/**
+		 * The class responsible for show Process Compatibility of ebay.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ProcessProductCompatibility.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.

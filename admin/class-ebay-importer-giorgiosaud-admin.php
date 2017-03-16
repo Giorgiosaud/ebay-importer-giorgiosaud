@@ -114,22 +114,14 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 	public function UpdateOrCreateProductCompatibility(){
 		
-		// $json=json_decode(stripslashes($_POST['data']), true);
-		echo $_POST['data']['ebayId'];
-		echo 'listp';
-		// echo 'hola';
-		// $pid = $_REQUEST;
-		// var_dump($pid);
-		// $response = new WP_Ajax_Response;
-		// $response->add( array(
-			// 'data'	=> 'success',
-			// 'supplemental' => array(
-				// 'pid' => $pid,
-				// 'message' => 'This post has been deleted',
-				// ),
-			// ) );
-		// $response->send();
-		// exit();
+		$ebayId= $_POST['data']['ebayId'];
+		
+		$prodDetail = $this->getItemDetail($ebayId);
+		if($prodDetail->Ack=="Success"){
+
+			$product=new ProcessProductCompatibility($ebayId,$prodDetail->Item);
+			$product->newOrUpdateCompatibility();
+		}
 		exit;
 
 
