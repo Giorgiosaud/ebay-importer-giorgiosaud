@@ -111,7 +111,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 	}
 
-	public funciton UpdateOrCreateProductCompatibility(){
+	public function UpdateOrCreateProductCompatibility(){
 		$pid = $_REQUEST;
 		$response = new WP_Ajax_Response;
 		$response->add($pid);
