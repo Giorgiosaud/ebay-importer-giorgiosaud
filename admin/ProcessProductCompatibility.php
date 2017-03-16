@@ -47,8 +47,10 @@ class ProcessProductCompatibility{
 					array_push($linea,$elemento);
 
 					var_dump($linea);
-					die();
-				}
+					array_push($body,$linea);					
+					
+				}	
+				dd($body);
 
 				
 				update_field('compatible_table', $table, $query->post->ID);
