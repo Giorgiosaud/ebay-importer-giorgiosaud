@@ -103,8 +103,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			'nonce'=> wp_create_nonce( 'UpdateOrCreateProductCompatibility' )
 
 			));
-		add_action( 'wp_ajax_compatibility', array($this,'UpdateOrCreateProductCompatibility') );
-		add_action( 'wp_ajax_nopriv_compatibility', array($this,'UpdateOrCreateProductCompatibility') );
+		
 		
 
 		// wp_localize_script( 'ebayData', 'ebay_api_key', get_option('ebay_api_key') );
@@ -114,8 +113,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
 	}
 
 	public function UpdateOrCreateProductCompatibility(){
-		echo 'hola';
-		// $pid = $_REQUEST;
+		// echo 'hola';
+		$pid = $_REQUEST;
+		var_dump($pid);
 		// $response = new WP_Ajax_Response;
 		// $response->add($pid);
 		// $response->send();
