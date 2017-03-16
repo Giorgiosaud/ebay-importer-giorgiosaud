@@ -31,7 +31,7 @@ class ProcessProductCompatibility{
 					'c'=>'Compatibility Notes');
 				array_push($header,$column);
 				$table=array();
-				$table['header']=$header;
+				
 				$body=array();
 				// var_dump(get_field('compatible_table'));
 				// die();
@@ -50,7 +50,10 @@ class ProcessProductCompatibility{
 					array_push($body,$linea);					
 					
 				}	
-				$table['body']=$body;
+				$table['p']['o']['uh']=1;
+				$table['c']=array('p'=>'');
+				$table['h']=$header;
+				$table['b']=$body;
 
 				
 				update_field('compatible_table', json_encode($table), $query->post->ID);
