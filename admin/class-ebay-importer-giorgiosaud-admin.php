@@ -120,6 +120,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// $response->add($pid);
 		// $response->send();
 		// exit();
+		exit;
 		die();
 
 
