@@ -19,7 +19,7 @@ class ProcessProductCompatibility{
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				$this->updateCompatibilityTable($query->post->ID);
-				wp_redirect(edit_post_link(null,null,null,$query->post->ID));
+				edit_post_link('Edit Entry',null,null,$query->post->ID);
 				exit;
 			}
 				// var_dump($this->details->ItemCompatibilityList);
