@@ -166,7 +166,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$woocommerce_text_field = $_POST['_ebay_id'];
 
 		if( !empty( $woocommerce_text_field ) ){
-			dd($post_id);
+			// dd($post_id);
 			update_post_meta( $post_id, '_ebay_id', esc_attr( $woocommerce_text_field ) );
 		}
 
