@@ -329,7 +329,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			return;
 		};
 		error_reporting(E_ALL);  // Turn on all errors, warnings, and notices for easier debugging
-
+		dd('hola');
 		// API request variables
 		// // URL to call
 		// Supply your own query keywords as needed
