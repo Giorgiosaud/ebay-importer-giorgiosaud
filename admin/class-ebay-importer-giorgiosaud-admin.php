@@ -115,7 +115,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 	public function UpdateOrCreateProductCompatibility(){
 		
 		$json=json_decode(stripslashes($_POST['data']), true);
-		echo $json;
+		var_dump($json);
 		// echo 'hola';
 		// $pid = $_REQUEST;
 		// var_dump($pid);
