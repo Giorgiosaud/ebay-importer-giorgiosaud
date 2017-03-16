@@ -32,6 +32,7 @@ class ProcessProductCompatibility{
 				array_push($header,$column);
 				var_dump(get_field('compatible_table'));
 				die();
+				update_field('compatible_table', $table, $query->post->ID);
 				foreach($this->details->ItemCompatibilityList->Compatibility as $compatible){
 
 
