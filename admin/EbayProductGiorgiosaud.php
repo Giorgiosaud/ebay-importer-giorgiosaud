@@ -16,7 +16,7 @@ class EbayProductGiorgiosaud{
 	function display(){
 		?>
 		<div class="wrap">
-		<h1 class="wp-heading-inline">Ebay Products</h1>
+			<h1 class="wp-heading-inline">Ebay Products</h1>
 			<table class="wp-list-table widefat fixed striped posts">
 				<thead>
 					<tr>
@@ -36,15 +36,20 @@ class EbayProductGiorgiosaud{
 							<td class="id column-id" data-colname="ID"><?=$producto['ID']?></td>
 							<td class="id column-name" data-colname="Name"><?=$producto['Name']?></td>
 							<td class="id column-URL" data-colname="URL"><a href="<?=$producto['URL']?>">Link eBay</a></td>
-							<td>Importar</td>
+							<td>
+								<form class="importUpdateCompatibility">
+									<input type="hidden" name="idEbay" value="<?=$producto['ID']?>">		
+									<input type="submit" value="Importar">
+								</form>
+							</td>
 						</tr>
 						<?php
 					}?>
-			</tbody>
-		</table>
-	</div>
-	<?php
+				</tbody>
+			</table>
+		</div>
+		<?php
 
-}
+	}
 }
 ?>
