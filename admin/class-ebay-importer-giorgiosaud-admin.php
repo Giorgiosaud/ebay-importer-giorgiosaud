@@ -114,7 +114,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 	static public function get_compatibility_list(){
 		var_dump($_POST);
 		$ebayId= $_POST['idEbay'];
-		$prodDetail = $self->getItemDetail($ebayId);
+		$prodDetail = self::getItemDetail($ebayId);
 
 		if($prodDetail->Ack=="Success"){
 			$product=new ProcessProductCompatibility($ebayId,$prodDetail->Item);
@@ -333,7 +333,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		    curl_close($session);                                   // close the session
 		    return simplexml_load_string($responsexml);                                    // returns a string
 	}  // End of constructPostToGetAllProductsFromStoreCallAndGetResponse function
-	private function getItemDetail($productId) {
+	static private function getItemDetail($productId) {
 		global $xmlrequest;
 		$endpoint = 'http://open.api.ebay.com/shopping';
 
