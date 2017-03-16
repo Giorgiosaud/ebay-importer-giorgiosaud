@@ -112,7 +112,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 	}
 	static public function get_compatibility_list(){
+		var_dump($_POST);
 		echo 'hola';
+		exit;
 	}
 	public function UpdateOrCreateProductCompatibility(){
 		
