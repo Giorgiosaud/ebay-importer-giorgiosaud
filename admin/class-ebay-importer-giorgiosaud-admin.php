@@ -118,7 +118,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			
 		if($prodDetail->Ack=="Success"){
 			$product=new ProcessProductCompatibility($ebayId,$prodDetail->Item);
-			var_dump($product);
+			// var_dump($product);
 			$product->newOrUpdateCompatibility();
 		}
 		exit;
