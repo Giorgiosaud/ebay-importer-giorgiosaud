@@ -1,7 +1,7 @@
 <?php 
 class ProcessProductCompatibility{
-	private $idEbay;
-	private $details;
+	public $idEbay;
+	public $details;
 
 	public function __construct($idEbay, $xmlstring){
 
