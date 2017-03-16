@@ -104,7 +104,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 
 			));
 		add_action( 'wp_ajax_update_create_product_compatibility', array($this,'UpdateOrCreateProductCompatibility') );
-		add_action( 'wp_ajax_nopriv__update_create_product_compatibility', array($this,'UpdateOrCreateProductCompatibility') );
+		add_action( 'wp_ajax_nopriv_update_create_product_compatibility', array($this,'UpdateOrCreateProductCompatibility') );
 		
 
 		// wp_localize_script( 'ebayData', 'ebay_api_key', get_option('ebay_api_key') );
