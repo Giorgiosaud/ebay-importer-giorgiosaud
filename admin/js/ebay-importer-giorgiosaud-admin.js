@@ -5,7 +5,7 @@
 			// alert('Start Importing');
 			// alert($(this).find( ".idEbay" ).val());
 			jQuery.post(
-				ajax_custom.ajaxurl,{action:'cleanlinks_ajax_get_post_data'}, function(response) {
+				ajax_custom.ajaxurl,{action:'update_create_product_compatibility'}, function(response) {
 					console.log (response);
 				}); 
 			// var IdProd=$(this).find( ".idEbay" ).val();
