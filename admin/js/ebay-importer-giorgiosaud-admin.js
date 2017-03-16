@@ -1,7 +1,7 @@
 (function( $ ) {
 	'use strict';
 	jQuery(document).ready(function($) {
-		alert(ebayData);
+		alert(ebay_api_key);
 		alert('Start importing');
 		$('.importUpdateCompatibility').submit(function(e){
 			alert('importing');
