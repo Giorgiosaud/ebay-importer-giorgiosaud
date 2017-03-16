@@ -10,11 +10,9 @@ class ProcessProductCompatibility{
 	}
 	public function newOrUpdateCompatibility(){
 		$args = array(
-			'post_type'  => 'product',
-			'meta_query' => array(
-				'key'     => '_ebay_id',
-				'value'   => $this->idEbay,
-				)
+			'post_type' => 'product',
+			'meta_key' => '_ebay_id',
+			'meta_value' => $this->idEbay,
 			);
 		$query=new WP_Query($args);
 		if ( $query->have_posts() ) {
