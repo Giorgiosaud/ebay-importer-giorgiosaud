@@ -19,9 +19,15 @@ class ProcessProductCompatibility{
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				$header=array();
-				$column=array();
+				die(var_dump($this->details->ItemCompatibilityList->Compatibility[0]));
 				foreach($this->details->ItemCompatibilityList->Compatibility as $compatible){
-					var_dump($compatible[0]);
+					foreach($compatible[0]->NameValueList as $listElement){
+						if($listElement->Name!=''){
+							$column=array('c'=>$listElement->Name);
+							array_push($header,$column);
+						}
+
+					}
 				}
 				// var_dump($this->details->ItemCompatibilityList);
 				// die();
