@@ -103,7 +103,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			'nonce'=> wp_create_nonce( 'UpdateOrCreateProductCompatibility' )
 
 			));
-		add_action( 'wp_ajax_UpdateOrCreateProductCompatibility', array('Ebay_Importer_Giorgiosaud_Admin','UpdateOrCreateProductCompatibility') );
+		add_action( 'wp_ajax_update_create_product_compatibility', array('Ebay_Importer_Giorgiosaud_Admin','UpdateOrCreateProductCompatibility') );
 
 		// wp_localize_script( 'ebayData', 'ebay_api_key', get_option('ebay_api_key') );
 		// wp_localize_script( 'ebayData', 'ebay_api_key_secret', get_option('ebay_api_key_secret') );

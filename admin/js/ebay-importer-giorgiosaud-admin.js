@@ -4,16 +4,29 @@
 		$('.importUpdateCompatibility').submit(function(e){
 			alert('Start Importing');
 			// alert($(this).find( ".idEbay" ).val());
-			var IdProd=$(this).find( ".idEbay" ).val();
-			var data ={
-				action: 'UpdateOrCreateProductCompatibility',
-				ebayId: IdProd,
-				nonce:ajax_custom.nonce
-			}
-			$.post(ajax_custom.ajaxurl,data)
-			.done(function(response){
-				console.log(response);
-			})
+			jQuery.post(
+				ajaxurl, 
+				{
+					'action': 'add_foobar',
+					'data':   'foobarid'
+				}, 
+				function(response){
+					alert('The server responded: ' + response);
+				}
+				);
+			// var IdProd=$(this).find( ".idEbay" ).val();
+			// var data ={
+				// action: 'update_create_product_compatibility',
+				// data:{
+					// ebayId: IdProd,
+					// nonce:ajax_custom.nonce
+				// }
+				// 
+			// }
+			// $.post(ajax_custom.ajaxurl,data)
+			// .done(function(response){
+				// console.log(response);
+			// })
 			return false;
 		});	
 	});
