@@ -355,7 +355,6 @@ class Ebay_Importer_Giorgiosaud_Admin {
 			$resp = $this->getProductsByStore($store,100,$i);
 			if ($resp->ack == "Success") {
 				foreach($resp->searchResult->item as $item){
-					dd($this->getItemDetail($item->itemId->__toString()));
 					$producto=array(
 						'ID'=>$item->itemId->__toString(),
 						'Name'=>$item->title->__toString(),
@@ -365,7 +364,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 				}
 			}
 		}
-		dd($productos);
+		// dd($productos);
 
 			// $this->showProductsList($resp->searchResult,$resp->paginationOutput->totalPages);
 		$ebayList=new EbayProductGiorgiosaud($productos);
