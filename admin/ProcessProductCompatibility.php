@@ -46,7 +46,7 @@ class ProcessProductCompatibility{
 					$elemento=array('c'=>$compatible->CompatibilityNotes->__toString());
 					array_push($linea,$elemento);
 
-					var_dump($linea);
+					// var_dump($linea);
 					array_push($body,$linea);					
 					
 				}	
