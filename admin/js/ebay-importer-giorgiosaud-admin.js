@@ -5,15 +5,9 @@
 			// alert('Start Importing');
 			// alert($(this).find( ".idEbay" ).val());
 			jQuery.post(
-				ajaxurl, 
-				{
-					'action': 'update_create_product_compatibility',
-					'data':   'foobarid'
-				}, 
-				function(response){
-					alert('The server responded: ' + response);
-				}
-				);
+				ajax_custom.ajaxurl,{action:'cleanlinks_ajax_get_post_data'}, function(response) {
+					console.log (response);
+				}); 
 			// var IdProd=$(this).find( ".idEbay" ).val();
 			// var data ={
 				// action: 'update_create_product_compatibility',
