@@ -1,6 +1,8 @@
 (function( $ ) {
 	'use strict';
-
+	$('.importUpdateCompatibility').submit(function(e){
+		return false;
+	});
 	/**
 	 * All of the code for your admin-facing JavaScript source
 	 * should reside in this file.
@@ -29,4 +31,4 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
-})( jQuery );
+	})( jQuery );
