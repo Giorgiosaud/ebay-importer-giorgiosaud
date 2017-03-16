@@ -5,28 +5,15 @@
 			alert('Start Importing');
 			// alert($(this).find( ".idEbay" ).val());
 			var IdProd=$(this).find( ".idEbay" ).val();
-			$.ajax({
-				url: ajaxurl,
-				headers: {
-					"Content-Type": "text/xml;charset=utf-8",
-					"X-EBAY-API-APP-ID":ebay_api_name,
-					"X-EBAY-API-SITE-ID":"0",
-					"X-EBAY-API-CALL-NAME":"GetSingleItem",
-					"X-EBAY-API-VERSION":"863",
-					"X-EBAY-API-REQUEST-ENCODING":"json"
-				},
-				data: "<GetSingleItemRequest xmlns=\"urn:ebay:apis:eBLBaseComponents\"><IncludeSelector>Compatibility</IncludeSelector><ItemID>"+IdProd+"</ItemID></GetSingleItemRequest>", 
-				type: 'POST',
-				contentType: "text/xml",
-				dataType: "json",
-				success : function(response){
-					console.info(response);
-				},
-				error : function (xhr, ajaxOptions, thrownError){  
-					console.log(xhr.status);          
-					console.log(thrownError);
-				} 
-			}); 
+			var data ={
+				action: 'UpdateOrCreateProductCompatibility',
+				ebayId: IdProd,
+				nonce:ajax_custom.nonce
+			}
+			$.post(ajax_custom.ajaxurl,data)
+			.done(function(response){
+				console.log(response);
+			})
 			return false;
 		});	
 	});

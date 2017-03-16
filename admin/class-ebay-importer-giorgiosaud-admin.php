@@ -100,10 +100,24 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		wp_enqueue_script( 'ebayData', plugin_dir_url( __FILE__ ) . 'js/ebay-importer-giorgiosaud-admin.js', array( 'jquery' ), $this->version, false );
 		wp_localize_script('ebayData', 'ajax_custom', array(
 			'ajaxurl' => admin_url('admin-ajax.php')
+			'nonce'=> wp_create_nonce( 'UpdateOrCreateProductCompatibility' );
+
 			));
+		add_action( 'wp_ajax_UpdateOrCreateProductCompatibility', array($this,'UpdateOrCreateProductCompatibility') );
+
 		// wp_localize_script( 'ebayData', 'ebay_api_key', get_option('ebay_api_key') );
 		// wp_localize_script( 'ebayData', 'ebay_api_key_secret', get_option('ebay_api_key_secret') );
 		// wp_localize_script( 'ebayData', 'ebay_store', get_option('ebay_store') );
+
+	}
+
+	public funciton UpdateOrCreateProductCompatibility(){
+		$pid = $_REQUEST;
+		$response = new WP_Ajax_Response;
+		$response->add($pid);
+		$response->send();
+		exit();
+
 
 	}
 	public function woo_add_custom_general_fields(){
