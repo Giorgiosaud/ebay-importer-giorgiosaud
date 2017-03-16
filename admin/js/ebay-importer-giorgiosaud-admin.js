@@ -2,12 +2,12 @@
 	'use strict';
 	jQuery(document).ready(function($) {
 		$('.importUpdateCompatibility').submit(function(e){
-			alert('Start Importing');
+			// alert('Start Importing');
 			// alert($(this).find( ".idEbay" ).val());
 			jQuery.post(
 				ajaxurl, 
 				{
-					'action': 'add_foobar',
+					'action': 'update_create_product_compatibility',
 					'data':   'foobarid'
 				}, 
 				function(response){
