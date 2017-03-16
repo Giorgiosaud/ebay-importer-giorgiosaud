@@ -117,6 +117,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$ebayId= $_POST['data']['ebayId'];
 		
 		$prodDetail = $this->getItemDetail($ebayId);
+		var_dump($prodDetail);
+		exit;
+
 		if($prodDetail->Ack=="Success"){
 
 			$product=new ProcessProductCompatibility($ebayId,$prodDetail->Item);
