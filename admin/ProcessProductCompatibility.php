@@ -30,17 +30,23 @@ class ProcessProductCompatibility{
 				$column=array(
 					'c'=>'Compatibility Notes');
 				array_push($header,$column);
-				var_dump(get_field('compatible_table'));
-				die();
-				update_field('compatible_table', $table, $query->post->ID);
+				$table=array();
+				$table['header']=$header;
+				$body=array();
 				foreach($this->details->ItemCompatibilityList->Compatibility as $compatible){
-
-
+					var_dump($compatible);
+					die();
 				}
+
+				// var_dump(get_field('compatible_table'));
+				update_field('compatible_table', $table, $query->post->ID);
+				die();
+
+				
 			}
 				// var_dump($this->details->ItemCompatibilityList);
 				// die();
-				
+
 				// echo 'Product Id '.$query->post->ID;
 		}
 		else{
