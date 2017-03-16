@@ -98,7 +98,9 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		 */
 		// dd($this->plugin_name);
 		wp_enqueue_script( 'ebayData', plugin_dir_url( __FILE__ ) . 'js/ebay-importer-giorgiosaud-admin.js', array( 'jquery' ), $this->version, false );
-		wp_localize_script( 'ebayData', 'ebay_api_name', get_option('ebay_api_name') );
+		wp_localize_script('ebayData', 'ajax_custom', array(
+			'ajaxurl' => admin_url('admin-ajax.php')
+			));
 		// wp_localize_script( 'ebayData', 'ebay_api_key', get_option('ebay_api_key') );
 		// wp_localize_script( 'ebayData', 'ebay_api_key_secret', get_option('ebay_api_key_secret') );
 		// wp_localize_script( 'ebayData', 'ebay_store', get_option('ebay_store') );
