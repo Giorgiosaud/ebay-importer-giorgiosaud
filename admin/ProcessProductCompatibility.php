@@ -14,7 +14,6 @@ class ProcessProductCompatibility{
 			'meta_query' => array(
 				'key'     => '_ebay_id',
 				'value'   => $this->idEbay,
-				'compare' => '=',
 				)
 			);
 		$query=new WP_Query($args);
