@@ -50,7 +50,7 @@ class ProcessProductCompatibility{
 					array_push($body,$linea);					
 					
 				}	
-				dd($body);
+				$table['body']=$body;
 
 				
 				update_field('compatible_table', $table, $query->post->ID);
