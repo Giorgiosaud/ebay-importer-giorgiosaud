@@ -42,9 +42,8 @@ class ProcessProductCompatibility{
 				// var_dump(get_field('compatible_table'));
 				// echo 'Product Id '.$query->post->ID;
 		}
+		else{
+			echo 'not Found post with Ebay Id'.$this->idEbay;
+		}
 	}
-	else{
-		echo 'not Found post with Ebay Id'.$this->idEbay;
-	}
-}
 }
