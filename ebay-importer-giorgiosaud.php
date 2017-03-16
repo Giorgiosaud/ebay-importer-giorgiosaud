@@ -74,6 +74,7 @@ function run_ebay_importer_giorgiosaud() {
 	$plugin = new Ebay_Importer_Giorgiosaud();
 
 	$plugin->run();
+	add_action( 'admin_post_get_compatibility_list', array('Ebay_Importer_Giorgiosaud_Admin','get_compatibility_list') );
 	add_action( 'wp_ajax_compatibility', array('Ebay_Importer_Giorgiosaud_Admin','UpdateOrCreateProductCompatibility') );
 	add_action( 'wp_ajax_nopriv_compatibility', array('Ebay_Importer_Giorgiosaud_Admin','UpdateOrCreateProductCompatibility') );
 

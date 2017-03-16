@@ -37,8 +37,9 @@ class EbayProductGiorgiosaud{
 							<td class="id column-name" data-colname="Name"><?=$producto['Name']?></td>
 							<td class="id column-URL" data-colname="URL"><a href="<?=$producto['URL']?>">Link eBay</a></td>
 							<td>
-								<form class="importUpdateCompatibility">
+								<form class="importUpdateCompatibility" action="<?= get_admin_url()?>admin-post.php" method="post">
 									<input type="hidden" name="idEbay" class="idEbay" value="<?=$producto['ID']?>">		
+									<input type='hidden' name='action' value="get_compatibility_list" />
 									<input type="submit" value="Importar">
 								</form>
 							</td>

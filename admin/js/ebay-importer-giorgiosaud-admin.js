@@ -1,25 +1,25 @@
 (function( $ ) {
 	'use strict';
-	jQuery(document).ready(function($) {
-		$('.importUpdateCompatibility').submit(function(e){
-			// alert('Start Importing');
-			// alert($(this).find( ".idEbay" ).val())
-			var IdProd=$(this).find( ".idEbay" ).val(),
-			data ={
-				action: 'compatibility',
-				data:{
-					ebayId: IdProd,
-					nonce:ajax_custom.nonce
-				}
-			}
-			console.info('fetching ID '+IdProd);
-			$.post(ajax_custom.ajaxurl,data)
-			.done(function(response){
-				console.log(response);
-			})
-			return false;
-		});	
-	});
+		// jQuery(document).ready(function($) {
+		// 	$('.importUpdateCompatibility').submit(function(e){
+		// 		// alert('Start Importing');
+		// 		// alert($(this).find( ".idEbay" ).val())
+		// 		var IdProd=$(this).find( ".idEbay" ).val(),
+		// 		data ={
+		// 			action: 'compatibility',
+		// 			data:{
+		// 				ebayId: IdProd,
+		// 				nonce:ajax_custom.nonce
+		// 			}
+		// 		}
+		// 		console.info('fetching ID '+IdProd);
+		// 		$.post(ajax_custom.ajaxurl,data)
+		// 		.done(function(response){
+		// 			console.log(response);
+		// 		})
+		// 		return false;
+		// 	});	
+		// });
 	
 	/**
 	 * All of the code for your admin-facing JavaScript source
