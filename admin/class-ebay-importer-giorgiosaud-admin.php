@@ -111,7 +111,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		// wp_localize_script( 'ebayData', 'ebay_store', get_option('ebay_store') );
 
 	}
-	public function get_compatibility_list(){
+	static public function get_compatibility_list(){
 		echo 'hola';
 	}
 	public function UpdateOrCreateProductCompatibility(){
