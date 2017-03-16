@@ -115,9 +115,11 @@ class Ebay_Importer_Giorgiosaud_Admin {
 	public function UpdateOrCreateProductCompatibility(){
 		
 		$ebayId= $_POST['data']['ebayId'];
-		echo $ebayId;
+		// echo $ebayId;
+		$prodDetail = $this->getItemDetail($ebayId);
+		echo $prodDetail->Ack;
 		exit;
-		// $prodDetail = $this->getItemDetail($ebayId);
+		
 		// var_dump($prodDetail);
 
 
