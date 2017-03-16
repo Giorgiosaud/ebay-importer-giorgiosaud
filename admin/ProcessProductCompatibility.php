@@ -20,10 +20,12 @@ class ProcessProductCompatibility{
 				$query->the_post();
 				$header=array();
 				$column=array();
-				
-				var_dump($this->details->ItemCompatibilityList);
-				die();
-				var_dump(get_field('compatible_table'));
+				foreach($this->details->ItemCompatibilityList->Compatibility as $compatible){
+					var_dump($compatible->NameValueList);
+				}
+				// var_dump($this->details->ItemCompatibilityList);
+				// die();
+				// var_dump(get_field('compatible_table'));
 				// echo 'Product Id '.$query->post->ID;
 			}
 		}
