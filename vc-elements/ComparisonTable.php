@@ -91,20 +91,20 @@ class vcInfo extends WPBakeryShortCode {
               }?>
 
             </tbody>
+          </table>
 
+          <?php
 
-            <?php
-
-            $output_string = ob_get_contents();
-            ob_end_clean();
-          }
-          return $output_string;
-
-          //.. the Code is in the next steps ..//
-
+          $output_string = ob_get_contents();
+          ob_end_clean();
         }
+        return $output_string;
 
-      } // End Element Class
+        //.. the Code is in the next steps ..//
 
-      // Element Class Init
-      new vcInfo();
+      }
+
+    } // End Element Class
+
+    // Element Class Init
+    new vcInfo();
