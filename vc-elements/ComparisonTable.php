@@ -71,8 +71,8 @@ class vcInfo extends WPBakeryShortCode {
                 <?= $th['c'] ?>
               </th>
 
-              <?php
-            <?php }?>
+              
+            <?php } ?>
             </tr>
             <?php } ?>
             <tbody>
