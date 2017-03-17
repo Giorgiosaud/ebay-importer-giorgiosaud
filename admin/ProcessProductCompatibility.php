@@ -96,7 +96,7 @@ class ProcessProductCompatibility{
 	}
 	public function updateCompatibilityTable($id){
 		$header=array();
-		dd(count($this->details->ItemCompatibilityList->Compatibility));
+		// dd(count($this->details->ItemCompatibilityList->Compatibility));
 		$headerElement=$this->details->ItemCompatibilityList->Compatibility[0];
 
 		foreach($headerElement->NameValueList as $listElement){
