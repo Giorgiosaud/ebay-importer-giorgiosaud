@@ -28,7 +28,7 @@ class ProcessProductCompatibility{
 				// echo 'Product Id '.$query->post->ID;
 		}
 		else{
-			var_dump($this->details);
+			// var_dump($this->details);
 			die();
 			global $user_ID;
 			$new_post = array(
@@ -44,8 +44,30 @@ class ProcessProductCompatibility{
 			$post_id = wp_insert_post($new_post);
 			$this->updateCompatibilityTable($post_id);
 			update_post_meta( $post_id, '_regular_price',$this->details->ConvertedCurrentPrice->__toString());
+			$stock=$this->details->Quantity->__toString();
+			if($stock>0){
+				update_post_meta( $post_id, '_manage_stock', "yes" );
+				update_post_meta( $post_id, '_stock', $stock );
+				update_post_meta( $post_id, '_stock_status', 'instock');
+			}
+			else{
+				update_post_meta( $post_id, '_manage_stock', "no" );
+				update_post_meta( $post_id, '_stock_status', 'outofstock');
+			}
 			update_post_meta( $post_id, '_ebay_id',$this->idEbay);
-			
+
+			foreach($this->details->ItemSpecifics->NameValueList as $specs){
+				switch ($specs->Name) {
+					case 'Manufacturer Part Number':
+					update_post_meta( $post_id, '_sku',$specs->Value->__toString());
+					break;
+					
+					default:
+					break;
+				}
+			}
+			edit_post_link('Edit Entry',null,null,$query->post->ID);
+
 
 			
 // 			update_post_meta( $post_id, '_visibility', 'visible' );
