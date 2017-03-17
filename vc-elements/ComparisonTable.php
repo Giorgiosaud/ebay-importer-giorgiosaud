@@ -60,7 +60,7 @@ class vcComparisonTable extends WPBakeryShortCode {
 
 
       ob_start();?>
-      <table>
+      <table class="comparisonTable">
       <?php if ( $table['header'] ) {
         ?>
         <thead>
