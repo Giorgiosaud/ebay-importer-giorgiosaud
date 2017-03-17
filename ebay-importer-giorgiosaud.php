@@ -89,7 +89,7 @@ function vc_before_init_actions() {
     //.. Code from other Tutorials ..//
 
     // Require new custom Element
-    require_once( plugin_dir_path().'/vc-elements/ComparisonTable.php' ); 
+    require_once( WP_PLUGIN_DIR.'/ebay-importer-giorgiosaud/vc-elements/ComparisonTable.php' ); 
 
 }
 
