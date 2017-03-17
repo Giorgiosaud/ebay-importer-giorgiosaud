@@ -97,6 +97,11 @@ class Ebay_Importer_Giorgiosaud {
 	private function load_dependencies() {
 
 		/**
+		 * The class responsible for plugins extra
+		 * core plugin.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'tgm/mytgm.php';
+		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
