@@ -75,48 +75,37 @@ function run_ebay_importer_giorgiosaud() {
 
 	$plugin->run();
 	add_filter('acf/settings/save_json', 'my_acf_json_save_point');
-add_filter('acf/settings/load_json', 'my_acf_json_load_point');
-add_action( 'activated_plugin', 'my_plugin_load_first' );
+	add_filter('acf/settings/load_json', 'my_acf_json_load_point');
 
 	add_action( 'admin_post_get_compatibility_list', array('Ebay_Importer_Giorgiosaud_Admin','get_compatibility_list') );
 	add_action( 'wp_ajax_compatibility', array('Ebay_Importer_Giorgiosaud_Admin','UpdateOrCreateProductCompatibility') );
 	add_action( 'wp_ajax_nopriv_compatibility', array('Ebay_Importer_Giorgiosaud_Admin','UpdateOrCreateProductCompatibility') );
 
 }
-function my_plugin_load_first()
-{
-    $path = str_replace( WP_PLUGIN_DIR . '/', '', __FILE__ );
-    if ( $plugins = get_option( 'active_plugins' ) ) {
-        if ( $key = array_search( $path, $plugins ) ) {
-            array_splice( $plugins, $key, 1 );
-            array_unshift( $plugins, $path );
-            update_option( 'active_plugins', $plugins );
-        }
-    }
-}
+
 function my_acf_json_save_point( $path ) {
-    
+	
     // update path
-    $path = plugin_dir_path() . '/ACFs';
-    
-    
+	$path = plugin_dir_path() . '/ACFs';
+	
+	
     // return
-    return $path;
-    
+	return $path;
+	
 }
 function my_acf_json_load_point( $paths ) {
-    
+	
     // remove original path (optional)
-    unset($paths[0]);
-    
-    
+	unset($paths[0]);
+	
+	
     // append path
-    $paths[] = get_stylesheet_directory() . '/ACFs';
-    
-    
+	$paths[] = get_stylesheet_directory() . '/ACFs';
+	
+	
     // return
-    return $paths;
-    
+	return $paths;
+	
 }
 
 run_ebay_importer_giorgiosaud();

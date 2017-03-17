@@ -344,7 +344,7 @@ class Ebay_Importer_Giorgiosaud_Admin {
 		$xmlrequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 		$xmlrequest .= "<GetSingleItemRequest xmlns=\"urn:ebay:apis:eBLBaseComponents\">";
 		// <findItemsAdvancedRequest xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">";
-		$xmlrequest .= "<IncludeSelector>Compatibility</IncludeSelector>";
+		$xmlrequest .= "<IncludeSelector>Details,ItemSpecifics,Variations,Compatibility</IncludeSelector>";
 		$productId="$productId";
 		$xmlrequest .="<ItemID>$productId</ItemID>";
 		$xmlrequest .="</GetSingleItemRequest>";

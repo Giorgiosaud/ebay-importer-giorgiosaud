@@ -44,6 +44,8 @@ class ProcessProductCompatibility{
 			$post_id = wp_insert_post($new_post);
 			$this->updateCompatibilityTable($post_id);
 			update_post_meta( $post_id, '_regular_price',$this->details->ConvertedCurrentPrice->__toString());
+			update_post_meta( $post_id, '_ebay_id',$this->idEbay);
+			
 
 			
 // 			update_post_meta( $post_id, '_visibility', 'visible' );
