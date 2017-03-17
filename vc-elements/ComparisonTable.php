@@ -59,9 +59,9 @@ class vcComparisonTable extends WPBakeryShortCode {
     if ( $table ) {
 
 
-      ob_start();
-
-      if ( $table['header'] ) {
+      ob_start();?>
+      <table>
+      <?php if ( $table['header'] ) {
         ?>
         <thead>
           <tr>
