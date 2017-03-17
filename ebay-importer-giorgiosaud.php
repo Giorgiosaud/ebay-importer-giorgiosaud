@@ -74,6 +74,49 @@ function run_ebay_importer_giorgiosaud() {
 	$plugin = new Ebay_Importer_Giorgiosaud();
 
 	$plugin->run();
+
+	if( function_exists('acf_add_local_field_group') ):
+
+		acf_add_local_field_group(array (
+			'key' => 'group_58ca80fb3d58a',
+			'title' => 'Compatibles',
+			'fields' => array (
+				array (
+					'key' => 'field_58ca8121f0f4a',
+					'label' => 'Compatible Table',
+					'name' => 'compatible_table',
+					'type' => 'table',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '',
+						'class' => '',
+						'id' => '',
+						),
+					'use_header' => 1,
+					),
+				),
+			'location' => array (
+				array (
+					array (
+						'param' => 'post_type',
+						'operator' => '==',
+						'value' => 'product',
+						),
+					),
+				),
+			'menu_order' => 100,
+			'position' => 'normal',
+			'style' => 'default',
+			'label_placement' => 'top',
+			'instruction_placement' => 'field',
+			'hide_on_screen' => '',
+			'active' => 1,
+			'description' => '',
+			));
+
+	endif;
 	add_action( 'admin_post_get_compatibility_list', array('Ebay_Importer_Giorgiosaud_Admin','get_compatibility_list') );
 	add_action( 'wp_ajax_compatibility', array('Ebay_Importer_Giorgiosaud_Admin','UpdateOrCreateProductCompatibility') );
 	add_action( 'wp_ajax_nopriv_compatibility', array('Ebay_Importer_Giorgiosaud_Admin','UpdateOrCreateProductCompatibility') );
