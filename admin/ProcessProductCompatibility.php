@@ -29,7 +29,7 @@ class ProcessProductCompatibility{
 		}
 		else{
 			// var_dump($this->details);
-			die();
+			// die();
 			global $user_ID;
 			$new_post = array(
 				'post_title' => $this->details->Title->__toString(),
