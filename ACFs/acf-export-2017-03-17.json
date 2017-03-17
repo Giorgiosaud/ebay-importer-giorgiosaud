@@ -1,0 +1,40 @@
+[
+    {
+        "key": "group_58ca80fb3d58a",
+        "title": "Compatibles",
+        "fields": [
+            {
+                "key": "field_58ca8121f0f4a",
+                "label": "Compatible Table",
+                "name": "compatible_table",
+                "type": "table",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "use_header": 1
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "product"
+                }
+            ]
+        ],
+        "menu_order": 100,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "field",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    }
+]
