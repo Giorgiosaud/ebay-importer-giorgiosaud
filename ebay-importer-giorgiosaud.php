@@ -8,7 +8,7 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link               http://giorgiosaud.com/site/ 
+ * @link               http://giorgiosaud.com/site/
  * @since             1.0.0
  * @package           Ebay_Importer_Giorgiosaud
  *
@@ -18,7 +18,7 @@
  * Description:       This plugin is to import products from one ebay store to your woocomerce products
  * Version:           1.0.0
  * Author:            Giorgiosaud
- * Author URI:         http://giorgiosaud.com/site/ 
+ * Author URI:         http://giorgiosaud.com/site/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       ebay-importer-giorgiosaud
@@ -80,32 +80,42 @@ function run_ebay_importer_giorgiosaud() {
 	add_action( 'admin_post_get_compatibility_list', array('Ebay_Importer_Giorgiosaud_Admin','get_compatibility_list') );
 	add_action( 'wp_ajax_compatibility', array('Ebay_Importer_Giorgiosaud_Admin','UpdateOrCreateProductCompatibility') );
 	add_action( 'wp_ajax_nopriv_compatibility', array('Ebay_Importer_Giorgiosaud_Admin','UpdateOrCreateProductCompatibility') );
+	add_action( 'vc_before_init', 'vc_before_init_actions' );
+
+}
+
+function vc_before_init_actions() {
+
+    //.. Code from other Tutorials ..//
+
+    // Require new custom Element
+    require_once( plugin_dir_path().'/vc-elements/ComparisonTable.php' ); 
 
 }
 
 function my_acf_json_save_point( $path ) {
-	
+
     // update path
 	$path = plugin_dir_path() . '/ACFs';
-	
-	
+
+
     // return
 	return $path;
-	
+
 }
 function my_acf_json_load_point( $paths ) {
-	
+
     // remove original path (optional)
 	unset($paths[0]);
-	
-	
+
+
     // append path
 	$paths[] = get_stylesheet_directory() . '/ACFs';
-	
-	
+
+
     // return
 	return $paths;
-	
+
 }
 
 run_ebay_importer_giorgiosaud();

@@ -3,7 +3,7 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @link        http://giorgiosaud.com/site/ 
+ * @link        http://giorgiosaud.com/site/
  * @since      1.0.0
  *
  * @package    Ebay_Importer_Giorgiosaud
@@ -74,6 +74,9 @@ class Ebay_Importer_Giorgiosaud_Public {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/ebay-importer-giorgiosaud-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style('table_style','//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css',array('motor-less'));
+wp_enqueue_style('table_style','//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css',array('my-adaptations-to-theme'));
+
 
 	}
 
@@ -97,7 +100,7 @@ class Ebay_Importer_Giorgiosaud_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/ebay-importer-giorgiosaud-public.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script('table_script','//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js',array('motor-gmaps'),null,true);
 	}
 
 }

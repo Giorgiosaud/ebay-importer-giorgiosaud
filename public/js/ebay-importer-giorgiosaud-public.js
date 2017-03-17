@@ -1,6 +1,10 @@
 (function( $ ) {
 	'use strict';
-
+	$(document).ready(function(){
+		if($('.comparisonTable').length>0){
+			$('.comparisonTable').DataTable();
+		}
+	});
 	/**
 	 * All of the code for your public-facing JavaScript source
 	 * should reside in this file.
