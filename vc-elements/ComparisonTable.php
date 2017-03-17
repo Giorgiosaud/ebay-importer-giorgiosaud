@@ -4,7 +4,7 @@ Element Description: VC Info Box
 */
 
 // Element Class
-class vcInfo extends WPBakeryShortCode {
+class vcComparisonTable extends WPBakeryShortCode {
 
   // Element Init
   function __construct() {
@@ -107,4 +107,4 @@ class vcInfo extends WPBakeryShortCode {
     } // End Element Class
 
     // Element Class Init
-    new vcInfo();
+    new vcComparisonTable();
