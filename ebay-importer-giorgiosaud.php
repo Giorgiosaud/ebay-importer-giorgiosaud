@@ -75,7 +75,7 @@ function run_ebay_importer_giorgiosaud() {
 
 	$plugin->run();
 
-	if( function_exists('acf_add_local_field_group') ):
+	// if( function_exists('acf_add_local_field_group') ):
 
 		acf_add_local_field_group(array (
 			'key' => 'group_58ca80fb3d58a',
@@ -116,7 +116,7 @@ function run_ebay_importer_giorgiosaud() {
 			'description' => '',
 			));
 
-	endif;
+	// endif;
 	add_action( 'admin_post_get_compatibility_list', array('Ebay_Importer_Giorgiosaud_Admin','get_compatibility_list') );
 	add_action( 'wp_ajax_compatibility', array('Ebay_Importer_Giorgiosaud_Admin','UpdateOrCreateProductCompatibility') );
 	add_action( 'wp_ajax_nopriv_compatibility', array('Ebay_Importer_Giorgiosaud_Admin','UpdateOrCreateProductCompatibility') );
