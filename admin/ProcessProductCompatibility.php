@@ -66,7 +66,7 @@ class ProcessProductCompatibility{
 					break;
 				}
 			}
-			edit_post_link('Edit Entry',null,null,$query->post->ID);
+			edit_post_link('Edit Entry',null,null,$post_id);
 
 
 			
