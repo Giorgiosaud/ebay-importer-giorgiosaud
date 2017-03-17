@@ -72,7 +72,7 @@ class vcInfo extends WPBakeryShortCode {
               </th>
 
               <?php
-            }
+            <?php }?>
             </tr>
             <?php } ?>
             <tbody>
