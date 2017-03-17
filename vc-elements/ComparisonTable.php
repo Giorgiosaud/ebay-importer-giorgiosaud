@@ -29,7 +29,7 @@ class vcInfo extends WPBakeryShortCode {
       'weight'=>10,
       'category'=>__('Structure'),
       'group'=>__('Partes Miami AP'),
-      'icon'=>plugin_dir_url().'/public/img/zonapro.png',
+      'icon'=>WP_PLUGIN_DIR.'/ebay-importer-giorgiosaud/public/img/zonapro.png',
       'params'=>array(
         array(
           'type' => 'textfield',
@@ -71,7 +71,7 @@ class vcInfo extends WPBakeryShortCode {
                 <?= $th['c'] ?>
               </th>
 
-              
+
             <?php } ?>
             </tr>
             <?php } ?>
